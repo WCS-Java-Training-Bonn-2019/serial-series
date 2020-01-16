@@ -39,6 +39,20 @@ public class SeriesController {
 		
 		// model befüllen und an HTML-Seite übergeben
 		model.addAttribute("Series", repository.findSeriesByUserId(id));
+		
+		//Achtung: für DEMO
+		String title= null;
+		if (id == 1)
+			title = "Serial-Series: Susi";
+		if (id == 2)
+			title = "Serial-Series: Daniel";
+		else
+			title = "Serial-Series";
+		model.addAttribute("Title", title);
+		
+		
+			
+		
 		return "listSeries.html";
 	}
 	
