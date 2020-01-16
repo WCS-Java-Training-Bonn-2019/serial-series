@@ -41,16 +41,16 @@
 			<div class="row">
 				<div class="col-md-12">
 					<!-- <p th:text="${'Id = ' + Serie.id}" th:name = "id" th:value=${Serie.id}>Id</p>  -->
-					<img class="img-fluid" th:src="${Serie.picture}" alt="...">
+					<img class="img-fluid" th:src="${Serie.picture_url}" alt="...">
 					<h5 th:text="|${Serie.name}|">Staffeltitel</h5>
-					<p th:text="|${Serie.text}|">Text</p>
+					<p th:text="|${Serie.description}|">Text</p>
 				</div>
 			</div>
 
 			<!--  versteckte Felder merken -->
 			<input type="hidden" th:field="*{id}" /> <input type="hidden"
-				th:field="*{name}" /> <input type="hidden" th:field="*{text}" /> <input
-				type="hidden" th:field="*{picture}" />
+				th:field="*{name}" /> <input type="hidden" th:field="*{description}" /> <input
+				type="hidden" th:field="*{picture_url}" />
 		</div>
 
 		<!-- Alternative Anzeige, falls keine Staffeln vorhanden -->

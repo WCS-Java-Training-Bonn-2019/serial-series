@@ -46,14 +46,14 @@ public class Serie {
 			folge1.add(new Episode(3, "Der Wolf un der Löwe", true, false, 0));
 			folge1.add(new Episode(4, "Krüppel, Bastarde und Zerbrochenes", true, false, 0));
 			folge1.add(new Episode(5, "Lord Schnee", false, false, 0));
-			listOfSeasons.add(new Season(1, "Serie 1", folge1));
+			listOfSeasons.add(new Season(1, "Staffel 1", folge1));
 
 			folge2.add(new Episode(6, "Der Norden vergißt nicht", true, false, 0));
 			folge2.add(new Episode(7, "Die Nachtlande", false, false, 0));
 			folge2.add(new Episode(8, "Was tot ist, kann niemals sterben", false, false, 0));
 			folge2.add(new Episode(9, "Garten der Knochen", true, false, 0));
 			folge2.add(new Episode(10, "Der Geist von Harrenhal", false, false, 0));
-			listOfSeasons.add(new Season(2, "Serie 2", folge2));
+			listOfSeasons.add(new Season(2, "Staffel 2", folge2));
 		} else if (id == 2) {
 			this.name = "The Wicher";
 			this.picture_url = "/pictures/Witcher.jpg";
@@ -61,21 +61,21 @@ public class Serie {
 			folge1.add(new Episode(1, "Wicher1", true, false, 0));
 			folge1.add(new Episode(2, "Wicher2", true, false, 0));
 			folge1.add(new Episode(3, "Wicher3", true, false, 0));
-			listOfSeasons.add(new Season(1, "Serie 1", folge1));
+			listOfSeasons.add(new Season(1, "Staffel 1", folge1));
 
 			folge2.add(new Episode(6, "Wicher4", true, false, 0));
 			folge2.add(new Episode(7, "Wicher5", false, false, 0));
 			folge2.add(new Episode(8, "WIcher6", false, false, 0));
-			listOfSeasons.add(new Season(2, "Serie 2", folge2));
+			listOfSeasons.add(new Season(2, "Staffel 2", folge2));
 		} else if (id == 3) {
 			this.name = "The Walking Dead";
 			this.picture_url = "/pictures/TheWalkingDead.jpg";
 			this.description = "Die US-Serie The Walking Dead ist eine Adaption der gleichnamigen Comicbuchreihe von Robert Kirkman. Darin geht es um eine Gruppe von Menschen, die nach der Apokalypse als letzte Überlebende in einer Welt bestehen muss, die von Zombies bevölkert wird. Im Mittelpunkt der Serie steht der Polizist Rick Grimes, der für sich und seine Mitstreiter eine dauerhafte sichere Zuflucht sucht und die zerstörte Gesellschaft neu aufbauen möchte.";
 			folge1.add(new Episode(1, "Walking1", true, false, 0));
-			listOfSeasons.add(new Season(1, "Serie 1", folge1));
+			listOfSeasons.add(new Season(1, "Staffel 1", folge1));
 
 			folge2.add(new Episode(2, "Walking2", true, false, 0));
-			listOfSeasons.add(new Season(2, "Serie 2", folge2));
+			listOfSeasons.add(new Season(2, "Staffel 2", folge2));
 		} else if (id == 4) {
 			this.name = "Outlander";
 			this.picture_url = "/pictures/Outlander.jpg";
