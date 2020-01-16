@@ -20,6 +20,14 @@
 
 .card-link {
   float: right;
+  vertical-align: bottom;
+}
+
+.card-link-left {
+  float: left;
+}
+a:hover {
+  text-decoration: none;
 }
 
 .article-row > div {

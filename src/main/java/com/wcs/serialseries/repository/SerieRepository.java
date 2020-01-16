@@ -45,9 +45,9 @@ public class SerieRepository {
             if (resultSet.next()) {
                 Long id = resultSet.getLong("id");
                 String name = resultSet.getString("name");
-                String picture = resultSet.getString("picture");
-                String text = resultSet.getString("text");
-                series.add(new Serie(id, name, picture, text, null));
+                String picture_url = resultSet.getString("picture_url");
+                String description = resultSet.getString("description");
+                series.add(new Serie(id, name, picture_url, description, null));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -106,12 +106,12 @@ public class SerieRepository {
             while (resultSet.next()) {
                 Long id = resultSet.getLong("id");
                 String name = resultSet.getString("name");
-                String picture = resultSet.getString("picture");
-                String text = resultSet.getString("text");
+                String picture_url = resultSet.getString("picture_url");
+                String description = resultSet.getString("description");
 
                 
                 
-                series.add(new Serie(id, name, picture, text, null));
+                series.add(new Serie(id, name, picture_url, description, null));
             }
                        
             return series;
@@ -183,9 +183,9 @@ public class SerieRepository {
             if (resultSet.next()) {
             	Long id = resultSet.getLong("id");
                 String name = resultSet.getString("name");
-                String picture = resultSet.getString("picture");
-                String text = resultSet.getString("text");
-                return new Serie(id, name, picture, text);
+                String picture_url = resultSet.getString("picture_url");
+                String description = resultSet.getString("description");
+                return new Serie(id, name, picture_url, description);
                 
             }
             

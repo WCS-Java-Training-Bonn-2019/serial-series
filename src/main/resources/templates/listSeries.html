@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="de">
 
 <head>
-<title th:text="|${Title}!|">Serial-Series</title>
+<title th:text="|${Title}|">Serial-Series</title>
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -26,12 +26,14 @@
 
 				<div class="col-lg-4 col-sm-6 col-12">
 					<div class="card article-card">
-						<img class="card-img-top" th:src="${serie.picture}" alt="...">
+						<img class="card-img-top" th:src="${serie.picture_url}" alt="...">
 						<div class="card-body">
 							<h5 class="card-title" th:text="${serie.name}">Titel</h5>
-							<p class="card-text" th:text="${serie.text}">Text</p>
+							<p class="card-text" th:text="${serie.description}">Text</p>
 							<a th:href="${'/listSerieSeasonsEpisodes/' + serie.id}"
 								class="card-link">Staffelübersicht</a>
+							<a href="/underConstruction.html"  class="card-link-left">Löschen</a>
+								
 						</div>
 					</div>
 				</div>
