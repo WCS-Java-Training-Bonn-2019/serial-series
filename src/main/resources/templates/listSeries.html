@@ -31,9 +31,13 @@
 						<div class="card-body">
 							<h5 class="card-title" th:text="${serie.name}">Titel</h5>
 							<p class="card-text" th:text="${serie.description}">Text</p>
+							<br>
 							<div class="card-footer">
+							<!--   Raus für Präsentation 
 								<a th:href="${'/listSerieSeasonsEpisodes/' + serie.id}"
-									class="card-link">Staffelübersicht</a> 
+									class="card-link">Staffelübersicht</a>
+							--> 
+								<a href="/underConstruction.html" class="card-link">Staffelübersicht</a>
 								<a href="/underConstruction.html" class="card-link-left">Löschen</a>
 							</div>
 

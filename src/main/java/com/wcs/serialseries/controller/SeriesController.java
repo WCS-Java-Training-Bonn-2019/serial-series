@@ -1,10 +1,6 @@
 package com.wcs.serialseries.controller;
 
-import com.wcs.serialseries.model.Serie;
 import com.wcs.serialseries.repository.SerieRepository;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +12,6 @@ public class SeriesController {
 
 	private SerieRepository repository = new SerieRepository();
 
-	private static List<Serie> listOfSeries = new ArrayList<Serie>();
-
 	@GetMapping("/listSeries")
 	public String listSeries(Model model) {
 
@@ -26,6 +20,18 @@ public class SeriesController {
 
 		return "listSeries.html";
 	}
+	
+	
+	//Nur Für SprintDemo
+	@GetMapping("/")
+	public String listSeriesFromRoot(Model model) {
+
+		// model befüllen und an HTML-Seite übergeben
+		model.addAttribute("Series", repository.findAll());
+
+		return "listSeries.html";
+	}
+
 
 	@GetMapping("/listSeries/{id}")
 	public String listSeriesForName(@PathVariable long id, Model model) {
