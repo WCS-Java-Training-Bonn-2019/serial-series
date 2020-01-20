@@ -16,7 +16,7 @@
 </head>
 
 <body>
-	<header> </header>
+	<header th:insert="header.html :: header"></header>
 
 
 	<section class="container-fluid">
@@ -25,7 +25,7 @@
 			<th:block th:each="serie: ${Series}">
 
 				<div class="col-lg-4 col-sm-6 col-12">
-				
+
 					<div class="card article-card">
 						<img class="card-img-top" th:src="${serie.picture_url}" alt="...">
 						<div class="card-body">
@@ -35,10 +35,11 @@
 							<div class="card-footer">
 							<!--   Raus für Präsentation 
 								<a th:href="${'/listSerieSeasonsEpisodes/' + serie.id}"
-									class="card-link">Staffelübersicht</a>
-							--> 
-								<a href="/underConstruction.html" class="card-link">Staffelübersicht</a>
-								<a href="/underConstruction.html" class="card-link-left">Löschen</a>
+
+									class="card-link">Staffelübersicht</a> <a
+									href="/underConstruction.html" class="card-link-left">Löschen</a>
+
+
 							</div>
 
 						</div>
@@ -49,7 +50,7 @@
 		</div>
 	</section>
 
-
+	<footer th:insert="footer.html :: footer"> </footer>
 
 </body>
 
