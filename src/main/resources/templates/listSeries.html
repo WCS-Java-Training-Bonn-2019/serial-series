@@ -15,41 +15,64 @@
 <meta charset=UTF-8>
 </head>
 
+
+
+<header th:insert="header.html :: header"></header>
+
+<!-- Anzeige Hinzufügbare Serien -->
+<div th:if="${Type == 'My'}">
+	<a th:href="${'/listSeries/New/' + UserId}"><button>Hinzufügen</button></a>
+</div>
+
 <body>
-	<header th:insert="header.html :: header"></header>
+		<section class="container-fluid">
+			<div class="row no-gutters article-row">
+
+				<th:block th:each="serie: ${Series}">
+
+					<div class="col-lg-4 col-sm-6 col-12">
+
+						<div class="card article-card">
+							<img class="card-img-top" th:src="${serie.picture_url}" alt="...">
+							<div class="card-body">
+								<h5 class="card-title" th:text="${serie.name}">Titel</h5>
+								<p class="card-text" th:text="${serie.description}">Text</p>
+								<br>
+								<div class="card-footer">
+
+									<!-- Anzeige Alle Serien -->
+									<div th:if="${Type == 'All'}">
+										<a th:href="${'/listSerieSeasonsEpisodes/' + serie.id}"
+											class="card-link">Staffelübersicht</a>
+									</div>
+
+									<!-- Anzeige Hinzufügbare Serien -->
+									<div th:if="${Type == 'New'}">
+									<!-- 
+										<a href="/underConstruction.html" class="card-link-left">Hinzufügen</a>
+										 -->
+										<a th:href="@{/listSeries/neu(idSerie=${serie.id}, idUser=${UserId})}" class="card-link-left">Hinzufügen</a>
+									</div>
+
+									<!-- Anzeige Hinzufügbare Serien -->
+									<div th:if="${Type == 'My'}">
+										<a th:href="${'/listSerieSeasonsEpisodes/' + serie.id}" class="card-link">Staffelübersicht</a> 
+										<a th:href="@{/listSeries/loeschen(idSerie=${serie.id}, idUser=${UserId})}">Löschen</a>
+									</div>
 
 
-	<section class="container-fluid">
-		<div class="row no-gutters article-row">
-
-			<th:block th:each="serie: ${Series}">
-
-				<div class="col-lg-4 col-sm-6 col-12">
-
-					<div class="card article-card">
-						<img class="card-img-top" th:src="${serie.picture_url}" alt="...">
-						<div class="card-body">
-							<h5 class="card-title" th:text="${serie.name}">Titel</h5>
-							<p class="card-text" th:text="${serie.description}">Text</p>
-							<br>
-							<div class="card-footer">
-							
-								<a th:href="${'/listSerieSeasonsEpisodes/' + serie.id}" class="card-link">Staffelübersicht</a> 
-								<a href="/underConstruction.html" class="card-link-left">Löschen</a>
-
+								</div>
 
 							</div>
-
 						</div>
 					</div>
-				</div>
-			</th:block>
+				</th:block>
 
-		</div>
-	</section>
-
-	<footer th:insert="footer.html :: footer"> </footer>
+			</div>
+		</section>
 
 </body>
+
+<footer th:insert="footer.html :: footer"> </footer>
 
 </html>

@@ -67,9 +67,8 @@ public class UpdateEpisodeControler {
 
 		}
 
-		
-
 		return "listSerieWithSeasonsAndEpisodes.html";
+		//return "redirect:/listSerieSeasonsEpisodes/" + serie.getId();
 
 	}
 
