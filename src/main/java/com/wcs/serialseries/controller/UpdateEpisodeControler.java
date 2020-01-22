@@ -14,6 +14,8 @@ import com.wcs.serialseries.repository.SerieRepository;
 @Controller
 public class UpdateEpisodeControler {
 
+	
+	
 	// Seite wird über http://localhost:8080/listSeriens/1
 	// http://localhost:8080/listSeries aufgerufen.
 	private SerieRepository repository = new SerieRepository();
@@ -36,15 +38,15 @@ public class UpdateEpisodeControler {
 			for (int ittChecked = 0; ittChecked < seen.length; ittChecked++) {
 				// Richtige Episode der richtigen Season der richtigen Serie auf gesehen setzen
 				// alle Staffeln itterieren
-				for (int ittStaffel = 0; ittStaffel < serie.getListOfSeasons().size(); ittStaffel++) {
-					// alle Folgen itterieren
-					for (int ittFolge = 0; ittFolge < serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes()
-							.size(); ittFolge++) {
-						// alle Folgen itterieren
-						if (seen[ittChecked] == serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes().get(ittFolge).getId())
-							serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes().get(ittFolge).setWatched(true);
-					}
-				}
+//				for (int ittStaffel = 0; ittStaffel < serie.getListOfSeasons().size(); ittStaffel++) {
+//					// alle Folgen itterieren
+//					for (int ittFolge = 0; ittFolge < serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes()
+//							.size(); ittFolge++) {
+//						// alle Folgen itterieren
+//						if (seen[ittChecked] == serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes().get(ittFolge).getId())
+//							serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes().get(ittFolge).setWatched(true);
+//					}
+//				}
 			}
 
 		}
@@ -54,15 +56,15 @@ public class UpdateEpisodeControler {
 			for (int ittChecked = 0; ittChecked < wanted.length; ittChecked++) {
 				// Richtige Episode der richtigen Season der richtigen Serie auf gesehen setzen
 				// alle Staffeln itterieren
-				for (int ittStaffel = 0; ittStaffel < serie.getListOfSeasons().size(); ittStaffel++) {
-					// alle Folgen itterieren
-					for (int ittFolge = 0; ittFolge < serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes()
-							.size(); ittFolge++) {
-						// alle Folgen itterieren
-						if (wanted[ittChecked] == serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes().get(ittFolge).getId())
-							serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes().get(ittFolge).setWanted(true);
-					}
-				}
+//				for (int ittStaffel = 0; ittStaffel < serie.getListOfSeasons().size(); ittStaffel++) {
+//					// alle Folgen itterieren
+//					for (int ittFolge = 0; ittFolge < serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes()
+//							.size(); ittFolge++) {
+//						// alle Folgen itterieren
+//						if (wanted[ittChecked] == serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes().get(ittFolge).getId())
+//							serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes().get(ittFolge).setWanted(true);
+//					}
+//				}
 			}
 
 		}
