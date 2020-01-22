@@ -1,32 +1,32 @@
 package com.wcs.serialseries.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-import com.wcs.serialseries.model.Episode;
-import com.wcs.serialseries.model.Season;
 
+
+@Entity
 public class Serie {
-	long id;
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	Long id;
 	String name;
 	String picture_url;
 	String description;
 	// List<Season> listOfSeasons = new ArrayList<Season>();
 
-	// Constructors
-	public Serie() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 
-	public Serie(long id, String name, String picture_url, String description, List<Season> listOfSeasons) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.picture_url = picture_url;
-		this.description = description;
-		// this.listOfSeasons = listOfSeasons;
-	}
+//	public Serie(long id, String name, String picture_url, String description, List<Season> listOfSeasons) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		this.picture_url = picture_url;
+//		this.description = description;
+//		// this.listOfSeasons = listOfSeasons;
+//	}
 
 	public Serie(long id) {
 		super();
@@ -98,11 +98,11 @@ public class Serie {
 
 	// Getters & Setters
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -130,13 +130,7 @@ public class Serie {
 		this.description = text;
 	}
 
-//	public List<Season> getListOfSeasons() {
-//		return listOfSeasons;
-//	}
-//
-//	public void setListOfSeasons(List<Season> listOfSeasons) {
-//		this.listOfSeasons = listOfSeasons;
-//	}
+
 
 	// ANYTHING ELSE
 	@Override
