@@ -20,6 +20,8 @@ public class User {
 	
 	 @OneToMany(mappedBy = "user")
 	 private List<SerieUser> serieUsers = new ArrayList<>();
+	 
+	 
 	
 // kein Constuctor!!!
 
