@@ -2,16 +2,21 @@ package com.wcs.serialseries.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wcs.serialseries.model.Serie;
 import com.wcs.serialseries.model.SerieUser;
+import com.wcs.serialseries.model.User;
+import com.wcs.serialseries.repository.SerieRepository;
 import com.wcs.serialseries.repository.SerieUserRepository;
+import com.wcs.serialseries.repository.UserRepository;
 
 import javassist.bytecode.Descriptor.Iterator;
 
@@ -22,6 +27,8 @@ public class SerieUserController {
 	
 	@Autowired
     private SerieUserRepository repository;
+//	private UserRepository userRepository;
+//	private SerieRepository serieRepository;
 	
 
 	@GetMapping("/listSeries/{id}")
@@ -67,4 +74,36 @@ public class SerieUserController {
 
 		return "listSeries.html";
 	}
+	
+	
+	@GetMapping("/listSeries/loeschen")
+	public String deleteSerieFromMySeries(@RequestParam Long idUser, @RequestParam Long idSerie) {
+//		User user = null;
+//		Serie serie = null;
+//		
+//		if (idUser != null) {
+//			Optional<User> optUser = userRepository.findById(idUser);
+//			if (optUser.isPresent()) {
+//				user = optUser.get();
+//			} else {
+//				return "redirect:/listSeries/" + idUser;
+//			}
+//		}
+//		
+//		if (idSerie != null) {
+//			Optional<Serie> optSerie = serieRepository.findById(idSerie);
+//			if (optSerie.isPresent()) {
+//				serie = optSerie.get();
+//			} else {
+//				return "redirect:/listSeries/" + idUser;
+//			}
+//		}
+//			
+//		List<SerieUser> serieUsers = repository.findByUserAndSerie(user, serie);
+//		
+//		repository.deleteById(serieUsers.get(0).getId());
+
+		return "redirect:/listSeries/" + idUser;
+	}
+	
 }
