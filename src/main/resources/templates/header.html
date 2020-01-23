@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="de" xmlns:th="https://www.thymeleaf.org">
 <head>
-<link rel="stylesheet" href="/header.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+	<link rel="stylesheet" href="/global.css">
+<title>Serien</title>
 </head>
 <header th:fragment="header">
-    <nav>
-        <span>Seriel-Series</span><br>
-        <a href="/listSerie.html" >Alle Serien</a>
-        <a href="/listSerieWithSeasonsAndEpisodes.html" >Meine Serien</a>
-        <a href="/aboutUs.html" >Über uns</a>
-        <a href="/">Anmelden</a>
-    </nav>
+	<span>Seriel-Series</span><br>
+
+	 <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+
+		<a class="nav-item nav-link" href="/listSerie.html">Alle Serien</a> <a
+			class="nav-item nav-link"
+			href="/listSerieWithSeasonsAndEpisodes.html">Meine Serien</a> <a
+			class="nav-item nav-link" href="/aboutUs.html">Über uns</a> <a
+			href="/">Anmelden</a>
+		<button type="button"
+			class="login_frame btn btn-secondary dropdown-toggle"
+			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+			<img src="pictures/User_account_Login_free_icon_1.jpg">
+		</button>
+		
+		
+	</nav>
 </header>
 </html>

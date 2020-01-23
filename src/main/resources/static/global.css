@@ -48,3 +48,29 @@ p {
 nav {
   font-size: 1.5em;
 }
+
+/*header Anpassung:*/
+header a {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+}
+span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 35px;
+}
+header img {
+	height: 35px;
+	width: 35px;
+	
+}
+footer ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: rgba(255,255,255,0.5);
+    list-style: none;
+    
