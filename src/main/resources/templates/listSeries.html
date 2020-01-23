@@ -50,13 +50,10 @@
 
 									<!-- Anzeige Hinzufügbare Serien -->
 									<div th:if="${Type == 'New'}">
-									<!-- 
-										<a href="/underConstruction.html" class="card-link-left">Hinzufügen</a>
-										 -->
 										<a th:href="@{/listSeries/neu(idSerie=${serie.id}, idUser=${UserId})}" class="card-link-left">Hinzufügen</a>
 									</div>
 
-									<!-- Anzeige Meine Serien -->
+									<!-- Anzeige Meine Ser -->
 									<div th:if="${Type == 'My'}">
 										<a href="/underConstruction.html" class="card-link">Staffelübersicht</a>
 										<a th:href="@{/listSeries/loeschen(idSerie=${serie.id}, idUser=${UserId})}">Löschen</a>
