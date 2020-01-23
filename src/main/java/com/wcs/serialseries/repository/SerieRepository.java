@@ -1,7 +1,10 @@
 package com.wcs.serialseries.repository;
 
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.wcs.serialseries.model.Serie;
@@ -10,6 +13,10 @@ import com.wcs.serialseries.model.Serie;
 
 @Repository
 public interface SerieRepository extends JpaRepository<Serie, Long> {
+	
+//	@Query("SELECT s FROM serie s WHERE serie_user.user_id <= :id")
+//	List<Serie> findSeriesByUserId(long id);
+	
 	}
 
 //	public List<Serie> findAll() {

@@ -1,8 +1,11 @@
 package com.wcs.serialseries.controller;
 
 
+import com.wcs.serialseries.model.Serie;
 import com.wcs.serialseries.repository.SerieRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,34 +44,7 @@ public class SeriesController {
 //	}
 //
 //
-//	@GetMapping("/listSeries/{id}")
-//	public String listSeriesForName(@PathVariable long id, Model model) {
-//
-//		// Controler um die Serien eines speziellen Nutzers anzuzeigen
-//		// Seite muss dann z.B. mit http://localhost:8080/listSerien/Metje gestartet
-//		// werden.
-//
-//		// model befüllen und an HTML-Seite übergeben
-//		model.addAttribute("Series", repository.findSeriesByUserId(id));
-//
-//		// Achtung: für DEMO
-//		String title = null;
-//		switch ((int) id) {
-//		case 1:
-//			title = "Serial-Series: Susi";
-//			break;
-//		case 2:
-//			title = "Serial-Series: Daniel";
-//			break;
-//		default:
-//			title = "Serial-Series";
-//		}
-//		model.addAttribute("Title", title);
-//		model.addAttribute("Type", "My");
-//		model.addAttribute("UserId", id);
-//
-//		return "listSeries.html";
-//	}
+//	
 //	
 //	
 //	    @GetMapping("/listSeries/loeschen")
