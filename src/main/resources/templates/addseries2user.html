@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users series</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        th, td {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<form action="/listUsers/addseries2user" method="post">
+    <input name="idUser" th:value="${user.id}" type="hidden">
+    <h1 th:text="|${user.name}|"></h1>
+    <label for="series">Add a series:</label>
+    <select id="series" name="idSeries">
+        <option th:each="serie : ${allSeries}" th:text="${serie.name}"
+                th:value="${serie.id}">serie name
+        </option>
+    </select>
+    <input type="submit" value="Save">
+</form>
+<h3>Users series:</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="serie : ${allSeries}">
+        <td th:text="${serie.id}">id</td>
+        <td th:text="${serie.name}">name</td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<a href="/listUsers">Return to users list</a>
+</body>
+</html>
