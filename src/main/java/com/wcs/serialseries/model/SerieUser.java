@@ -15,11 +15,11 @@ public class SerieUser {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="serie_id")
+    @JoinColumn(name="serieId")
     private Serie serie;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="userId")
     private User user;
 
        
