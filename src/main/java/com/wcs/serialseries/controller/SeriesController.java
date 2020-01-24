@@ -27,6 +27,7 @@ public class SeriesController {
 		// model befüllen und an HTML-Seite übergeben
 		model.addAttribute("Series", repository.findAll());
 		model.addAttribute("Type", "All");
+		model.addAttribute("Title", "Serial-Series");
 
 		return "listSeries.html";
 	}
@@ -80,10 +81,10 @@ public class SeriesController {
 		String title = null;
 		switch ((int) id) {
 		case 1:
-			title = "Serial-Series: Susi";
+			title = "Serial-Series: Susi Smartphone";
 			break;
 		case 2:
-			title = "Serial-Series: Daniel";
+			title = "Serial-Series: Daniel Desktop";
 			break;
 		default:
 			title = "Serial-Series";

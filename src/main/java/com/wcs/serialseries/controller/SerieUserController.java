@@ -57,10 +57,10 @@ public class SerieUserController {
 
 		switch ((int) id) {
 		case 1:
-			title = "Serial-Series: Susi";
+			title = "Serial-Series: Susi Smartphone";
 			break;
 		case 2:
-			title = "Serial-Series: Daniel";
+			title = "Serial-Series: Daniel Desktop";
 			break;
 		default:
 			title = "Serial-Series";
@@ -68,7 +68,7 @@ public class SerieUserController {
 		model.addAttribute("Title", title);
 		model.addAttribute("Type", "My");
 		model.addAttribute("UserId", id);
-
+		
 		return "listSeries.html";
 	}
 
