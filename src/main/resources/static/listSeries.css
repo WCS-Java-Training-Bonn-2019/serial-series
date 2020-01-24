@@ -26,6 +26,7 @@
 	float: left;
 }
 
+
 a:hover {
 	text-decoration: none;
 }
@@ -40,4 +41,8 @@ a:hover {
 	bottom: 0;
 	/*padding 5px;*/
 	width: 90%;
+}
+
+.hinzufuegen_button{
+	margin: 24px;
 }
