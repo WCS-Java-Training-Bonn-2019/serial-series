@@ -48,24 +48,17 @@ nav {
 	margin: 24px;
 }
 
+navbar-toggler-icon {
+	float:right;
+}
+
 .titel_nav {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	font-size: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 35px;
 }
 
-header a {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	list-style: none;
-}
-
-header img {
-	height: 35px;
-	width: 35px;
-}
 
 footer ul {
 	display: flex;
