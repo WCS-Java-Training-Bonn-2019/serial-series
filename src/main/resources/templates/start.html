@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+
+<head>
+<title th:text="|${Title}|">Serial-Series</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
+<link rel="stylesheet" href="/global.css">
+<link rel="stylesheet" href="/listSeries.css">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset=UTF-8>
+</head>
+
+<body>
+<form th:action="@{/startSerialSeries}" method="POST">
+	
+			
+		<select name="idUser">
+			<option th:each="user : ${Users}" th:text="${user.name}" th:value="${user.id}">user name </option>
+		</select> 
+		<input type="submit" value="User">
+		
+		<!-- 
+		<a class="user_button" th:href="${'/listSeries/' + idUser}"><button>User</button></a>
+		 -->
+		<a class="guest_button" th:href="${'/listSeries'}"><button>Gast</button></a>
+</form>	
+	<!--  
+	<form action="select.html">
+  <label>Künstler(in):
+    <select name="top5" size="5">
+      <option>Heino</option>
+      <option>Michael Jackson</option>
+      <option>Tom Waits</option>
+      <option>Nina Hagen</option>
+      <option>Marianne Rosenberg</option>
+    </select>
+  </label>
+</form>
+	
+	 -->
+	
+	
+	
+</body>
+</html>
