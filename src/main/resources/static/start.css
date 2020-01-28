@@ -1,0 +1,50 @@
+.startPicture {
+	margin-top: 8px;
+	vertical-align: middle;
+	width: 100%;
+	
+	opacity: 0.8;
+}
+
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+.row {
+	display: flex;
+}
+
+.col_left {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.col_left_1 {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.col_left_2 {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.col_right {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.select_box {
+	margin: 25px;
+	width : 90%;
+}
+
+.btn-long {
+	margin: 25px;
+	width : 90%;
+		
+	border-radius: 12px;
+}
+
