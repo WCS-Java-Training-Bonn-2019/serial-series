@@ -42,7 +42,7 @@
 				<div class="col-md-12">
 					<!-- <p th:text="${'Id = ' + Serie.id}" th:name = "id" th:value=${Serie.id}>Id</p>  -->
 					<img class="img-fluid" th:src="${Serie.picture_url}" alt="...">
-					<h5 th:text="|${Serie.name}|">Staffeltitel</h5>
+					<h5 th:text="|${Serie.name}|">Serientitel</h5>
 					<p th:text="|${Serie.description}|">Text</p>
 				</div>
 			</div>
@@ -55,98 +55,25 @@
 		</div>
 
 		<!-- Alternative Anzeige, falls keine Staffeln vorhanden -->
-		<details th:if="${Serie.listOfSeasons.empty}">
+		<details th:if="${Serie.seasons.empty}">
 			<p>Nix da</p>
 		</details>
 
 
 		<!--  STAFFELN ANZEIGEN -->
 		<!-- Itteration Staffeln -->
-		<details open th:each="season, stat: ${Serie.listOfSeasons}">
-			<summary th:text="${season.name}">Name</summary>
+		<details open th:each="season, stat: ${Serie.seasons}">
+			<summary th:text="|Staffel ${stat.index+1}|">Staffelname</summary>
 
-			<input type="hidden" th:field="*{listOfSeasons[__${stat.index}__].id}" />
-			<input type="hidden" th:field="*{listOfSeasons[__${stat.index}__].name}" />
-
+			<input type="hidden" th:field="*{seasons[__${stat.index}__].id}" />
+			
 			<!-- Itteration Folgen -->
-			<th:block th:each="episode, stat2: ${season.listOfEpisodes}">
+			<th:block th:each="episode, stat2: ${season.episodes}">
 
 				<div class="flex-container">
-					<li class="flex-item-1" th:text="${episode.name}"></li> <input
-						type="hidden"
-						th:field="*{listOfSeasons[__${stat.index}__].listOfEpisodes[__${stat2.index}__].id}" />
-					<input type="hidden"
-						th:field="*{listOfSeasons[__${stat.index}__].listOfEpisodes[__${stat2.index}__].name}" />
-					<!-- GESEHEN -->
-					<label> <input class="flex-item-2" type="checkbox"
-						name="seen"
-						th:value="*{listOfSeasons[__${stat.index}__].listOfEpisodes[__${stat2.index}__].id}"
-						th:checked="*{listOfSeasons[__${stat.index}__].listOfEpisodes[__${stat2.index}__].watched}" />gesehen
-					</label>
-
-
-					<!-- Möchte ich gerne sehen -->
-					<label> <input class="flex-item-3" type="checkbox"
-						name="wanted"
-						th:value="*{listOfSeasons[__${stat.index}__].listOfEpisodes[__${stat2.index}__].id}"
-						th:checked="*{listOfSeasons[__${stat.index}__].listOfEpisodes[__${stat2.index}__].wanted}" />möchte
-						ich sehen
-					</label>
-
-
-					<!-- Bewertungssterne ausgeben -->
-				
-					<input type="hidden"
-						th:field="*{listOfSeasons[__${stat.index}__].listOfEpisodes[__${stat2.index}__].ranking}" />
-					
-
-					<th:block th:switch="${episode.ranking}"> 
-					
-  					<div th:case="1">
-  					<input id="input-1" name="input-1" class="rating rating-loading"
-						data-min="0" data-max="5" data-step="1" data-show-caption="false"
-						data-show-clear="false" data-size="xs"
-						value="1"/> </div>
-  					<div th:case="2">
-  					<input id="input-1" name="input-1" class="rating rating-loading"
-						data-min="0" data-max="5" data-step="1" data-show-caption="false"
-						data-show-clear="false" data-size="xs"
-						value="2"/> </div>
-					<div th:case="3">
-  					<input id="input-1" name="input-1" class="rating rating-loading"
-						data-min="0" data-max="5" data-step="1" data-show-caption="false"
-						data-show-clear="false" data-size="xs"
-						value="3"/> </div>
-  					<div th:case="4">
-  					<input id="input-1" name="input-1" class="rating rating-loading"
-						data-min="0" data-max="5" data-step="1" data-show-caption="false"
-						data-show-clear="false" data-size="xs"
-						value="4"/> </div>
-  					<div th:case="5">
-  					<input id="input-1" name="input-1" class="rating rating-loading"
-						data-min="0" data-max="5" data-step="1" data-show-caption="false"
-						data-show-clear="false" data-size="xs"
-						value="5"/> </div>
-					
-					<div th:case="*">
-  					<input id="input-1" name="input-1" class="rating rating-loading"
-						data-min="0" data-max="5" data-step="1" data-show-caption="false"
-						data-show-clear="false" data-size="xs"
-						value="0"/> </div>
-					</th:block>
-					 
-				<!-- 	 
-					<script>
-						$(document).ready(function(){
-    						$('input-1').rating();
-						});
-						
-						$('#input-id').on('change', function(event) {
-						    console.log("change");
-						});
-					</script>
-				 -->	
-
+					<li class="flex-item-1" th:text="${episode.name}"></li> 
+					<input type="hidden" th:field="*{seasons[__${stat.index}__].episodes[__${stat2.index}__].id}" />
+					<input type="hidden" th:field="*{seasons[__${stat.index}__].episodes[__${stat2.index}__].name}" />
 				</div>
 			</th:block>
 		</details>

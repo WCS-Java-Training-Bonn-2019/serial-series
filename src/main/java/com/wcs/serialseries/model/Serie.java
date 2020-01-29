@@ -10,9 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 
-
-
-
 @Entity
 public class Serie {
 	@Id
@@ -22,9 +19,13 @@ public class Serie {
 	String picture_url;
 	String description;
 	
-	 
+	 // UserVerknüpfung
 	 @OneToMany(mappedBy = "serie")
 	 private List<SerieUser> serieUsers = new ArrayList<>();
+	 
+	 //Eine Serie hat mehrere Staffeln
+	 @OneToMany(mappedBy = "serie")
+	 private List<Season> seasons;
 	
 
 	// Getters & Setters
@@ -68,6 +69,14 @@ public class Serie {
 
 	public void setSerieUsers(List<SerieUser> serieUsers) {
 		this.serieUsers = serieUsers;
+	}
+
+	public List<Season> getSeasons() {
+		return seasons;
+	}
+
+	public void setSeasons(List<Season> seasons) {
+		this.seasons = seasons;
 	}
 
 	// ANYTHING ELSE

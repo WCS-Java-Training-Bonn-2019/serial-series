@@ -55,7 +55,7 @@
 
 									<!-- Anzeige Meine Ser -->
 									<div th:if="${Type == 'My'}">
-										<a href="/underConstruction.html" class="card-link">Staffelübersicht</a>
+										<a th:href="${'/listSerieSeasonsEpisodes/' + serie.id}" class="card-link">Staffelübersicht</a>
 										<a th:href="@{/listSeries/loeschen(idSerie=${serie.id}, idUser=${UserId})}">Löschen</a>
 									</div>
 
