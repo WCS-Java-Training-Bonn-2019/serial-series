@@ -63,9 +63,9 @@
 		</div>
 
 		<!-- Alternative Anzeige, falls keine Staffeln vorhanden -->
-		<details th:if="${Serie.seasons.empty}">
-			<p>Nix da</p>
-		</details>
+		<div th:if="${Serie.seasons.empty}">
+			<p>Zu dieser Serie sind leider noch keine Staffeln und Episoden hinterlegt.</p>
+		</div>
 
 
 		<!--  STAFFELN ANZEIGEN -->
