@@ -8,6 +8,11 @@
 	/*height: 100%;*/
 }
 
+.empty{
+	margin: 24px;
+}
+
+
 .card {
 	border-radius: 0;
 }

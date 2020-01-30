@@ -25,6 +25,23 @@
 </div>
 
 <body>
+		<!-- Alternative Anzeige, falls keine Serien vorhanden -->
+		<div th:if="${Type == 'My'}">
+			<div class= "empty" th:if="${Series.empty}"> 
+				Es sind leider keine Serien zum Anzeigen vorhanden. 
+				<br />
+				Bitte fügen Sie Serien zu Ihrer Auswahl hinzu!
+			</div>
+		</div>
+		<div th:if="${Type == 'New'}">
+			<div class= "empty" th:if="${Series.empty}"> 
+				Es sind leider keine Serien zum Hinzufügen vorhanden.
+				<br />
+				Ihre Auswahl ist vollständig!
+			</div>
+		</div>
+		
+
 		<section class="container-fluid">
 			<div class="row no-gutters article-row">
 
