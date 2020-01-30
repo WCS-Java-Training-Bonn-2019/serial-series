@@ -22,32 +22,46 @@
 			<div class="col-md-12">
 				<img class="startPicture" src="/pictures/Cliffhaenger.jpg" alt="...">
 			</div>
-			
-			
+
+
+
 		</div>
 		<!--  2. Zeile  -->
 		<div class="row no-gutters ">
 			<!-- 1. Column  -->
 			<div class="col-md-6 col_left">
-				
+
 				<form th:action="@{/startSerialSeries}" method="POST">
-					<div class="col-md-12 col_left_1 ">
-						<select class="select_box" name="idUser"> 
-						<option th:each="user : ${Users}" th:text="${user.name}"
-							th:value="${user.id}">user name</option>
+					<div class="col-md-6 col_left_1 ">
+						<select class="select_box" name="idUser">
+							<option th:each="user : ${Users}" th:text="${user.name}"
+								th:value="${user.id}">user name</option>
 						</select>
 					</div>
-					<div class="col-md-12 col_left_2 ">								
-						 <input class="btn-long" type="submit" value="Als ausgewählter User anmelden ...">
+					<div class="col-md-6 col_left_2 ">
+						<input class="btn-long" type="submit"
+							value="Als ausgewählter User anmelden ...">
 					</div>
 				</form>
 			</div>
-				<!-- 2. Column  -->
-							
-				<div class="col-md-6 col_right ">
-					<a th:href="${'/listSeries'}"><button type = button class="btn-long">Als Gast anmelden ...</button></a>
+			<!-- 2. Column  -->
+			<div class="col-md-6 col_right">
+
+				<div class="col-md-6 col_right_1 ">
+					<a th:href="${'/listSeries'}"><button type=button
+							class="btn-long">Als Gast anmelden ...</button></a>
 				</div>
+				<div class="col-md-6 col_right_2 ">
+					<!-- MP3 ;-) -->
+					<audio autoplay controls loop>
+						<source src="/mp3/Cliffhaenger.mp3" type="audio/mpeg"
+							currentTime="47" />
+					</audio>
+
+				</div>
+
 			</div>
+		</div>
 
 	</div>
 
