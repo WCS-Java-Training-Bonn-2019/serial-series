@@ -3,6 +3,7 @@ package com.wcs.serialseries.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,7 @@ public class Serie {
 	Long id;
 	String name;
 	String picture_url;
+	@Column(columnDefinition="LONGTEXT")
 	String description;
 	
 	 // UserVerknüpfung
