@@ -17,20 +17,14 @@ summary:before {
 	margin-right: 5px;
 }
 
-form{
-	margin:20px;
-	
-}
-
 .container-fluid {
 	background-color: white;
-	padding: 20px;
+	padding: 10px;
 	/* offset-x | offset-y | blur-radius | spread-radius | color */
 	/* box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.5);*/
 	border-style: solid;
 	border-width: thin;
 	border-color: black;
-	
 }
 
 input[type="checkbox"], input[type="radio"] {
@@ -46,7 +40,7 @@ input[type="checkbox"], input[type="radio"] {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		margin: 20px;
+		margin: 10px;
 	}
 	.flex-item-1 {
 		width: 400px;
