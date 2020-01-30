@@ -1,8 +1,10 @@
 package com.wcs.serialseries.controller;
 
+import com.wcs.serialseries.model.Episode;
 import com.wcs.serialseries.model.Serie;
 import com.wcs.serialseries.model.SerieUser;
 import com.wcs.serialseries.model.User;
+import com.wcs.serialseries.repository.EpisodeRepository;
 import com.wcs.serialseries.repository.SerieRepository;
 import com.wcs.serialseries.repository.UserRepository;
 
@@ -24,7 +26,8 @@ public class SeriesController {
 	
 	@Autowired
 	private UserRepository userRepository;
-
+	
+	
 	@GetMapping("/listSeries")
 	public String listSeries(Model model) {
 
@@ -63,6 +66,7 @@ public class SeriesController {
 				if (serieUser.get(y).getUser().getId() == userId) {
 					series.remove(i);
 					i--;
+	
 				}
 				y++;
 			}
@@ -76,10 +80,23 @@ public class SeriesController {
 
 		return "listSeries.html";
 	}
+	
+	
+	@GetMapping("/listSerieSeasonsEpisodes/{serieId}")
+	public String showSerie(@PathVariable long serieId, Model model) {
+		Optional<Serie> optionalSerie = serieRepository.findById(serieId);
+		if (optionalSerie.isPresent()) {
+			model.addAttribute("Serie", optionalSerie.get());
+			return "listSerieWithSeasonsAndEpisodes.html";
+		} else {
+			return "listSeries.html";
+		} 	
+		
+	}
+	
 
 	String getTitleFromId(long userId) {
-		
-		//User user = userRepository.getOne(userId);
+
 		Optional<User> optionalUser = userRepository.findById(userId);
 		if (optionalUser.isPresent()) {
 			return ("Serial-Series - "+ optionalUser.get().getName());

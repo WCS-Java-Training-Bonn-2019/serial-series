@@ -1,32 +1,33 @@
 package com.wcs.serialseries.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.wcs.serialseries.model.Episode;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+@Entity
 public class Season {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
-	String name;
-	List<Episode> listOfEpisodes = new ArrayList<Episode>();
+		
+	
+	//Eine Staffel gehört zu genau iner Serie
+	@ManyToOne
+    @JoinColumn(name = "serie_id")
+    private Serie serie;
+	
+	//Eine Staffel hat mehrere Episoden
+	@OneToMany(mappedBy = "season")
+	private List<Episode> episodes;
 
-	// Constructors
-
-	public Season() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Season(long id, String name, List<Episode> listOfEpisodes) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.listOfEpisodes = listOfEpisodes;
-	}
-
-	// Getters & Setters
-
+// Getters & Setters	
+	
 	public long getId() {
 		return id;
 	}
@@ -35,20 +36,21 @@ public class Season {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	
+	public Serie getSerie() {
+		return serie;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setSerie(Serie serie) {
+		this.serie = serie;
 	}
 
-	public List<Episode> getListOfEpisodes() {
-		return listOfEpisodes;
+	public List<Episode> getEpisodes() {
+		return episodes;
 	}
 
-	public void setListOfEpisodes(List<Episode> listOfEpisodes) {
-		this.listOfEpisodes = listOfEpisodes;
+	public void setEpisodes(List<Episode> episodes) {
+		this.episodes = episodes;
 	}
-
+	
 }

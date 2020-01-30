@@ -18,14 +18,5 @@ public interface SerieRepository extends JpaRepository<Serie, Long> {
 
 	List<Serie> findBySerieUsersUserIdOrderByName(long userId);
 	
-	
-
-	
-
-
-
-	
-
-
-	
+		
 }
