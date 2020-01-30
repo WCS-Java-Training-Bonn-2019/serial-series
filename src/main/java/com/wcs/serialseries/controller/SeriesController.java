@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -82,11 +83,14 @@ public class SeriesController {
 	}
 	
 	
-	@GetMapping("/listSerieSeasonsEpisodes/{serieId}")
-	public String showSerie(@PathVariable long serieId, Model model) {
-		Optional<Serie> optionalSerie = serieRepository.findById(serieId);
+	@GetMapping("/listSerieSeasonsEpisodes/details")
+	public String showSerie(@RequestParam long idUser, @RequestParam long idSerie, Model model) {
+		Optional<Serie> optionalSerie = serieRepository.findById(idSerie);
 		if (optionalSerie.isPresent()) {
 			model.addAttribute("Serie", optionalSerie.get());
+			model.addAttribute("Title", getTitleFromId(idUser));
+			model.addAttribute("Type", "Details");
+			model.addAttribute("UserId", idUser);
 			return "listSerieWithSeasonsAndEpisodes.html";
 		} else {
 			return "listSeries.html";

@@ -8,8 +8,12 @@
 	href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--  Eigene .CSS Dateien -->
+<link rel="stylesheet" href="/global.css">
+<link rel="stylesheet" href="/listSerieWithSeasonsAndEpisodes.css">
 
 <!-- Eingefügt für Rating -->
+<!-- 
 <link
 	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css"
 	rel="stylesheet">
@@ -19,10 +23,10 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+	
+	 -->
 
-<!--  Eigene .CSS Dateien -->
-<link rel="stylesheet" href="/global.css">
-<link rel="stylesheet" href="/listSerieWithSeasonsAndEpisodes.css">
+
 
 
 <title>Staffeln</title>
@@ -30,6 +34,9 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 </head>
+
+<header th:insert="header.html :: header"></header>
+
 
 <body>
 
@@ -39,10 +46,11 @@
 		<!--  SERIENKOPF ANZEIGEN -->
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-12">
-					<!-- <p th:text="${'Id = ' + Serie.id}" th:name = "id" th:value=${Serie.id}>Id</p>  -->
+				<div class="col-md-4">
 					<img class="img-fluid" th:src="${Serie.picture_url}" alt="...">
 					<h5 th:text="|${Serie.name}|">Serientitel</h5>
+					</div>
+				<div class="col-md-8">
 					<p th:text="|${Serie.description}|">Text</p>
 				</div>
 			</div>
@@ -62,7 +70,10 @@
 
 		<!--  STAFFELN ANZEIGEN -->
 		<!-- Itteration Staffeln -->
+		<!-- Auskommentiert: Akkordeon geöffnet starten
 		<details open th:each="season, stat: ${Serie.seasons}">
+		 -->
+		<details th:each="season, stat: ${Serie.seasons}">
 			<summary th:text="|Staffel ${stat.index+1}|">Staffelname</summary>
 
 			<input type="hidden" th:field="*{seasons[__${stat.index}__].id}" />
@@ -83,4 +94,7 @@
 
 
 </body>
+
+<div th:insert="footer.html :: footer"> </div>
+
 </html>
