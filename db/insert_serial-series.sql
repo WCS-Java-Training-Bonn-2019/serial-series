@@ -42,27 +42,6 @@ INSERT INTO `serie` (`id`, `description`, `name`, `picture_url`) VALUES (9,'Die 
 INSERT INTO `serie` (`id`, `description`, `name`, `picture_url`) VALUES (10,'Das Vorstadtehepaar Reed (Stephen Moyer) und Kate (Amy Acker) hat sich gerade getrennt, als sie feststellen, dass ihre beiden Kinder im Teenager-Alter übernatürliche Kräfte haben. Allerdings ist die Regierung der USA solchen außergewöhnlich begabten Menschen gegenüber feindlich gesinnt, so dass die Familie gezwungen ist, in den Untergrund zu gehen und sich einem Netzwerk von anderen Flüchtlingen vor der Regierung anzuschließen.','The Gifted','/pictures/TheGifted.jpg');
 UNLOCK TABLES;
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) 
-;
-
---
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-INSERT INTO `user` (`id`, `name`) VALUES (1,'Susi Smart');
-INSERT INTO `user` (`id`, `name`) VALUES (2,'Daniel Desktop');
-INSERT INTO `user` (`id`, `name`) VALUES (3,'Frank');
-INSERT INTO `user` (`id`, `name`) VALUES (4,'Metje');
-INSERT INTO `user` (`id`, `name`) VALUES (5,'Ralf');
-UNLOCK TABLES;
-
-
 --
 -- Table structure for table `serie_user`
 --
@@ -89,6 +68,26 @@ UNLOCK TABLES;
 --
 -- Table structure for table `user`
 --
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) 
+;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+INSERT INTO `user` (`id`, `name`) VALUES (1,'Susi Smart');
+INSERT INTO `user` (`id`, `name`) VALUES (2,'Daniel Desktop');
+INSERT INTO `user` (`id`, `name`) VALUES (3,'Frank');
+INSERT INTO `user` (`id`, `name`) VALUES (4,'Metje');
+INSERT INTO `user` (`id`, `name`) VALUES (5,'Ralf');
+UNLOCK TABLES;
 
 /*
 -- Query: SELECT 
