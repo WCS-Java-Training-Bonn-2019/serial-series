@@ -35,6 +35,18 @@
 	padding-left: 0px;
 }
 
+.col_right_1 {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+audio {
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
 .select_box {
 	margin: 25px;
 	width : 90%;
