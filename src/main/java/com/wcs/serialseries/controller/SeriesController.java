@@ -34,7 +34,7 @@ public class SeriesController {
 
 		model.addAttribute("Series", serieRepository.findAllByOrderByName());
 		model.addAttribute("Type", "All");
-		model.addAttribute("Title", "Serial-Series");
+		model.addAttribute("Title", getEmptyTitle());
 
 		return "listSeries.html";
 	}
@@ -103,12 +103,17 @@ public class SeriesController {
 
 		Optional<User> optionalUser = userRepository.findById(userId);
 		if (optionalUser.isPresent()) {
-			return ("Serial-Series - "+ optionalUser.get().getName());
+			return ("Serial-Series - "+ optionalUser.get().getName()+":     ");
 		} else {
-			return "Serial-Series";
+			return "Serial-Series:     ";
 		} 
 			
 		
+	}
+	
+	String getEmptyTitle() {
+			return "Serial-Series:     ";
+	
 	}
 
 }
