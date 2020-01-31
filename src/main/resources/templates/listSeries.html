@@ -19,12 +19,24 @@
 
 <header th:insert="header.html :: header"></header>
 
-<!-- Anzeige Hinzufügbare Serien -->
-<div th:if="${Type == 'My'}">
-	<a class="hinzufuegen_button" th:href="${'/listSeries/New/' + UserId}"><button>Hinzufügen</button></a>
-</div>
-
 <body>
+		<!-- Alternative Anzeige, falls keine Serien vorhanden -->
+		<div th:if="${Type == 'My'}">
+			<div class= "empty" th:if="${Series.empty}"> 
+				Es sind leider keine Serien zum Anzeigen vorhanden. 
+				<br />
+				Bitte fügen Sie Serien zu Ihrer Auswahl hinzu!
+			</div>
+		</div>
+		<div th:if="${Type == 'New'}">
+			<div class= "empty" th:if="${Series.empty}"> 
+				Es sind leider keine Serien zum Hinzufügen vorhanden.
+				<br />
+				Ihre Auswahl ist vollständig!
+			</div>
+		</div>
+		
+
 		<section class="container-fluid">
 			<div class="row no-gutters article-row">
 
@@ -33,7 +45,17 @@
 					<div class="col-lg-4 col-sm-6 col-12">
 
 						<div class="card article-card">
-							<img class="card-img-top" th:src="${serie.picture_url}" alt="...">
+							<!-- Bild bei New clickbar machen -->
+							<!-- erst normales Bild anzeigen ohne weitere Funktion -->
+							<pic th:unless="${Type == 'New'}">
+								<img class="card-img-top" th:src="${serie.picture_url}" alt="...">
+							</pic>
+							<!-- jetzt Bild anzeigen mit Funktion -->
+							<pic th:if="${Type == 'New'}">
+								<a th:href="@{/listSeries/neu(idSerie=${serie.id}, idUser=${UserId})}">
+								<img class="card-img-top" th:src="${serie.picture_url}" alt="...">
+								</a>
+							</pic>
 							<div class="card-body">
 								<h5 class="card-title" th:text="${serie.name}">Titel</h5>
 								<p class="card-text" th:text="${serie.description}">Text</p>
@@ -53,9 +75,9 @@
 										<a th:href="@{/listSeries/neu(idSerie=${serie.id}, idUser=${UserId})}" class="card-link-left">Hinzufügen</a>
 									</div>
 
-									<!-- Anzeige Meine Ser -->
+									<!-- Anzeige Meine Serien -->
 									<div th:if="${Type == 'My'}">
-										<a href="/underConstruction.html" class="card-link">Staffelübersicht</a>
+									 	<a th:href="@{/listSerieSeasonsEpisodes/details(idSerie=${serie.id}, idUser=${UserId})}" class="card-link">Staffelübersicht</a>
 										<a th:href="@{/listSeries/loeschen(idSerie=${serie.id}, idUser=${UserId})}">Löschen</a>
 									</div>
 

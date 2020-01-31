@@ -3,14 +3,12 @@ package com.wcs.serialseries.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-
-
 
 
 @Entity
@@ -20,11 +18,16 @@ public class Serie {
 	Long id;
 	String name;
 	String picture_url;
+	@Column(columnDefinition="LONGTEXT")
 	String description;
 	
-	 
+	 // UserVerknüpfung
 	 @OneToMany(mappedBy = "serie")
 	 private List<SerieUser> serieUsers = new ArrayList<>();
+	 
+	 //Eine Serie hat mehrere Staffeln
+	 @OneToMany(mappedBy = "serie")
+	 private List<Season> seasons;
 	
 
 	// Getters & Setters
@@ -68,6 +71,14 @@ public class Serie {
 
 	public void setSerieUsers(List<SerieUser> serieUsers) {
 		this.serieUsers = serieUsers;
+	}
+
+	public List<Season> getSeasons() {
+		return seasons;
+	}
+
+	public void setSeasons(List<Season> seasons) {
+		this.seasons = seasons;
 	}
 
 	// ANYTHING ELSE

@@ -27,6 +27,31 @@ public class UserController {
 	
 	@Autowired
 	private SerieRepository serieRepository;
+	
+	
+	//Startpage
+
+	@GetMapping("/startSerialSeries")
+	public String startSerialSeries(Model model) {
+		model.addAttribute("Users", userRepository.findAll());
+		return "start.html";
+	}
+	
+	@GetMapping("/")
+	public String startSerialSeriesFromRoot(Model model) {
+		model.addAttribute("Users", userRepository.findAll());
+		return "start.html";
+	}
+
+	
+	 @PostMapping("/startSerialSeries") 
+	    public String postStartSerialSeries(@RequestParam Long idUser) {
+		return "redirect:/listSeries/" + idUser;
+	 }
+	 
+	 
+	 
+	 
 
 	@GetMapping("/listUsers")
 	public String listUsers(Model model) {
@@ -37,6 +62,7 @@ public class UserController {
 		return "listUsers.html";
 	}
 	
+	/*
     @GetMapping("/")
     public String getUsers(Model out) {
 
@@ -44,6 +70,8 @@ public class UserController {
 
         return "users";
     }
+    
+    */
 
     @GetMapping("/addseries2user")
     public String getRegister(Model out,
@@ -116,4 +144,10 @@ public class UserController {
 		}
 		return null;
 	}
+	
+	
+	
+	
+	
+	
 }
