@@ -19,11 +19,6 @@
 
 <header th:insert="header.html :: header"></header>
 
-<!-- Anzeige Hinzufügbare Serien -->
-<div th:if="${Type == 'My'}">
-	<a class="hinzufuegen_button" th:href="${'/listSeries/New/' + UserId}"><button>Hinzufügen</button></a>
-</div>
-
 <body>
 		<!-- Alternative Anzeige, falls keine Serien vorhanden -->
 		<div th:if="${Type == 'My'}">

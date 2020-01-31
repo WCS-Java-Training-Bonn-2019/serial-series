@@ -1,40 +1,89 @@
 <!DOCTYPE html>
 
-
 <header th:fragment="header">
-	<h2 class="titel_nav" th:text="|${Title}|">Serial-Series</h2>
-	<!-- ​
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-			<div class="navbar-nav"></div>
-			<a class="nav-item nav-link" href="/listSeries">Alle Serien<span class="sr-only">(current)</span></a> <a
-				class="nav-item nav-link" href="/listSeries/1">Meine Serien</a> <a
-				class="nav-item nav-link" href="/aboutUs">Über uns</a> <a
-				class="nav-item nav-link" href="/">Anmelden</a>
-		</div>
-		​
-	</nav>
-	 -->
-	<nav class="navbar navbar-expand-md navbar-light bg-light">
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<div class="navbar-nav float-right text-right pr-3">
-				<a class="nav-item nav-link" href="/listSeries">Alle Serien<span class="sr-only">(current)</span></a> 
-				<a class="nav-item nav-link" href="/listSeries/1">Meine Serien</a> 
-				<a class="nav-item nav-link" href="/aboutUs">Über uns</a> <a class="nav-item nav-link" href="/">Anmelden</a>
+
+ 	
+	<div th:if="${Type == 'All'}">
+		<nav class="navbar navbar-expand-md navbar-light bg-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<div class="navbar-nav float-right text-right pr-3">
+					<a class="navbar-brand" href="" th:text="|${Title}|">Serial-Series</a>
+					<a class="nav_color_pink nav-item nav-link" href="/startSerialSeries">Home </a> 
+					<a class="nav-item nav-link active" href="" >Alle Serien</a>
+					<a class="nav_color_pink nav-item nav-link" href="/underConstruction.html">Über uns</a> 
+					<a class="nav_color_pink nav-item nav-link" href="/underConstruction.html">Anmelden</a>
+				</div>
 			</div>
-		</div>
-	</nav>
-	​
+		</nav>
+	</div>
+	
+		
+	<div th:if="${Type == 'My'}">
+		<nav class="navbar navbar-expand-md navbar-light bg-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<div class="navbar-nav float-right text-right pr-3">
+					<a class="navbar-brand" href="" th:text="|${Title}|">Serial-Series</a>
+					<a class="nav-item nav-link" th:href="${'/listSeries/New/' + UserId}">Hinzufügen </a> 
+					<a class="nav-item nav-link active" href="">Meine Serien</a> 
+					<a class="nav-item nav-link" href="/underConstruction.html">Über uns</a> 
+					<a class="nav-item nav-link" href="/underConstruction.html">Anmelden</a>
+				</div>
+			</div>
+		</nav>
+	</div>
+	
+	<div th:if="${Type == 'New'}">
+		<nav class="navbar navbar-expand-md navbar-light bg-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<div class="navbar-nav float-right text-right pr-3">
+					<a class="navbar-brand" href="" th:text="|${Title}|">Serial-Series</a>
+					<a class="nav-item nav-link active" href="">Hinzufügen</a>
+					<a class="nav-item nav-link" th:href="${'/listSeries/' + UserId}">Meine Serien </a>  
+					<a class="nav-item nav-link" href="/underConstruction.html">Über uns</a> 
+					<a class="nav-item nav-link" href="/underConstruction.html">Anmelden</a>
+				</div>
+			</div>
+		</nav>
+	</div>
+	
+	<div th:if="${Type == 'Details'}">
+		<nav class="navbar navbar-expand-md navbar-light bg-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<div class="navbar-nav float-right text-right pr-3">
+					<a class="navbar-brand" href="" th:text="|${Title}|">Serial-Series</a>
+					<a class="nav-item nav-link active" href="">Details</a> 
+					<a class="nav-item nav-link" th:href="${'/listSeries/' + UserId}">Meine Serien </a> 
+					<a class="nav-item nav-link" href="/underConstruction.html">Über uns</a> 
+					<a class="nav-item nav-link" href="/underConstruction.html">Anmelden</a>
+				</div>
+			</div>
+		</nav>
+	</div>
+	
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 		crossorigin="anonymous"></script>
@@ -47,24 +96,4 @@
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
 </header>
-
-
-<!-- 
-
-
-<nav class="navbar navbar-expand-md navbar-light bg-white">
-      <a class="navbar-brand" href="#"><img src="pictures/m4kl.png" alt="M4" style="width:40px;" /> </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav float-right text-right pr-3">
-          <a class="nav-item nav-link active" href="index.html">Start <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="highlights.html">Highlights</a>
-          <a class="nav-item nav-link" href="contact.html">Kontakt</a>
-        </div>
-      </div>
-    </nav>
- -->
-
 
