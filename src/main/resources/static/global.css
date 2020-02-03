@@ -43,42 +43,6 @@ p {
 	line-height: 1.6;
 }
 
-/* Header */
-
-nav {
-	background-image: url(/pictures/StripesHell.jpeg);
-    background-size: cover;
-    background-position: 20% 20%;     
-	
-	font-size: 1em;
-	
-}
-
-.navbar-toggler-icon {
-	float:left;
-}
-
-
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-  position: fixed;
-  top: 0;
-  lest:0;
-  width: 100%;
-  z-index:1000000;
-
-}
-
-.navbar-light .navbar-nav .nav-link {
-    color: #e5007d;
-}
-
-header img {
-	height: 30px;
-	width: 30px;
-}
-
 
 /* Footer */
 
