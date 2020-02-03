@@ -4,6 +4,7 @@ body {
 	margin: 0;
 	font-family: 'Reem Kufi', sans-serif;
 	margin-top: 70px; /* Add a top margin to avoid content overlay */
+	margin-bottom: 70px;
 	height: 100%;
 }
 
@@ -53,7 +54,10 @@ footer {
     background-position: 20% 20%;
 
     font-size: 1em;
-    
+	position: fixed;
+    bottom: 0; 
+    right: 0;
+    left: 0;
 }
 
 
