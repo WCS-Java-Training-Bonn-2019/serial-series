@@ -48,13 +48,18 @@
 						<div class="card article-card">
 							<!-- Bild bei New clickbar machen -->
 							<!-- erst normales Bild anzeigen ohne weitere Funktion -->
-							<pic th:unless="${Type == 'New'}">
+							<pic th:if="${Type == 'All'}">
 								<img class="card-img-top" th:src="${serie.picture_url}" alt="...">
 							</pic>
 							<!-- jetzt Bild anzeigen mit Funktion -->
 							<pic th:if="${Type == 'New'}">
 								<a th:href="@{/listSeries/neu(idSerie=${serie.id}, idUser=${UserId})}">
-								<img class="card-img-top" th:src="${serie.picture_url}" alt="...">
+								<img class="card-img-top" th:src="${serie.picture_url}" alt="Hinzufügen">
+								</a>
+							</pic>
+							<pic th:if="${Type == 'My'}">
+								<a th:href="@{/listSerieSeasonsEpisodes/details(idSerie=${serie.id}, idUser=${UserId})}">
+								<img class="card-img-top" th:src="${serie.picture_url}" alt="Staffelübersicht">
 								</a>
 							</pic>
 							<div class="card-body">
