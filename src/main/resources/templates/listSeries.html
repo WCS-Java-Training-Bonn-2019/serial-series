@@ -49,7 +49,9 @@
 							<!-- Bild bei New clickbar machen -->
 							<!-- erst normales Bild anzeigen ohne weitere Funktion -->
 							<pic th:if="${Type == 'All'}">
-								<img class="card-img-top" th:src="${serie.picture_url}" alt="...">
+								<a href="/underConstruction.html" >
+								<img class="card-img-top" th:src="${serie.picture_url}" alt="Login(noch nicht aktiv)">
+								</a>
 							</pic>
 							<!-- jetzt Bild anzeigen mit Funktion -->
 							<pic th:if="${Type == 'New'}">
