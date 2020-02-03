@@ -1,90 +1,193 @@
 <!DOCTYPE html>
 
+
 <header th:fragment="header">
 
- 	
-	<div th:if="${Type == 'All'}">
-		<nav class="navbar navbar-expand-md navbar-light bg-light">
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
+<style>
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #e5007d;
+  color: white;
+  padding: 7px 9px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #e5007d;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+        <a class="navbar-brand" href="" th:text="|${Title}|">Serial-Series</a>
+            <!-- Alle Serien -->
+				<a th:if="${Type == 'All'}" class="nav_color_pink nav-item nav-link" href="/startSerialSeries">Home </a> 
+				<a th:if="${Type == 'All'}"class="nav-item nav-link active" href="" >Alle Serien</a>
+				
+				<!-- Meine Serien -->
+				<a th:if="${Type == 'My'}" class="nav-item nav-link" th:href="${'/listSeries/New/' + UserId}">Hinzufügen </a> 
+				<a th:if="${Type == 'My'}" class="nav-item nav-link active" href="">Meine Serien</a> 
+				
+				<!-- Neu Serien -->
+				<a th:if="${Type == 'New'}" class="nav-item nav-link active" href="">Hinzufügen</a>
+				<a th:if="${Type == 'New'}" class="nav-item nav-link" th:href="${'/listSeries/' + UserId}">Meine Serien </a>  
+				
+				<!-- Details -->
+				<a th:if="${Type == 'Details'}" class="nav-item nav-link active" href="">Details</a> 
+				<a th:if="${Type == 'Details'}" class="nav-item nav-link" th:href="${'/listSeries/' + UserId}">Meine Serien </a> 	
+					
+			<a class="nav_color_pink nav-item nav-link" href="/underConstruction.html">Über uns</a> 
+        </div>
+        <div class="navbar-nav ml-auto">
+        	<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+				<img th:src="@{/pictures/login.png}">
 			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<div class="navbar-nav float-right text-right pr-3">
-					<a class="navbar-brand" href="" th:text="|${Title}|">Serial-Series</a>
-					<a class="nav_color_pink nav-item nav-link" href="/startSerialSeries">Home </a> 
-					<a class="nav-item nav-link active" href="" >Alle Serien</a>
-					<a class="nav_color_pink nav-item nav-link" href="/underConstruction.html">Über uns</a> 
-					<a class="nav_color_pink nav-item nav-link" href="/underConstruction.html">Anmelden</a>
-				</div>
+			
+			<div id="id01" class="modal">
+			  
+			  <form class="modal-content animate" action="/action_page.php" method="post">
+			    
+			
+			  <div class="container">
+			      <label for="uname"><b>Benutzername</b></label>
+			      <input type="text" placeholder="Benutzernamen eingeben" name="uname" required>
+			
+			      <label for="psw"><b>Passwort</b></label>
+			      <input type="password" placeholder="Passwort eingeben" name="psw" required>
+			        
+			      <button type="submit">Anmelden</button>
+			      <label>
+			        <input type="checkbox" checked="checked" name="remember"> Merken?
+			      </label>
+			   </div>
+			
+			   <div class="container" style="background-color:#f1f1f1">
+			      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+			      <span class="psw"><a href="#">Passwort</a> vergessen? </span>
+			   </div>
+			   </form>
 			</div>
-		</nav>
-	</div>
-	
-		
-	<div th:if="${Type == 'My'}">
-		<nav class="navbar navbar-expand-md navbar-light bg-light">
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<div class="navbar-nav float-right text-right pr-3">
-					<a class="navbar-brand" href="" th:text="|${Title}|">Serial-Series</a>
-					<a class="nav-item nav-link" th:href="${'/listSeries/New/' + UserId}">Hinzufügen </a> 
-					<a class="nav-item nav-link active" href="">Meine Serien</a> 
-					<a class="nav-item nav-link" href="/underConstruction.html">Über uns</a> 
-					<a class="nav-item nav-link" href="/underConstruction.html">Anmelden</a>
-				</div>
-			</div>
-		</nav>
-	</div>
-	
-	<div th:if="${Type == 'New'}">
-		<nav class="navbar navbar-expand-md navbar-light bg-light">
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<div class="navbar-nav float-right text-right pr-3">
-					<a class="navbar-brand" href="" th:text="|${Title}|">Serial-Series</a>
-					<a class="nav-item nav-link active" href="">Hinzufügen</a>
-					<a class="nav-item nav-link" th:href="${'/listSeries/' + UserId}">Meine Serien </a>  
-					<a class="nav-item nav-link" href="/underConstruction.html">Über uns</a> 
-					<a class="nav-item nav-link" href="/underConstruction.html">Anmelden</a>
-				</div>
-			</div>
-		</nav>
-	</div>
-	
-	<div th:if="${Type == 'Details'}">
-		<nav class="navbar navbar-expand-md navbar-light bg-light">
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<div class="navbar-nav float-right text-right pr-3">
-					<a class="navbar-brand" href="" th:text="|${Title}|">Serial-Series</a>
-					<a class="nav-item nav-link active" href="">Details</a> 
-					<a class="nav-item nav-link" th:href="${'/listSeries/' + UserId}">Meine Serien </a> 
-					<a class="nav-item nav-link" href="/underConstruction.html">Über uns</a> 
-					<a class="nav-item nav-link" href="/underConstruction.html">Anmelden</a>
-				</div>
-			</div>
-		</nav>
-	</div>
-	
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			
+			<script>
+			// Get the modal
+			var modal = document.getElementById('id01');
+			
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+			    if (event.target == modal) {
+			        modal.style.display = "none";
+			    }
+			}
+			</script>
+        
+       
+        </div>
+    </div>
+</nav>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 		crossorigin="anonymous"></script>
 	<script
@@ -95,5 +198,6 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
+
 </header>
 
