@@ -1,5 +1,6 @@
 package com.wcs.serialseries.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,6 +22,10 @@ public class Episode {
     @JoinColumn(name = "season_id")
     private Season season;
 	
+	 @OneToMany(mappedBy = "episode")
+	 private List<SerieUserEpisode> serieUserEpisodes = new ArrayList<>();
+	 
+	 
 	// Getter & Setter
 
 	public long getId() {
@@ -46,6 +51,14 @@ public class Episode {
 
 	public void setSeason(Season season) {
 		this.season = season;
+	}
+
+	public List<SerieUserEpisode> getSerieUserEpisodes() {
+		return serieUserEpisodes;
+	}
+
+	public void setSerieUserEpisodes(List<SerieUserEpisode> serieUserEpisodes) {
+		this.serieUserEpisodes = serieUserEpisodes;
 	}
 	
 		

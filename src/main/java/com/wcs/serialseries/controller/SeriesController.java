@@ -1,13 +1,21 @@
 package com.wcs.serialseries.controller;
 
+import com.wcs.serialseries.form.FormEpisode;
+import com.wcs.serialseries.form.FormSeason;
+import com.wcs.serialseries.form.FormSerie;
+
 import com.wcs.serialseries.model.Episode;
+import com.wcs.serialseries.model.Season;
 import com.wcs.serialseries.model.Serie;
 import com.wcs.serialseries.model.SerieUser;
+import com.wcs.serialseries.model.SerieUserEpisode;
 import com.wcs.serialseries.model.User;
-import com.wcs.serialseries.repository.EpisodeRepository;
+
 import com.wcs.serialseries.repository.SerieRepository;
+import com.wcs.serialseries.repository.SerieUserEpisodeRepository;
 import com.wcs.serialseries.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +35,9 @@ public class SeriesController {
 	
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private SerieUserEpisodeRepository serieUserEpisodeRepository;
 	
 	
 	@GetMapping("/listSeries")
@@ -85,9 +96,30 @@ public class SeriesController {
 	
 	@GetMapping("/listSerieSeasonsEpisodes/details")
 	public String showSerie(@RequestParam long idUser, @RequestParam long idSerie, Model model) {
+		
 		Optional<Serie> optionalSerie = serieRepository.findById(idSerie);
 		if (optionalSerie.isPresent()) {
-			model.addAttribute("Serie", optionalSerie.get());
+			
+			Serie serie = optionalSerie.get();
+			
+			//Form füllen
+			
+			List <FormSeason> formSeasons = new ArrayList<>();
+			for (Season season : serie.getSeasons()) {
+				List <FormEpisode> formEpisodes = new ArrayList<>();
+				for (Episode episode : season.getEpisodes()) {
+					SerieUserEpisode serieUserEpisode = serieUserEpisodeRepository.findByEpisodeId(episode.getId() );
+					formEpisodes.add(new FormEpisode(episode.getId(), episode.getName(), serieUserEpisode.isWatched(), serieUserEpisode.isWanna_c(),serieUserEpisode.getRanking()));
+				}
+				formSeasons.add(new FormSeason(season.getId(), formEpisodes));
+				
+			}
+			
+			FormSerie formSerie = new FormSerie(serie.getId(), serie.getName(), serie.getPicture_url(), serie.getDescription(), formSeasons);
+
+			
+					
+			model.addAttribute("Serie", formSerie);
 			model.addAttribute("Title", getTitleFromId(idUser));
 			model.addAttribute("Type", "Details");
 			model.addAttribute("UserId", idUser);
