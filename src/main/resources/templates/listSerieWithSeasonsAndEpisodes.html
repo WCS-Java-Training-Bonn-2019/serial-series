@@ -85,6 +85,14 @@
 					<li class="flex-item-1" th:text="${episode.name}"></li> 
 					<input type="hidden" th:field="*{seasons[__${stat.index}__].episodes[__${stat2.index}__].id}" />
 					<input type="hidden" th:field="*{seasons[__${stat.index}__].episodes[__${stat2.index}__].name}" />
+					
+					<!-- GESEHEN -->
+					<label> <input class="flex-item-2" type="checkbox"
+						name="seen"
+						th:value="*{seasons[__${stat.index}__].episodes[__${stat2.index}__].id}"
+						th:checked="*{seasons[__${stat.index}__].episodes[__${stat2.index}__].watched}" />gesehen
+					</label>
+					
 				</div>
 			</th:block>
 		</details>
