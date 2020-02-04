@@ -11,18 +11,7 @@ public class FormSerie {
 	
 	List <FormSeason> seasons;
 
-	/* Constructor */
-	
-	
-	
-	public FormSerie(long id, String name, String picture_url, String description, List<FormSeason> seasons) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.picture_url = picture_url;
-		this.description = description;
-		this.seasons = seasons;
-	}
+
 
 
 	/* Getter & Setter */
