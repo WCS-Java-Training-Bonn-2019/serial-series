@@ -6,13 +6,7 @@ public class FormSeason {
 		long id;
 		List <FormEpisode> episodes;
 		
-		/* Constructor */
-		public FormSeason(long id, List<FormEpisode> episodes) {
-			super();
-			this.id = id;
-			this.episodes = episodes;
-		}
-		
+			
 		
 		/* Getter & Setter  */
 

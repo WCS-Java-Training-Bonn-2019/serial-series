@@ -7,17 +7,7 @@ public class FormEpisode {
 	boolean wanna_c;
 	int ranking;
 	
-	/* Constructor */
-	
-	public FormEpisode(long episodeId, String name, boolean watched, boolean wanna_c, int ranking) {
-		super();
-		this.id = episodeId;
-		this.name = name;
-		this.watched = watched;
-		this.wanna_c = wanna_c;
-		this.ranking = ranking;
-	}
-	
+		
 	/* Getter & Setter */
 	public long getId() {
 		return id;
