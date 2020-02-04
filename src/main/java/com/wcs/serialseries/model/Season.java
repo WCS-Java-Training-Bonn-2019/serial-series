@@ -15,6 +15,7 @@ public class Season {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
+	int season_Nr;
 		
 	
 	//Eine Staffel gehört zu genau iner Serie
@@ -37,6 +38,14 @@ public class Season {
 	}
 
 	
+	public int getSeason_Nr() {
+		return season_Nr;
+	}
+
+	public void setSeason_Nr(int season_Nr) {
+		this.season_Nr = season_Nr;
+	}
+
 	public Serie getSerie() {
 		return serie;
 	}

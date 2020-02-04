@@ -48,6 +48,7 @@ DROP TABLE IF EXISTS `season`;
 CREATE TABLE `season` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `serie_id` bigint(20) DEFAULT NULL,
+  `season_nr` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FKi0t8tg8u8dgx8iykh31yxwdvr` (`serie_id`),
   CONSTRAINT `FKi0t8tg8u8dgx8iykh31yxwdvr` FOREIGN KEY (`serie_id`) REFERENCES `serie` (`id`)
@@ -115,6 +116,29 @@ CREATE TABLE `serie_user` (
   CONSTRAINT `FKjteqivgi49ovvdn65tgneqfte` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `serie_user_episode`
+--
+
+DROP TABLE IF EXISTS `serie_user_episode`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `serie_user_episode` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ranking` int(11) NOT NULL,
+  `wanna_c` bit(1) NOT NULL,
+  `watched` bit(1) NOT NULL,
+  `episopde_id` bigint(20) DEFAULT NULL,
+  `serie_user_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKhwftf53ktl4323wk6axu9y2x` (`episopde_id`),
+  KEY `FKi72utuauol8k92bl5cesc00k8` (`serie_user_id`),
+  CONSTRAINT `FKhwftf53ktl4323wk6axu9y2x` FOREIGN KEY (`episopde_id`) REFERENCES `episode` (`id`),
+  CONSTRAINT `FKi72utuauol8k92bl5cesc00k8` FOREIGN KEY (`serie_user_id`) REFERENCES `serie_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 
 
 --

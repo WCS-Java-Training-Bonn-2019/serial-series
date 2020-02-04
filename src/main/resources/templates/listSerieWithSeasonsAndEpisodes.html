@@ -73,7 +73,7 @@
 		<details open th:each="season, stat: ${Serie.seasons}">
 		 -->
 		<details th:each="season, stat: ${Serie.seasons}">
-			<summary th:text="|Staffel ${stat.index+1}|">Staffelname</summary>
+			<summary th:text="|Staffel ${season.season_Nr}|">Staffelname</summary>
 
 			<input type="hidden" th:field="*{seasons[__${stat.index}__].id}" />
 			

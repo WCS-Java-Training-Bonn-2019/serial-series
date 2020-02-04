@@ -73,6 +73,7 @@ public class SerieUserEpisodeController {
 				
 				FormSeason formSeason = new FormSeason();
 				formSeason.setId(season.getId());
+				formSeason.setSeason_Nr(season.getSeason_Nr());
 				formSeason.setEpisodes(formEpisodes);
 				formSeasons.add(formSeason);
 
