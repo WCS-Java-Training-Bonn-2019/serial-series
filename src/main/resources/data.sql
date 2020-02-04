@@ -31,56 +31,47 @@ INSERT INTO `user` (`id`, `name`) VALUES (4,'Metje');
 INSERT INTO `user` (`id`, `name`) VALUES (5,'Ralf');
 UNLOCK TABLES;
 
---
--- Dumping data for table `serie_user`
---
-
-LOCK TABLES `serie_user` WRITE;
-INSERT INTO `serie_user` (`id`,`serie_id`,`user_id`) VALUES (1,10,2);
-INSERT INTO `serie_user` (`id`,`serie_id`,`user_id`) VALUES (2,4,1);
-INSERT INTO `serie_user` (`id`,`serie_id`,`user_id`) VALUES (3,7,1);
-UNLOCK TABLES;
 
 --
 -- Dumping data for table `season`
 --
 
 -- Game of Thrones
-INSERT INTO `season` (`id`,`serie_id`) VALUES (1,1);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (2,1);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (3,1);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (4,1);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (5,1);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (6,1);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (7,1);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (8,1);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (1,1,1);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (2,1,2);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (3,1,3);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (4,1,4);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (5,1,5);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (6,1,6);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (7,1,7);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (8,1,8);
 -- Blindspot
-INSERT INTO `season` (`id`,`serie_id`) VALUES (9,2);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (10,2);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (11,2);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (12,2);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (9,2,1);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (10,2,2);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (11,2,3);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (12,2,4);
 -- Mr. Robot
-INSERT INTO `season` (`id`,`serie_id`) VALUES (13,3);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (14,3);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (15,3);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (13,3,1);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (14,3,2);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (15,3,3);
 -- Outlander
-INSERT INTO `season` (`id`,`serie_id`) VALUES (16,4);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (17,4);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (18,4);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (19,4);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (16,4,1);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (17,4,2);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (18,4,3);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (19,4,4);
 -- The Witcher
-INSERT INTO `season` (`id`,`serie_id`) VALUES (20,5);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (20,5,1);
 -- The Walking Dead
-INSERT INTO `season` (`id`,`serie_id`) VALUES (21,6);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (22,6);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (23,6);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (24,6);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (25,6);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (26,6);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (27,6);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (28,6);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (29,6);
-INSERT INTO `season` (`id`,`serie_id`) VALUES (30,6);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (21,6,1);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (22,6,2);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (23,6,3);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (24,6,4);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (25,6,5);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (26,6,6);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (27,6,7);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (28,6,8);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (29,6,9);
+INSERT INTO `season` (`id`, `serie_id`, `season_nr`) VALUES (30,6,10);
 -- Grey's Anatomy
 -- New Amsterdam
 -- The Gifted
@@ -500,6 +491,67 @@ INSERT INTO `episode` (`season_id`,`name`) VALUES (30,'Diebstahl und Lügen');
 INSERT INTO `episode` (`season_id`,`name`) VALUES (30,'Neue Verbindungen');
 INSERT INTO `episode` (`season_id`,`name`) VALUES (30,'Mach die Augen auf');
 INSERT INTO `episode` (`season_id`,`name`) VALUES (30,'Nichts ist wie zuvor');
+
+--
+-- Dumping data for table `serie_user`
+--
+
+LOCK TABLES `serie_user` WRITE;
+INSERT INTO `serie_user` (`id`,`serie_id`,`user_id`) VALUES (1,10,2);
+INSERT INTO `serie_user` (`id`,`serie_id`,`user_id`) VALUES (2,4,1);
+INSERT INTO `serie_user` (`id`,`serie_id`,`user_id`) VALUES (3,7,1);
+UNLOCK TABLES;
+
+
+
+--
+-- Dumping data for table `serie_user_episode`
+--
+
+LOCK TABLES `serie_user_episode` WRITE;
+/*!40000 ALTER TABLE `serie_user_episode` DISABLE KEYS */;
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (1,0,_binary '\0',_binary '\0',250,1);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (2,0,_binary '\0',_binary '\0',251,1);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (3,0,_binary '\0',_binary '\0',252,1);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (4,0,_binary '\0',_binary '\0',253,1);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (5,0,_binary '\0',_binary '\0',254,1);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (6,0,_binary '\0',_binary '\0',255,1);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (7,0,_binary '\0',_binary '\0',256,1);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (8,0,_binary '\0',_binary '\0',257,1);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (9,0,_binary '\0',_binary '\0',163,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (10,0,_binary '\0',_binary '\0',164,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (11,0,_binary '\0',_binary '\0',165,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (12,0,_binary '\0',_binary '\0',166,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (13,0,_binary '\0',_binary '\0',167,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (14,0,_binary '\0',_binary '\0',168,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (15,0,_binary '\0',_binary '\0',169,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (16,0,_binary '\0',_binary '\0',170,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (17,0,_binary '\0',_binary '\0',171,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (18,0,_binary '\0',_binary '\0',172,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (19,0,_binary '\0',_binary '\0',173,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (20,0,_binary '\0',_binary '\0',174,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (21,0,_binary '\0',_binary '\0',175,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (22,0,_binary '\0',_binary '\0',176,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (23,0,_binary '\0',_binary '\0',177,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (24,0,_binary '\0',_binary '\0',178,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (25,0,_binary '\0',_binary '\0',179,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (26,0,_binary '\0',_binary '\0',180,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (27,0,_binary '\0',_binary '\0',181,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (28,0,_binary '\0',_binary '\0',182,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (29,0,_binary '\0',_binary '\0',183,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (30,0,_binary '\0',_binary '\0',184,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (31,0,_binary '\0',_binary '\0',185,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (32,0,_binary '\0',_binary '\0',186,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (33,0,_binary '\0',_binary '\0',187,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (34,0,_binary '\0',_binary '\0',188,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (35,0,_binary '\0',_binary '\0',189,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (36,0,_binary '\0',_binary '\0',190,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (37,0,_binary '\0',_binary '\0',191,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (38,0,_binary '\0',_binary '\0',192,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (39,0,_binary '\0',_binary '\0',193,3);
+INSERT INTO `serie_user_episode` (`id`, `ranking`, `wanna_c`, `watched`, `episopde_id`, `serie_user_id`) VALUES (40,0,_binary '\0',_binary '\0',194,3);
+/*!40000 ALTER TABLE `serie_user_episode` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 --
