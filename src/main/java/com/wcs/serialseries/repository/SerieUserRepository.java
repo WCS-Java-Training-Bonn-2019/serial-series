@@ -19,5 +19,7 @@ public interface SerieUserRepository extends JpaRepository<SerieUser, Long> {
 	List<Serie> findByUserId(long id);
 
 	List<SerieUser> findByUserIdAndSerieId(long idUser, long idSerie);
+
+
 }
 

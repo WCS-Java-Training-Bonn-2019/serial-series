@@ -40,8 +40,7 @@
 
 <body>
 
-	<form th:action="@{/listSerieSeasonsEpisodes}" th:object="${Serie}"
-		method="POST">
+	<form th:action="@{/listSerieSeasonsEpisodes}" th:object="${Serie}" method="POST">
 
 		<!--  SERIENKOPF ANZEIGEN -->
 		<div class="container-fluid">
@@ -56,7 +55,6 @@
 			</div>
 
 			<!--  versteckte Felder merken -->
-	
 			<input type="hidden" name="UserId" th:value = ${UserId} />
 			<input type="hidden" name="SerieId" th:value = ${Serie.id} />
 		</div>
@@ -81,10 +79,8 @@
 			<th:block th:each="episode, stat2: ${season.episodes}">
 
 				<div class="flex-container">
-					<li class="flex-item-1" th:text="${episode.name}"></li> 
-					<input type="hidden" th:field="*{seasons[__${stat.index}__].episodes[__${stat2.index}__].id}" />
-					<input type="hidden" th:field="*{seasons[__${stat.index}__].episodes[__${stat2.index}__].name}" />
-					
+					<li class="flex-item-1" th:text="${episode.name}"></li>
+										
 					<!-- GESEHEN -->
 					<label> <input class="flex-item-2" type="checkbox"
 						name="seen"
