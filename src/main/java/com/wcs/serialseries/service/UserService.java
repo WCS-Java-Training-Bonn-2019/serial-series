@@ -24,7 +24,7 @@ public class UserService {
 
 		Optional<User> optionalUser = userRepository.findById(userId);
 		if (optionalUser.isPresent()) {
-			return ("Serial-Series - " + optionalUser.get().getName() + ":     ");
+			return ("Serial-Series - " + optionalUser.get().getUsername() + ":     ");
 		} else {
 			return "Serial-Series:     ";
 		}

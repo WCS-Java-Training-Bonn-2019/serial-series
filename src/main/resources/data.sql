@@ -24,11 +24,11 @@ UNLOCK TABLES;
 --
 
 LOCK TABLES `user` WRITE;
-INSERT INTO `user` (`id`, `name`) VALUES (1,'Susi Smart');
-INSERT INTO `user` (`id`, `name`) VALUES (2,'Daniel Desktop');
-INSERT INTO `user` (`id`, `name`) VALUES (3,'Frank');
-INSERT INTO `user` (`id`, `name`) VALUES (4,'Metje');
-INSERT INTO `user` (`id`, `name`) VALUES (5,'Ralf');
+INSERT INTO `user` (`id`, `username`, `password`) VALUES (1,'Susi Smart','$2y$12$twn4JZ/2QxWSnX.zrhvomOUBY/eb3zppqIwCSk9j5mf1cqbZfD2Wm');
+INSERT INTO `user` (`id`, `username`, `password`) VALUES (2,'Daniel Desktop','$2y$12$twn4JZ/2QxWSnX.zrhvomOUBY/eb3zppqIwCSk9j5mf1cqbZfD2Wm');
+INSERT INTO `user` (`id`, `username`, `password`) VALUES (3,'Frank','$2y$12$twn4JZ/2QxWSnX.zrhvomOUBY/eb3zppqIwCSk9j5mf1cqbZfD2Wm');
+INSERT INTO `user` (`id`, `username`, `password`) VALUES (4,'Metje','$2y$12$twn4JZ/2QxWSnX.zrhvomOUBY/eb3zppqIwCSk9j5mf1cqbZfD2Wm');
+INSERT INTO `user` (`id`, `username`, `password`) VALUES (5,'Ralf','$2y$12$twn4JZ/2QxWSnX.zrhvomOUBY/eb3zppqIwCSk9j5mf1cqbZfD2Wm');
 UNLOCK TABLES;
 
 

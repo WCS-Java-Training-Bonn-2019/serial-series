@@ -34,7 +34,7 @@
 				<form th:action="@{/startSerialSeries}" method="POST">
 					<div class="col-md-12 col_left_1 ">
 						<select class="select_box" name="idUser">
-							<option th:each="user : ${Users}" th:text="${user.name}"
+							<option th:each="user : ${Users}" th:text="${user.username}"
 								th:value="${user.id}">user name</option>
 						</select>
 					</div>
