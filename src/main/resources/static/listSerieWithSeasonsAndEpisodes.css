@@ -46,7 +46,7 @@ input[type="checkbox"], input[type="radio"] {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		margin: 20px;
+		margin: 20px 40px 20px 40px;
 	}
 	.flex-item-1 {
 		width: 400px;

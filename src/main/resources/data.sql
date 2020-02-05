@@ -352,6 +352,7 @@ INSERT INTO `episode` (`id`,`season_id`,`episode_nr`,`name`) VALUES (255,20,6,'S
 INSERT INTO `episode` (`id`,`season_id`,`episode_nr`,`name`) VALUES (256,20,7,'Vor dem Fall');
 INSERT INTO `episode` (`id`,`season_id`,`episode_nr`,`name`) VALUES (257,20,8,'Viel mehr');
 -- The Walking Dead, Staffel 1 - 10
+
 INSERT INTO `episode` (`id`,`season_id`,`episode_nr`,`name`) VALUES (259,21,1,'Gute alte Zeit');
 INSERT INTO `episode` (`id`,`season_id`,`episode_nr`,`name`) VALUES (260,21,2,'Gefangene der Toten');
 INSERT INTO `episode` (`id`,`season_id`,`episode_nr`,`name`) VALUES (261,21,3,'Tag der Frösche');
@@ -491,6 +492,7 @@ INSERT INTO `episode` (`id`,`season_id`,`episode_nr`,`name`) VALUES (394,30,5,'D
 INSERT INTO `episode` (`id`,`season_id`,`episode_nr`,`name`) VALUES (395,30,6,'Neue Verbindungen');
 INSERT INTO `episode` (`id`,`season_id`,`episode_nr`,`name`) VALUES (396,30,7,'Mach die Augen auf');
 INSERT INTO `episode` (`id`,`season_id`,`episode_nr`,`name`) VALUES (397,30,8,'Nichts ist wie zuvor');
+
 
 --
 -- Dumping data for table `FAQ`

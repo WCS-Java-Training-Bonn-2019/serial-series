@@ -2,29 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <!--  Eigene .CSS Dateien -->
 <link rel="stylesheet" href="/global.css">
 <link rel="stylesheet" href="/listSerieWithSeasonsAndEpisodes.css">
-
-<!-- Eingefügt für Rating -->
-<!-- 
-<link
-	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css"
-	rel="stylesheet">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
-	
-	 -->
 
 
 
@@ -71,10 +59,10 @@
 		<details open th:each="season, stat: ${Serie.seasons}">
 		 -->
 		<details th:each="season, stat: ${Serie.seasons}">
-			<summary th:text="|Staffel ${season.season_Nr}|">Staffelname</summary>
+			<summary th:text="|Staffel ${season.season_Nr}|">Staffelname </summary>
 
 			<input type="hidden" th:field="*{seasons[__${stat.index}__].id}" />
-			
+				
 			<!-- Itteration Folgen -->
 			<th:block th:each="episode, stat2: ${season.episodes}">
 
@@ -87,6 +75,15 @@
 						th:value="*{seasons[__${stat.index}__].episodes[__${stat2.index}__].id}"
 						th:checked="*{seasons[__${stat.index}__].episodes[__${stat2.index}__].watched}" />gesehen
 					</label>
+					
+					<!-- Möchte ich gerne sehen -->
+					<label> <input class="flex-item-3" type="checkbox"
+						name="wanted"
+						th:value="*{seasons[__${stat.index}__].episodes[__${stat2.index}__].id}"
+						th:checked="*{seasons[__${stat.index}__].episodes[__${stat2.index}__].wanna_c}" />möchte
+						ich sehen
+					</label>
+									
 					
 				</div>
 			</th:block>
