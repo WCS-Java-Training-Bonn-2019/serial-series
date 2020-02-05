@@ -16,16 +16,15 @@
 </head>
 
 <body>
-
+	
 	<header th:insert="header.html :: header"></header>
-
-	<ul th:each="faq : ${faq}">
-		
-		<li th:text="|Id: ${faq.id}|">$id</li>
-		<li th:text="|Frage: ${faq.frage}|"></li>
-		<li th:text="|Antwort: ${faq.antwort}|"></li>
-	</ul>
-
+	<form>
+		<br>
+		<details th:each="faq : ${faq}">
+			<summary th:text="|${faq.frage}|"></summary>
+			<li th:text="|${faq.antwort}|"></li>
+			</details>
+	</form>
 
 	<div th:insert="footer.html :: footer"></div>
 </body>

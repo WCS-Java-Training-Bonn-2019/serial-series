@@ -30,6 +30,10 @@
 				<!-- Details -->
 				<a th:if="${Type == 'Details'}" class="nav-item nav-link active" href="">Details</a> 
 				<a th:if="${Type == 'Details'}" class="nav-item nav-link" th:href="${'/listSeries/' + UserId}">Meine Serien </a> 	
+				
+				<!-- faq -->
+				<a th:if="${Type == 'Faq'}" class="nav_color_pink nav-item nav-link" href="/startSerialSeries">Home </a> 
+				<a th:if="${Type == 'Faq'}" class="nav_color_pink nav-item nav-link" href="/listSeries">Alle Serien </a> 
 					
 			<a class="nav_color_pink nav-item nav-link" href="/underConstruction.html">Über uns</a> 
         </div>
