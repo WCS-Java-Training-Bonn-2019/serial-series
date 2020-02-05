@@ -1,7 +1,7 @@
 CREATE DATABASE  IF NOT EXISTS `serial-series` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
-CREATE USER if NOT EXISTS `series_user`@`localhost` IDENTIFIED BY 'Games2Thrones=?';
-GRANT ALL PRIVILEGES ON *.* TO `series_user`@`localhost`;
+-- CREATE USER if NOT EXISTS `series_user`@`localhost` IDENTIFIED BY 'Games2Thrones=?';
+-- GRANT ALL PRIVILEGES ON *.* TO `series_user`@`localhost`;
 
 USE `serial-series`;
 -- MySQL dump 10.13  Distrib 5.7.29, for Linux (x86_64)
