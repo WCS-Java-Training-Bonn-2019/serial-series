@@ -105,12 +105,13 @@ public class SerieUserEpisodeController {
 			@RequestParam(value = "UserId", required = false) long idUser,
 			@RequestParam(value = "SerieId", required = false) long idSerie) {
 
-		// Liste der gesehenen Folgen aktualisieren
+		// Liste gesehen/wanna_c Folgen aktualisieren
 		if (seen != null) {
 			List<SerieUserEpisode> serieUserEpisodes = serieUserEpisodeRepository
 					.findBySerieUserId(service.getSerieUserFromDB(idUser, idSerie));
 			for (int ittStaffel = 0; ittStaffel < serieUserEpisodes.size(); ittStaffel++) {
 				serieUserEpisodes.get(ittStaffel).setWatched(false);
+				serieUserEpisodes.get(ittStaffel).setWanna_c(false);
 				// Ankreuzen oder nicht
 				// Seen durchsuchen
 				for (int ittSeen = 0; ittSeen < seen.length; ittSeen++) {
@@ -119,11 +120,17 @@ public class SerieUserEpisodeController {
 						serieUserEpisodes.get(ittStaffel).setWatched(true);
 					}
 				}
+				
+				// Wanna_c durchsuchen
+				for (int ittWanted = 0; ittWanted < wanted.length; ittWanted++) {
+					// Staffelnummer identisch zu wanted?
+					if (serieUserEpisodes.get(ittStaffel).getEpisode().getId() == wanted[ittWanted]) {
+						serieUserEpisodes.get(ittStaffel).setWanna_c(true);
+					}
+				}
 				// Abspeichern
 				serieUserEpisodeRepository.save(serieUserEpisodes.get(ittStaffel));
 			}
-			
-
 		}
 
 		return "redirect:/listSeries/" + idUser;
