@@ -16,6 +16,7 @@ public class Episode {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
+	int episode_Nr;
 	String name;
 	
 	@ManyToOne
@@ -37,6 +38,14 @@ public class Episode {
 	}
 
 	
+	public int getEpisode_Nr() {
+		return episode_Nr;
+	}
+
+	public void setEpisode_Nr(int episode_Nr) {
+		this.episode_Nr = episode_Nr;
+	}
+
 	public String getName() {
 		return name;
 	}

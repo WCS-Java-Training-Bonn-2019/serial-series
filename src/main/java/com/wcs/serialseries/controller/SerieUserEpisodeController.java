@@ -64,6 +64,7 @@ public class SerieUserEpisodeController {
 
 					FormEpisode formEpisode = new FormEpisode();
 					formEpisode.setId(episode.getId());
+					formEpisode.setEpisode_Nr(episode.getEpisode_Nr());
 					formEpisode.setName(episode.getName());
 					formEpisode.setWatched(serieUserEpisode.isWatched());
 					formEpisode.setWanna_c(serieUserEpisode.isWanna_c());
