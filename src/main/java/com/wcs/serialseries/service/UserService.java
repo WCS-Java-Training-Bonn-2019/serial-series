@@ -41,7 +41,6 @@ public class UserService {
 	
 	List<SerieUser> listOfSerieUsers = serieUserRepository.findByUserIdAndSerieId(idUser, idSerie);
 	if (!listOfSerieUsers.isEmpty()) {
-		long id = listOfSerieUsers.get(0).getId();
 		return listOfSerieUsers.get(0).getId();
 	}
 	else 
