@@ -36,7 +36,8 @@ public class SerieUserEpisodeController {
 
 	@Autowired
 	public SerieUserEpisodeController(SerieRepository serieRepository,
-			SerieUserEpisodeRepository serieUserEpisodeRepository, SerieUserRepository serieUserRepository, UserService service) {
+			SerieUserEpisodeRepository serieUserEpisodeRepository, SerieUserRepository serieUserRepository,
+			UserService service) {
 		this.serieRepository = serieRepository;
 		this.serieUserEpisodeRepository = serieUserEpisodeRepository;
 		this.serieUserRepository = serieUserRepository;
@@ -45,8 +46,7 @@ public class SerieUserEpisodeController {
 
 	@GetMapping("/listSerieSeasonsEpisodes/details")
 	public String showSerie(@RequestParam long idUser, @RequestParam long idSerie, Model model) {
-		
-		
+
 		Optional<Serie> optionalSerie = serieRepository.findById(idSerie);
 		if (optionalSerie.isPresent()) {
 
@@ -58,10 +58,10 @@ public class SerieUserEpisodeController {
 			for (Season season : serie.getSeasons()) {
 				List<FormEpisode> formEpisodes = new ArrayList<>();
 				for (Episode episode : season.getEpisodes()) {
-					
-					
-					SerieUserEpisode serieUserEpisode = serieUserEpisodeRepository.findByEpisodeIdAndSerieUserId(episode.getId(),service.getSerieUserFromDB(idUser, idSerie));
-					
+
+					SerieUserEpisode serieUserEpisode = serieUserEpisodeRepository.findByEpisodeIdAndSerieUserId(
+							episode.getId(), service.getSerieUserFromDB(idUser, idSerie));
+
 					FormEpisode formEpisode = new FormEpisode();
 					formEpisode.setId(episode.getId());
 					formEpisode.setName(episode.getName());
@@ -70,7 +70,7 @@ public class SerieUserEpisodeController {
 					formEpisode.setRanking(serieUserEpisode.getRanking());
 					formEpisodes.add(formEpisode);
 				}
-				
+
 				FormSeason formSeason = new FormSeason();
 				formSeason.setId(season.getId());
 				formSeason.setEpisodes(formEpisodes);
@@ -84,14 +84,13 @@ public class SerieUserEpisodeController {
 			formSerie.setPicture_url(serie.getPicture_url());
 			formSerie.setDescription(serie.getDescription());
 			formSerie.setSeasons(formSeasons);
-		
 
 			model.addAttribute("Serie", formSerie);
 			model.addAttribute("Title", service.getTitleFromId(idUser));
 			model.addAttribute("Type", "Details");
 			model.addAttribute("UserId", idUser);
 			return "listSerieWithSeasonsAndEpisodes.html";
-			
+
 		} else {
 			return "listSeries.html";
 		}
@@ -99,58 +98,34 @@ public class SerieUserEpisodeController {
 	}
 
 	@PostMapping("/listSerieSeasonsEpisodes")
-	public String postStaffeln(@ModelAttribute("Serie") FormSerie formSerie,
-			@RequestParam(value = "seen", required = false) int[] seen,
+	
+	public String postStaffeln(@RequestParam(value = "seen", required = false) int[] seen,
 			@RequestParam(value = "wanted", required = false) int[] wanted,
-			@RequestParam(value = "UserId", required = false) long idUser) {
+			@RequestParam(value = "UserId", required = false) long idUser,
+			@RequestParam(value = "SerieId", required = false) long idSerie) {
 
+		// Liste der gesehenen Folgen aktualisieren
+		if (seen != null) {
+			List<SerieUserEpisode> serieUserEpisodes = serieUserEpisodeRepository
+					.findBySerieUserId(service.getSerieUserFromDB(idUser, idSerie));
+			for (int ittStaffel = 0; ittStaffel < serieUserEpisodes.size(); ittStaffel++) {
+				serieUserEpisodes.get(ittStaffel).setWatched(false);
+				// Ankreuzen oder nicht
+				// Seen durchsuchen
+				for (int ittSeen = 0; ittSeen < seen.length; ittSeen++) {
+					// Staffelnummer identisch zu seen?
+					if (serieUserEpisodes.get(ittStaffel).getEpisode().getId() == seen[ittSeen]) {
+						serieUserEpisodes.get(ittStaffel).setWatched(true);
+					}
+				}
+				// Abspeichern
+				serieUserEpisodeRepository.save(serieUserEpisodes.get(ittStaffel));
+			}
 			
-		
-			Serie serie = new Serie();
-//			serie.setId(formSerie.getId());
-//			serie.setName(formSerie.getName());
-//			serie.setPicture_url(formSerie.getPicture_url());
-//			serie.setDescription(formSerie.getDescription());
-//			serie.setSeasons(null);
-			
-		
-//			// Liste der gesehenen Folgen aktualisieren
-//			if (seen != null) {
-//				for (int ittChecked = 0; ittChecked < seen.length; ittChecked++) {
-//					// Richtige Episode der richtigen Season der richtigen Serie auf gesehen setzen
-//					// alle Staffeln itterieren
-//					for (int ittStaffel = 0; ittStaffel < serie.getListOfSeasons().size(); ittStaffel++) {
-//						// alle Folgen itterieren
-//						for (int ittFolge = 0; ittFolge < serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes()
-//								.size(); ittFolge++) {
-//							// alle Folgen itterieren
-//							if (seen[ittChecked] == serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes().get(ittFolge).getId())
-//								serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes().get(ittFolge).setWatched(true);
-//						}
-//					}
-//				}
-//
-//			}
-//
-//			// Liste der gewünschten Folgen aktualisieren
-//			if (wanted != null) {
-//				for (int ittChecked = 0; ittChecked < wanted.length; ittChecked++) {
-//					// Richtige Episode der richtigen Season der richtigen Serie auf gesehen setzen
-//					// alle Staffeln itterieren
-//					for (int ittStaffel = 0; ittStaffel < serie.getListOfSeasons().size(); ittStaffel++) {
-//						// alle Folgen itterieren
-//						for (int ittFolge = 0; ittFolge < serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes()
-//								.size(); ittFolge++) {
-//							// alle Folgen itterieren
-//							if (wanted[ittChecked] == serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes().get(ittFolge).getId())
-//								serie.getListOfSeasons().get(ittStaffel).getListOfEpisodes().get(ittFolge).setWanted(true);
-//						}
-//					}
-//				}
-//
-//			}
 
-		return "listSerieWithSeasonsAndEpisodes.html";
+		}
+
+		return "redirect:/listSeries/" + idUser;
 
 	}
 

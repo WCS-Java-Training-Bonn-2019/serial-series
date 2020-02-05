@@ -40,8 +40,10 @@ public class UserService {
 	public long getSerieUserFromDB(long idUser, long idSerie) {
 	
 	List<SerieUser> listOfSerieUsers = serieUserRepository.findByUserIdAndSerieId(idUser, idSerie);
-	if (!listOfSerieUsers.isEmpty())
+	if (!listOfSerieUsers.isEmpty()) {
+		long id = listOfSerieUsers.get(0).getId();
 		return listOfSerieUsers.get(0).getId();
+	}
 	else 
 		return 0;
 	}

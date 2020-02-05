@@ -1,6 +1,8 @@
 package com.wcs.serialseries.repository;
 
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,5 +18,7 @@ public interface SerieUserEpisodeRepository extends JpaRepository<SerieUserEpiso
 	SerieUserEpisode findByEpisodeId(long idEpisode);
 
 	SerieUserEpisode findByEpisodeIdAndSerieUserId(long id, long l);
+
+	List<SerieUserEpisode> findBySerieUserId(long idSserieUser);
 	
 }
