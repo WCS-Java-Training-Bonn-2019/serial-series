@@ -10,6 +10,7 @@
 	href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
 <link rel="stylesheet" href="/global.css">
 <link rel="stylesheet" href="/start.css">
+
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta charset=UTF-8>
@@ -30,20 +31,14 @@
 		<div class="row no-gutters ">
 			<!-- 1. Column  -->
 			<div class="col-md-6 col_left">
-
-				<form th:action="@{/startSerialSeries}" method="POST">
-					<div class="col-md-12 col_left_1 ">
-						<select class="select_box" name="idUser">
-							<option th:each="user : ${Users}" th:text="${user.username}"
-								th:value="${user.id}">user name</option>
-						</select>
-					</div>
-					<div class="col-md-12 col_left_2 ">
-						<input class="btn-long" type="submit"
-							value="Als ausgewählter User anmelden ...">
-					</div>
-				</form>
-			</div>
+				<button type=button onclick="document.getElementById('id01').style.display='block'" class="btn-long ">Login ...</button>
+	            
+	            <div th:insert="login.html :: login"></div>
+    
+            </div>
+            
+            
+            
 			<!-- 2. Column  -->
 			<div class="col-md-6 col_right">
 
