@@ -17,20 +17,16 @@ summary:before {
 	margin-right: 5px;
 }
 
-form{
-	margin:20px;
-	
+form {
+	margin: 20px;
 }
 
 .container-fluid {
 	background-color: white;
 	padding: 20px;
-	/* offset-x | offset-y | blur-radius | spread-radius | color */
-	/* box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.5);*/
 	border-style: solid;
 	border-width: thin;
 	border-color: black;
-	
 }
 
 input[type="checkbox"], input[type="radio"] {
@@ -39,26 +35,36 @@ input[type="checkbox"], input[type="radio"] {
 	margin-right: 7px;
 }
 
+.flex-item-1 {
+	width: 400px;
+	list-style: none;
+}
+
+.flex-item-2 {
+	width: 80px;
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+.flex-item-3 {
+	width: 80px;
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+.flex-item-4 {
+	width: 20px;
+	list-style: none;
+}
+
 /* Anordnung der Folgen Abhängig von der Größe */
 @media only screen and (min-width: 1261px ) {
 	/* Groß */
 	.flex-container {
 		display: flex;
 		flex-direction: row;
-		justify-content: space-between;
+		justify-content: flex-start;
 		margin: 20px 40px 20px 40px;
-	}
-	.flex-item-1 {
-		width: 400px;
-	}
-	.flex-item-2 {
-		width: 40px;
-	}
-	.flex-item-3 {
-		width: 60px;
-	}
-	.sternebewertung {
-		width: 200px;
 	}
 }
 
@@ -66,20 +72,7 @@ input[type="checkbox"], input[type="radio"] {
 	/* Mittel */
 	.flex-container {
 		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
-	.flex-item-1 {
-		width: 400px;
-	}
-	.flex-item-2 {
-		width: 40px;
-	}
-	.flex-item-3 {
-		width: 60px;
-	}
-	.sternebewertung {
-		width: 200px;
+		flex-direction: column;
 	}
 }
 
@@ -89,83 +82,7 @@ input[type="checkbox"], input[type="radio"] {
 		/*display: flex;*/
 		flex-direction: column;
 	}
-	.flex-item-1 {
-		width: 400px;
-	}
-	.flex-item-2 {
-		width: 40px;
-	}
-	.flex-item-3 {
-		width: 60px;
-	}
-	.sternebewertung {
-		width: 200px;
-		align: left;
-	}
 }
-
-/* Rating Stars */
-.rating>span:hover:before {
-	content: "\2605";
-	position: absolute;
-}
-
-/* Sternebewertung */
-
-span#Bewertung {
- line-height: 45px;
-}
-
-span.sternebewertung {
- float: Left;
-}
-
-span.sternebewertung:not(:checked) > input {
- display: None;
-}
-
-span.sternebewertung:not(:checked) > label {
- float: Right;
- width: 1em;
- padding: 0 .1em;
- overflow: Hidden;
- white-space: Nowrap;
- cursor: Pointer;
- font-size: 200%;
- line-height: 1.2;
- color: #D0D0D0;
- text-shadow: 1px 1px #B0B0B0, 2px 2px #606060, .1em .1em .2em rgba(0,0,0,.5);
- transition: all .5s;
-}
-
-span.sternebewertung:not(:checked) > label:before {
- content: '★ ';
-}
-
-span.sternebewertung > input:checked ~ label {
- color: #FFD700;
- text-shadow: 1px 1px #C06000, 2px 2px #904000, .1em .1em .2em rgba(0,0,0,.5);
-}
-
-span.sternebewertung:not(:checked) > label:hover,
-span.sternebewertung:not(:checked) > label:hover ~ label {
- color: #FFD700;
- text-shadow: 1px 1px #F29E02, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
-}
-
-span.sternebewertung > input:checked + label:hover,
-span.sternebewertung > input:checked + label:hover ~ label,
-span.sternebewertung > input:checked ~ label:hover,
-span.sternebewertung > input:checked ~ label:hover ~ label,
-span.sternebewertung > label:hover ~ input:checked ~ label {
- color: #F9B500;
- text-shadow: 1px 1px #F8BA01, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
-}
-
-
-
-
-
 
 .btn-speichern {
 	background-color: #f7c5f0;

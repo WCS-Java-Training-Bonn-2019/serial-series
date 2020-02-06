@@ -67,8 +67,11 @@
 			<th:block th:each="episode, stat2: ${season.episodes}">
 
 				<div class="flex-container">
+				<!-- 
 					<li class="flex-item-1" th:text="|${episode.episode_Nr}:   ${episode.name}|"></li>
-										
+				 -->		
+				 	<li class="flex-item-4 " th:text="|${episode.episode_Nr}: |"></li>	
+				 	<li class="flex-item-1" th:text="|${episode.name}|"></li>				
 					<!-- GESEHEN -->
 					<label> <input class="flex-item-2" type="checkbox"
 						name="seen"
