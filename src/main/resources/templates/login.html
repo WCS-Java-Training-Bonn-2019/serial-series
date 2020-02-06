@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+
+<div th:fragment="login">
+
+<link rel="stylesheet" href="/login.css">
+	
+	<div id="id01" class="modal">
+			  
+			  <form class="modal-content animate" th:action="@{/perform_login}" method="post">
+			    
+			
+			  <div class="container">
+			      <label for="uname"><b>Benutzername</b></label>
+				  <input type="text" placeholder="Benutzernamen eingeben" id="username" name="username" required/>     	
+			      <label for="psw"><b>Passwort</b></label>
+			      <input type="password" placeholder="Passwort eingeben" id="password" name="password" required/>
+			      
+			      <div class="form-actions">
+                    <button type="submit" class="btn">Anmelden</button>
+                  </div>
+			  	        
+			      <button type="submit">Anmelden</button>
+			     
+			      
+			   </div>
+			
+			   <div class="container" style="background-color:#f1f1f1">
+			      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+			   </div>
+			   </form>
+			</div>
+			
+			<script>
+			// Get the modal
+			var modal = document.getElementById('id01');
+			
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+			    if (event.target == modal) {
+			        modal.style.display = "none";
+			    }
+			}
+			</script>
+
+</div>
+</html>
