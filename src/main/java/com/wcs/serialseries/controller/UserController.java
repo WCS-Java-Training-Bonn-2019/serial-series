@@ -16,30 +16,45 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.wcs.serialseries.model.Serie;
 import com.wcs.serialseries.model.User;
 import com.wcs.serialseries.repository.SerieRepository;
+import com.wcs.serialseries.repository.SerieUserEpisodeRepository;
+import com.wcs.serialseries.repository.SerieUserRepository;
 import com.wcs.serialseries.repository.UserRepository;
+import com.wcs.serialseries.service.UserService;
 
 
 @Controller
 public class UserController {
 
-	@Autowired
-	private UserRepository userRepository;
+
+	private final UserRepository userRepository;
+	private final SerieRepository serieRepository;
+	private final UserService service;
+	
 	
 	@Autowired
-	private SerieRepository serieRepository;
-	
+	public UserController(SerieRepository serieRepository, 	UserRepository userRepository, UserService service) {
+		this.serieRepository = serieRepository;
+		this.userRepository = userRepository;
+		this.service = service;
+	}
 	
 	//Startpage
 
 	@GetMapping("/startSerialSeries")
 	public String startSerialSeries(Model model) {
 		model.addAttribute("Users", userRepository.findAll());
+		model.addAttribute("Title", service.getEmptyTitle());
+		model.addAttribute("Type", "Start");
+		model.addAttribute("UserId", 0L);
 		return "start.html";
 	}
 	
 	@GetMapping("/")
 	public String startSerialSeriesFromRoot(Model model) {
 		model.addAttribute("Users", userRepository.findAll());
+		model.addAttribute("Title", service.getEmptyTitle());
+		model.addAttribute("Type", "Start");
+		model.addAttribute("UserId", 0L);
 		return "start.html";
 	}
 
