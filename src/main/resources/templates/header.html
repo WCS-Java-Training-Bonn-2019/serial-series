@@ -16,7 +16,12 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav">
         <a class="navbar-brand" href="" th:text="|${Title}|">Serial-Series</a>
-            <!-- Alle Serien -->
+            	<!-- Start -->
+				<a th:if="${Type == 'Start'}" class="nav_color_pink nav-item nav-link  active" href="/startSerialSeries">Home </a> 
+				<a th:if="${Type == 'Start'}"class="nav-item nav-link " th:href="${'/listSeries'}" >Alle Serien</a>
+				
+				
+				<!-- Alle Serien -->
 				<a th:if="${Type == 'All'}" class="nav_color_pink nav-item nav-link" href="/startSerialSeries">Home </a> 
 				<a th:if="${Type == 'All'}"class="nav-item nav-link active" href="" >Alle Serien</a>
 				
