@@ -5,6 +5,7 @@
 
 
 <link rel="stylesheet" href="/header.css">
+<link rel="stylesheet" href="/login.css">
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     
@@ -38,8 +39,14 @@
 			<a class="nav_color_pink nav-item nav-link" href="/underConstruction.html">Über uns</a> 
         </div>
         <div class="navbar-nav ml-auto">
-        	<button type=button onclick="document.getElementById('id01').style.display='block'" class="btn-long ">Login ...</button>
-	            
+
+			<!-- Login -->
+           	<a th:href="@{/login}"><button sec:authorize="!isAuthenticated()" type="button">Anmelden</button></a>
+        	
+        	<!-- Logout -->
+      		<form th:action="@{/logout}" method="POST" title="Logout">
+					<button sec:authorize="isAuthenticated()" type="submit" > <span sec:authentication="name"></span> abmelden </button>
+			</form>
 	            <div th:insert="login.html :: login"></div>
 		      
         </div>

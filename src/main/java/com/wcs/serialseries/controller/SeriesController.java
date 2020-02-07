@@ -2,7 +2,6 @@ package com.wcs.serialseries.controller;
 
 import com.wcs.serialseries.model.Serie;
 import com.wcs.serialseries.model.SerieUser;
-
 import com.wcs.serialseries.repository.SerieRepository;
 import com.wcs.serialseries.service.UserService;
 
@@ -28,12 +27,30 @@ public class SeriesController {
 
 	@GetMapping("/listSeries")
 	public String listSeries(Model model) {
+		
+		
+		long userId = service.getCurrentLoggedInUserId();
+		
+		
+		if (userId == 0) {
+			model.addAttribute("Series", serieRepository.findAllByOrderByName());
+			model.addAttribute("Type", "All");
+			model.addAttribute("Title", service.getEmptyTitle());
+	
+			return "listSeries.html";
+		}
+		else {
+			List<Serie> series = serieRepository.findBySerieUsersUserIdOrderByName(userId);
+			
+			model.addAttribute("Series", series);
+			model.addAttribute("Title", service.getTitleFromId(userId));
+			model.addAttribute("Type", "My");
+			model.addAttribute("UserId", userId);
 
-		model.addAttribute("Series", serieRepository.findAllByOrderByName());
-		model.addAttribute("Type", "All");
-		model.addAttribute("Title", service.getEmptyTitle());
-
-		return "listSeries.html";
+			return "listSeries.html";
+		}
+	
+	
 	}
 
 	@GetMapping("/listSeries/{userId}")

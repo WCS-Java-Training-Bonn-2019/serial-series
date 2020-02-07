@@ -1,47 +1,69 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+
+<head>
+<title th:text="|${Title}|">Serial-Series</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
+<link rel="stylesheet" href="/global.css">
+<link rel="stylesheet" href="/listSeries.css">
+<link rel="stylesheet" href="/login.css">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset=UTF-8>
+
+</head>
+<body>
+
+<button type=button onclick="document.getElementById('id01').style.display='block'" class="btn-long ">Login ...</button>
 
 
 <div th:fragment="login">
 
-<link rel="stylesheet" href="/login.css">
-	
-	<div id="id01" class="modal">
-			  
-			  <form class="modal-content animate" th:action="@{/perform_login}" method="post">
-			    
-			
-			  <div class="container">
-			      <label for="uname"><b>Benutzername</b></label>
-				  <input type="text" placeholder="Benutzernamen eingeben" id="username" name="username" required/>     	
-			      <label for="psw"><b>Passwort</b></label>
-			      <input type="password" placeholder="Passwort eingeben" id="password" name="password" required/>
-			      
-			      <div class="form-actions">
-                    <button type="submit" class="btn">Anmelden</button>
-                  </div>
-			  	        
-			      <button type="submit">Anmelden</button>
-			     
-			      
-			   </div>
-			
-			   <div class="container" style="background-color:#f1f1f1">
-			      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-			   </div>
-			   </form>
+	<div  id="id01" class="modal">
+
+		<p th:if="${loginError}" class="error">Wrong user or password</p>
+
+		<form class="modal-content animate" th:action="@{/perform_login}"
+			method="post">
+
+
+			<div class="container">
+				<label for="uname"><b>Benutzername</b></label> <input type="text"
+					placeholder="Benutzernamen eingeben" id="username" name="username"
+					required /> <label for="psw"><b>Passwort</b></label> <input
+					type="password" placeholder="Passwort eingeben" id="password"
+					name="password" required />
+					
+					<p th:if="${loginError}" class="error">Wrong user or password</p>
+
+				<button type="submit">Anmelden</button>
+
 			</div>
-			
-			<script>
-			// Get the modal
-			var modal = document.getElementById('id01');
-			
-			// When the user clicks anywhere outside of the modal, close it
-			window.onclick = function(event) {
-			    if (event.target == modal) {
-			        modal.style.display = "none";
-			    }
+
+			<div class="container" style="background-color: #f1f1f1">
+				<button type="button"
+					onclick="document.getElementById('id01').style.display='none'"
+					class="cancelbtn">Cancel</button>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		// Get the modal
+		var modal = document.getElementById('id01');
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
 			}
-			</script>
+		}
+	</script>
 
 </div>
+</body>
 </html>

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.wcs.serialseries.model.SerieUser;
@@ -45,6 +47,32 @@ public class UserService {
 	}
 	else 
 		return 0;
+	}
+	
+	public long getCurrentLoggedInUserId() {
+		
+		String userName;
+		
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+		  userName = ((UserDetails)principal).getUsername();
+		} else {
+		  userName = principal.toString();
+		}
+		if ("anonymousUser".equals(userName))
+			return 0L;
+		else {
+			// Nummer aus DB ermitteln
+			Optional<User> optionalUser = userRepository.findByUsername(userName);
+			if (optionalUser.isPresent()) {
+				return optionalUser.get().getId();
+			} else {
+				return 0L;
+			}
+			
+		}
+
 	}
 
 }
