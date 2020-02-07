@@ -499,9 +499,10 @@ INSERT INTO `episode` (`id`,`season_id`,`episode_nr`,`name`) VALUES (397,30,8,'N
 --
 
 LOCK TABLES `faq` WRITE;
-INSERT INTO `faq` (`id`, `frage`, `antwort`) VALUES (1,'Frage 1', 'Antwort 1');
-INSERT INTO `faq` (`id`, `frage`, `antwort`) VALUES (2,'Frage 2', 'Antwort 2');
-INSERT INTO `faq` (`id`, `frage`, `antwort`) VALUES (3,'Frage 3', 'Antwort 3');
-INSERT INTO `faq` (`id`, `frage`, `antwort`) VALUES (4,'Frage 4', 'Antwort 4');
-INSERT INTO `faq` (`id`, `frage`, `antwort`) VALUES (5,'Frage 5', 'Antwort 5');
+INSERT INTO `faq` (`id`,`frage`,`antwort`) VALUES (1,'Warum sollte ich diese Fragen und Antworten lesen?','Weil es geht!!!!');
+INSERT INTO `faq` (`id`,`frage`,`antwort`) VALUES (2,'Was ist das Tollste an Serial-Series?','Das Team, welches es entwickelt hat.');
+INSERT INTO `faq` (`id`,`frage`,`antwort`) VALUES (3,'Warum gibt es nur so wenige Fragen?','Uns ist leider noch nicht mehr eingefallen.');
+INSERT INTO `faq` (`id`,`frage`,`antwort`) VALUES (4,'Warum ist das Programm so bunt?','Die Welt kann nicht genug Farbe bekommen.');
+INSERT INTO `faq` (`id`,`frage`,`antwort`) VALUES (5,'Wie kann ich die Musik ausschalten?','Frag Ralf!!!!');
 UNLOCK TABLES;
+
