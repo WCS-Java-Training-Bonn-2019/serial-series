@@ -83,6 +83,15 @@ span.psw {
   cursor: pointer;
 }
 
+.error{
+	color: #e5007d;
+	text-align:center;
+	font-weight: 900;
+	text-decoration: blink;
+	
+}
+
+
 /* Add Zoom Animation */
 .animate {
   -webkit-animation: animatezoom 0.6s;
@@ -108,4 +117,9 @@ span.psw {
   .cancelbtn {
      width: 100%;
   }
+}
+
+#cancel_container {
+	background-color: #f1f1f1;
+    padding: 8px 16px;
 }

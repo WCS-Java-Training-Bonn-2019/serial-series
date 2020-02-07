@@ -32,9 +32,8 @@
 		<div class="row no-gutters ">
 			<!-- 1. Column  -->
 			<div class="col-md-6 col_left">
-				<button type=button onclick="document.getElementById('id01').style.display='block'" class="btn-long ">Anmelden...</button>
-	            
-	            <div th:insert="login.html :: login"></div>
+				<a th:href="${'/login'}"><button type=button
+							class="btn-long">Anmelden...</button></a>
     
             </div>
             

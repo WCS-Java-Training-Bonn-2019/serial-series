@@ -44,11 +44,10 @@
            	<a th:href="@{/login}"><button sec:authorize="!isAuthenticated()" type="button">Anmelden</button></a>
         	
         	<!-- Logout -->
-      		<form th:action="@{/logout}" method="POST" title="Logout">
+      		<form class="header-form" th:action="@{/logout}" method="POST" title="Logout">
 					<button sec:authorize="isAuthenticated()" type="submit" > <span sec:authentication="name"></span> abmelden </button>
 			</form>
-	            <div th:insert="login.html :: login"></div>
-		      
+					      
         </div>
     </div>
 </nav>

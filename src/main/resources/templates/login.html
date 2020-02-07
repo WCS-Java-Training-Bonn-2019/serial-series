@@ -9,7 +9,6 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
 <link rel="stylesheet" href="/global.css">
-<link rel="stylesheet" href="/listSeries.css">
 <link rel="stylesheet" href="/login.css">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,17 +17,7 @@
 </head>
 <body>
 
-<button type=button onclick="document.getElementById('id01').style.display='block'" class="btn-long ">Login ...</button>
-
-
-<div th:fragment="login">
-
-	<div  id="id01" class="modal">
-
-		<p th:if="${loginError}" class="error">Wrong user or password</p>
-
-		<form class="modal-content animate" th:action="@{/perform_login}"
-			method="post">
+		<form class="modal-content animate" th:action="@{/perform_login}" method="post">
 
 
 			<div class="container">
@@ -38,32 +27,18 @@
 					type="password" placeholder="Passwort eingeben" id="password"
 					name="password" required />
 					
-					<p th:if="${loginError}" class="error">Wrong user or password</p>
+					<p th:if="${loginError}" class="error">Falscher Benutzername oder Passwort!</p>
 
 				<button type="submit">Anmelden</button>
 
 			</div>
 
-			<div class="container" style="background-color: #f1f1f1">
-				<button type="button"
-					onclick="document.getElementById('id01').style.display='none'"
-					class="cancelbtn">Cancel</button>
+			<div class="container">
+				<div id="cancel_container">
+					<a href="/startSerialSeries">  <button type="button" class="cancelbtn">Cancel</button></a> 
+				</div>
 			</div>
 		</form>
-	</div>
-
-	<script>
-		// Get the modal
-		var modal = document.getElementById('id01');
-
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		}
-	</script>
-
-</div>
+	
 </body>
 </html>
