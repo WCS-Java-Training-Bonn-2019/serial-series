@@ -86,7 +86,7 @@
 									<!-- Anzeige Meine Serien -->
 									<div th:if="${Type == 'My'}">
 									 	<a th:href="@{/listSerieSeasonsEpisodes/details(idSerie=${serie.id}, idUser=${UserId})}" class="card-link">Staffelübersicht</a>
-										<a th:href="@{/listSeries/loeschen(idSerie=${serie.id}, idUser=${UserId})}">Löschen</a>
+									 	<a th:href="@{/listSeries/loeschen(idSerie=${serie.id}, idUser=${UserId})}" onclick="return confirm('Soll die Serie wirklich entfernt werden?')"> Löschen</a>
 									</div>
 
 
@@ -105,3 +105,4 @@
 <div th:insert="footer.html :: footer"> </div>
 
 </html>
+
