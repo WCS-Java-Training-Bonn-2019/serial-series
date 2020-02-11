@@ -34,6 +34,7 @@ CREATE TABLE `serie` (
   `name` varchar(255) DEFAULT NULL,
   `picture_url` varchar(255) DEFAULT NULL,
   `description` longtext,
+  `hashtag` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ;
 /*!40101 SET character_set_client = @saved_cs_client */;

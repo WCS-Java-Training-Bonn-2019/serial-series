@@ -49,8 +49,8 @@
 							<!-- Bild bei New clickbar machen -->
 							<!-- erst normales Bild anzeigen ohne weitere Funktion -->
 							<pic th:if="${Type == 'All'}">
-								<a href="/underConstruction.html" >
-								<img class="card-img-top" th:src="${serie.picture_url}" alt="Login(noch nicht aktiv)">
+								<a th:href="@{/listSerieSeasonsEpisodes(idSerie=${serie.id}, idUser=${UserId})}">
+								<img class="card-img-top" th:src="${serie.picture_url}" alt="Staffelübersicht">
 								</a>
 							</pic>
 							<!-- jetzt Bild anzeigen mit Funktion -->
@@ -60,22 +60,20 @@
 								</a>
 							</pic>
 							<pic th:if="${Type == 'My'}">
-								<a th:href="@{/listSerieSeasonsEpisodes/details(idSerie=${serie.id}, idUser=${UserId})}">
+								<a th:href="@{/listSerieSeasonsEpisodes(idSerie=${serie.id}, idUser=${UserId})}">
 								<img class="card-img-top" th:src="${serie.picture_url}" alt="Staffelübersicht">
 								</a>
 							</pic>
 							<div class="card-body">
 								<h5 class="card-title" th:text="${serie.name}">Titel</h5>
 								<p class="card-text" th:text="${serie.description}">Text</p>
+								<p class="card-text" th:text="${serie.hashtag}">Text</p>
 								<br>
 								<div class="card-footer">
 
 									<!-- Anzeige Alle Serien -->
 									<div th:if="${Type == 'All'}">
-										<!-- 
-										<a th:href="${'/listSerieSeasonsEpisodes/' + serie.id}" class="card-link">Staffelübersicht</a>
-										 -->
-										<a href="/underConstruction.html" class="card-link">Staffelübersicht</a> 
+										<a th:href="@{/listSerieSeasonsEpisodes(idSerie=${serie.id}, idUser=${UserId})}"class="card-link">Staffelübersicht </a>
 									</div>
 
 									<!-- Anzeige Hinzufügbare Serien -->
@@ -85,7 +83,7 @@
 
 									<!-- Anzeige Meine Serien -->
 									<div th:if="${Type == 'My'}">
-									 	<a th:href="@{/listSerieSeasonsEpisodes/details(idSerie=${serie.id}, idUser=${UserId})}" class="card-link">Staffelübersicht</a>
+									 	<a th:href="@{/listSerieSeasonsEpisodes(idSerie=${serie.id}, idUser=${UserId})}"class="card-link">Staffelübersicht </a>
 									 	<a th:href="@{/listSeries/loeschen(idSerie=${serie.id}, idUser=${UserId})}" onclick="return confirm('Soll die Serie wirklich entfernt werden?')"> Löschen</a>
 									</div>
 

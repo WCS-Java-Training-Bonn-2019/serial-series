@@ -14,8 +14,8 @@ import javax.persistence.OneToMany;
 public class Season {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	long id;
-	int season_Nr;
+	private long id;
+	private int season_Nr;
 		
 	
 	//Eine Staffel gehört zu genau iner Serie

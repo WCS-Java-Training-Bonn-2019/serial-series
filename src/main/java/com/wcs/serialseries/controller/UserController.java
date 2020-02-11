@@ -40,7 +40,7 @@ public class UserController {
 	
 	//Startpage
 
-	@GetMapping("/startSerialSeries")
+	@GetMapping({"/startSerialSeries", "/"})	
 	public String startSerialSeries(Model model) {
 		model.addAttribute("Users", userRepository.findAll());
 		model.addAttribute("Title", service.getEmptyTitle());
@@ -49,20 +49,20 @@ public class UserController {
 		return "start.html";
 	}
 	
-	@GetMapping("/")
-	public String startSerialSeriesFromRoot(Model model) {
-		model.addAttribute("Users", userRepository.findAll());
-		model.addAttribute("Title", service.getEmptyTitle());
-		model.addAttribute("Type", "Start");
-		model.addAttribute("UserId", 0L);
-		return "start.html";
-	}
+//	@GetMapping("/")
+//	public String startSerialSeriesFromRoot(Model model) {
+//		model.addAttribute("Users", userRepository.findAll());
+//		model.addAttribute("Title", service.getEmptyTitle());
+//		model.addAttribute("Type", "Start");
+//		model.addAttribute("UserId", 0L);
+//		return "start.html";
+//	}
 
 	
-	 @PostMapping("/startSerialSeries") 
-	    public String postStartSerialSeries(@RequestParam Long idUser) {
-		return "redirect:/listSeries/" + idUser;
-	 }
+//	@PostMapping("/startSerialSeries")
+//	public String postStartSerialSeries(@RequestParam Long idUser) {
+//		return "redirect:/listSeries/" + idUser;
+//	}
 	 
 	 
 	 

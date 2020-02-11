@@ -33,7 +33,6 @@ public class User implements UserDetails {
 	@OneToMany(mappedBy = "user")
 	private List<SerieUser> serieUsers = new ArrayList<>();
 	 
-	 
 	
 // kein Constuctor!!!
 

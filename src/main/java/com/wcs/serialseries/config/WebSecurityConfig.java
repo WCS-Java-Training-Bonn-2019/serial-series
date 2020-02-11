@@ -34,10 +34,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 
 		http
-		.authorizeRequests().antMatchers("/listSeries/*", "/listSerieSeasonsEpisodes/**")
+		.authorizeRequests().antMatchers("/listMySeries", "/listSerieSeasonsEpisodes/**")
 				.hasAnyRole("ADMIN", "JUNKY")
-				.antMatchers("/", "/startSerialSeries", "/listSeries", "/FAQ", "/pictures/*", "/media/*", "/FAQ.css",
-						"/global.css", "/login.css", "/header.css", "/listSeries.css", "/header.css",
+				.antMatchers("/", "/startSerialSeries", "/listAllSeries", "/listSearch", "/listSearch/*", "/FAQ", "/pictures/*", "/media/*", "/FAQ.css",
+						"/global.css", "/login.css", "/header.css", "/listSeries.css", "/header.css", "/underConstruction.html",
 						"/listSerieWithSeasonsAndEpisodes.css", "/start.css", "/webjars/**")
 				.permitAll()
 				.anyRequest()
@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.formLogin()
 				.loginPage("/login")
 				.loginProcessingUrl("/perform_login")
-				.defaultSuccessUrl("/listSeries/", true)
+				.defaultSuccessUrl("/listMySeries", true)
 				.failureUrl("/login-error")
 				.permitAll()
 				.and()
