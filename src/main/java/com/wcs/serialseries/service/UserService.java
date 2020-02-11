@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.wcs.serialseries.model.Serie;
 import com.wcs.serialseries.model.SerieUser;
 import com.wcs.serialseries.model.User;
 import com.wcs.serialseries.repository.SerieUserRepository;
@@ -73,6 +74,43 @@ public class UserService {
 			
 		}
 
+	}
+
+
+	public List<Serie> removeMySeries(List<Serie> series, long userId) {
+		
+		int i = 0;
+		while (i < series.size()) {
+			List<SerieUser> serieUser = series.get(i).getSerieUsers();
+			int y = 0;
+			while (y < serieUser.size()) {
+				if (serieUser.get(y).getUser().getId() == userId) {
+					series.remove(i);
+					i--;
+
+				}
+				y++;
+			}
+			i++;
+		}
+		return series;
+	}
+	
+	public List<Serie> removeNotMySeries(List<Serie> series, long userId) {
+
+		int i = 0;
+		while (i < series.size()) {
+			List<SerieUser> serieUser = series.get(i).getSerieUsers();
+			int y = 0;
+			boolean delete = true;
+			while (y < serieUser.size()) {
+				if (serieUser.get(y).getUser().getId() == userId) delete = false;
+				y++;
+			}
+			if (delete) series.remove(i);
+			else i++;
+		}
+		return series;
 	}
 
 }

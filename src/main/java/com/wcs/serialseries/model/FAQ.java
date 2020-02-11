@@ -11,10 +11,10 @@ public class FAQ {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-	String frage;
+    private Long id;
+	private String frage;
 	@Column(columnDefinition="LONGTEXT")
-	String antwort;
+	private String antwort;
 	
 	
 	public Long getId() {

@@ -44,7 +44,7 @@ public class SerieUserEpisodeController {
 		this.service = service;
 	}
 
-	@GetMapping("/listSerieSeasonsEpisodes/details")
+	@GetMapping("/listSerieSeasonsEpisodes")
 	public String showSerie(@RequestParam long idUser, @RequestParam long idSerie, Model model) {
 
 		Optional<Serie> optionalSerie = serieRepository.findById(idSerie);
@@ -100,7 +100,6 @@ public class SerieUserEpisodeController {
 	}
 
 	@PostMapping("/listSerieSeasonsEpisodes")
-	
 	public String postStaffeln(@RequestParam(value = "seen", required = false) int[] seen,
 			@RequestParam(value = "wanted", required = false) int[] wanted,
 			@RequestParam(value = "UserId", required = false) long idUser,
@@ -123,10 +122,12 @@ public class SerieUserEpisodeController {
 				}
 				
 				// Wanna_c durchsuchen
-				for (int ittWanted = 0; ittWanted < wanted.length; ittWanted++) {
-					// Staffelnummer identisch zu wanted?
-					if (serieUserEpisodes.get(ittStaffel).getEpisode().getId() == wanted[ittWanted]) {
-						serieUserEpisodes.get(ittStaffel).setWanna_c(true);
+				if (wanted != null) {
+					for (int ittWanted = 0; ittWanted < wanted.length; ittWanted++) {
+						// Staffelnummer identisch zu wanted?
+						if (serieUserEpisodes.get(ittStaffel).getEpisode().getId() == wanted[ittWanted]) {
+							serieUserEpisodes.get(ittStaffel).setWanna_c(true);
+						}
 					}
 				}
 				// Abspeichern
@@ -134,7 +135,7 @@ public class SerieUserEpisodeController {
 			}
 		}
 
-		return "redirect:/listSeries/" + idUser;
+		return "redirect:/listMySeries/";
 
 	}
 

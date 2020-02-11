@@ -41,7 +41,7 @@ public class SerieUserController {
 		if (!listOfSerieUsers.isEmpty())
 			serieUserRepository.deleteById(listOfSerieUsers.get(0).getId());
 
-		return "redirect:/listSeries/" + idUser;
+		return "redirect:/listMySeries";
 	}
 
 	@GetMapping("/listSeries/neu")
@@ -73,7 +73,7 @@ public class SerieUserController {
 			}
 		}
 
-		return "redirect:/listSeries/" + idUser;
+		return "redirect:/listMySeries";
 	}
 
 }

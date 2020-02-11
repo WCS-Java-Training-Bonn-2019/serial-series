@@ -15,18 +15,17 @@ import javax.persistence.OneToMany;
 public class Episode {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	long id;
-	int episode_Nr;
-	String name;
-	
+	private long id;
+	private int episode_Nr;
+	private String name;
+
 	@ManyToOne
-    @JoinColumn(name = "season_id")
-    private Season season;
-	
-	 @OneToMany(mappedBy = "episode")
-	 private List<SerieUserEpisode> serieUserEpisodes = new ArrayList<>();
-	 
-	 
+	@JoinColumn(name = "season_id")
+	private Season season;
+
+	@OneToMany(mappedBy = "episode")
+	private List<SerieUserEpisode> serieUserEpisodes = new ArrayList<>();
+
 	// Getter & Setter
 
 	public long getId() {
@@ -37,7 +36,6 @@ public class Episode {
 		this.id = id;
 	}
 
-	
 	public int getEpisode_Nr() {
 		return episode_Nr;
 	}
@@ -69,13 +67,5 @@ public class Episode {
 	public void setSerieUserEpisodes(List<SerieUserEpisode> serieUserEpisodes) {
 		this.serieUserEpisodes = serieUserEpisodes;
 	}
-	
-		
 
-	
-	
-	
-	
-
-	
 }

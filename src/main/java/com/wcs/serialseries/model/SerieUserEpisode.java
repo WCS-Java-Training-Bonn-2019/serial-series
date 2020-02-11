@@ -22,9 +22,9 @@ public class SerieUserEpisode {
 	@JoinColumn(name="serieUserId")
 	private SerieUser serieUser;
 	
-	boolean watched;
-	boolean wanna_c;
-	int ranking;
+	private boolean watched;
+	private boolean wanna_c;
+	private int ranking;
 	
 	
 	/* Getter & Setter */

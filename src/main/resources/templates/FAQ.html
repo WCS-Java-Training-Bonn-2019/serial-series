@@ -23,7 +23,7 @@
 		<details th:each="faq : ${faq}">
 			<summary th:text="|${faq.frage}|"></summary>
 			<li th:text="|${faq.antwort}|"></li>
-			</details>
+		</details>
 	</form>
 
 	<div th:insert="footer.html :: footer"></div>
