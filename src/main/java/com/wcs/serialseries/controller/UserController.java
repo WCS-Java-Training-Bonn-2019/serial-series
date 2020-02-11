@@ -2,6 +2,7 @@ package com.wcs.serialseries.controller;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -82,6 +83,23 @@ public class UserController {
 		model.addAttribute("Users", userRepository.findAll());
 
 		return "listUsers.html";
+	}
+	
+	@GetMapping("/editUser")
+	public String editUsers(Model model) {
+		
+		model.addAttribute("Type", "Login");
+		model.addAttribute("Title", service.getEmptyTitle());
+			
+		return "newUser.html";
+	}
+	
+	@PostMapping("/upsetUser")
+	public String upsetUser(
+			@RequestParam(value = "username", required = false) String username,
+			@RequestParam(value = "password", required = false) String password) {
+		//Noch anpassen
+		return "redirect:/listAllSeries";
 	}
 	
 	/*
