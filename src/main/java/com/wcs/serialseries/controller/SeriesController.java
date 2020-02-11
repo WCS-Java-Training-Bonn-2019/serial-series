@@ -27,6 +27,8 @@ public class SeriesController {
 		this.service = service;
 	}
 
+	
+	//Gleicher Controller für "Meine Serien" und "Alle Serien"
 	@GetMapping({ "/listMySeries", "/listAllSeries" })
 	public String listSeries(Model model) {
 
@@ -51,6 +53,7 @@ public class SeriesController {
 
 	}
 
+	//Gleicher Controller Suche auf "Meine Serien" und "Alle Serien"
 	@GetMapping("/listSearch/{search}")
 	public String listSeriesSearch(Model model, @PathVariable String search) {
 
@@ -83,6 +86,7 @@ public class SeriesController {
 		}
 	}
 
+	//Gleicher Controller Suche auf "Meine Serien" und "Alle Serien", wenn Suchstring leer
 	@GetMapping("/listSearch")
 	public String listSeriesEmptySearch(Model model) {
 
@@ -105,7 +109,47 @@ public class SeriesController {
 			return "redirect:/listMySeries";
 	}
 	
+	//Such-Controller für "Neu/Hinzufügrn Serien"
+	@GetMapping("/listSearchNew/{search}")
+	public String listNewSearch(Model model, @PathVariable String search) {
 
+		long userId = service.getCurrentLoggedInUserId();
+
+		if (userId != 0) {
+			if (search == null || search.isEmpty())
+				model.addAttribute("Series", serieRepository.findBySerieUsersUserIdOrderByName(userId));
+			else {
+				List<Serie> series = serieRepository.findAllByNameContainingOrDescriptionContainingOrHashtagContainingOrderByName(search, search, search);
+				series = service.removeMySeries(series, userId);
+				model.addAttribute("Series", series);
+			}
+
+			model.addAttribute("Title", service.getTitleFromId(userId));
+			model.addAttribute("Type", "New");
+			model.addAttribute("UserId", userId);
+
+		}
+		return "listSeries.html";
+	}
+	//Such-Controller für "Neu/Hinzufügrn Serien", leerer Suchstring
+	@GetMapping("/listSearchNew")
+	public String listNewEmptySearch(Model model) {
+
+		long userId = service.getCurrentLoggedInUserId();
+
+		if (userId!= 0) {
+			model.addAttribute("Series", serieRepository.findBySerieUsersUserId(userId));
+			model.addAttribute("Title", service.getTitleFromId(userId));
+			model.addAttribute("Type", "My");
+			model.addAttribute("UserId", userId);
+		}
+		return "redirect:/listMySeries";
+	}
+	
+	
+	
+	
+	//Controller für "Neu/Hinzufügrn Serien"
 	@GetMapping("/listSeries/New")
 	public String listNewSeriesForUserId(Model model) {
 
@@ -132,8 +176,15 @@ public class SeriesController {
 		}
 	}
 
+	//Controller zur Entgegennahme Suchstring "Meine-Serien" und "Alle Serien"
 	@PostMapping("/listSearch")
 	public String postSearch(@RequestParam(value = "Search", required = false) String search) {
 		return "redirect:/listSearch/" + search;
+	}
+	
+	//Controller zur Entgegennahme Suchstring "Neue/Hinzuzufügende-Serien"
+	@PostMapping("/listSearchNew")
+	public String postSearchNew(@RequestParam(value = "Search", required = false) String search) {
+		return "redirect:/listSearchNew/" + search;
 	}
 }
