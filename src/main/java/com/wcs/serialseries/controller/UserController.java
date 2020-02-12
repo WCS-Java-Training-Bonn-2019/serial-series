@@ -2,7 +2,6 @@ package com.wcs.serialseries.controller;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.wcs.serialseries.model.Serie;
 import com.wcs.serialseries.model.User;
 import com.wcs.serialseries.repository.SerieRepository;
-import com.wcs.serialseries.repository.SerieUserEpisodeRepository;
-import com.wcs.serialseries.repository.SerieUserRepository;
 import com.wcs.serialseries.repository.UserRepository;
 import com.wcs.serialseries.service.UserService;
 
@@ -53,8 +50,6 @@ public class UserController {
 		model.addAttribute("UserId", 0L);
 		return "start.html";
 	}
-	
-	 
 	 
 	 // Playground
 	 
@@ -79,12 +74,6 @@ public class UserController {
 		return "newUser.html";
 	}
 
-//	@GetMapping("/register-error")
-//	public String errorRegisterPage(Model model) {
-//		model.addAttribute("registerError", true);
-//		
-//		return "/login";
-//	}
 	
 	@GetMapping("/upsetUser")
 	public String Page(Model model) {
@@ -118,7 +107,6 @@ public class UserController {
 	}
 	
 	
-
     @GetMapping("/addseries2user")
     public String getRegister(Model out,
                               @RequestParam Long idUser) {
