@@ -43,3 +43,11 @@ nav {
 	margin:8px 8px 0px 0px;
 	
 }
+
+
+/* Admin */
+.dropdown-menu{
+	z-index: 1000000;
+	background-color: green;
+}
+

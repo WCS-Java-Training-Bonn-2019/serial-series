@@ -40,8 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						"/global.css", "/login.css", "/header.css", "/listSeries.css", "/header.css", "/underConstruction.html",
 						"/listSerieWithSeasonsAndEpisodes.css", "/start.css", "/webjars/**")
 				.permitAll()
-				.anyRequest()
-				.authenticated()
+				.anyRequest().authenticated()
 				.and()
 			.formLogin()
 				.loginPage("/login")
@@ -60,10 +59,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	}
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {

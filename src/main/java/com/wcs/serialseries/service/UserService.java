@@ -20,47 +20,50 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private SerieUserRepository serieUserRepository;
 
 	public String getTitleFromId(long userId) {
 
-		Optional<User> optionalUser = userRepository.findById(userId);
-		if (optionalUser.isPresent()) {
-			return ("Serial-Series - " + optionalUser.get().getUsername() + ":     ");
+		if (userId == -1L) {
+			return ("Serial-Series - ADMIN:     ");
 		} else {
-			return "Serial-Series:     ";
+
+			Optional<User> optionalUser = userRepository.findById(userId);
+			if (optionalUser.isPresent()) {
+				return ("Serial-Series - " + optionalUser.get().getUsername() + ":     ");
+			} else {
+				return "Serial-Series:     ";
+			}
 		}
-
 	}
-
 
 	public String getEmptyTitle() {
 		return "Serial-Series:     ";
+	}
 
-	}
-	
 	public long getSerieUserFromDB(long idUser, long idSerie) {
-	
-	List<SerieUser> listOfSerieUsers = serieUserRepository.findByUserIdAndSerieId(idUser, idSerie);
-	if (!listOfSerieUsers.isEmpty()) {
-		return listOfSerieUsers.get(0).getId();
+		List<SerieUser> listOfSerieUsers = serieUserRepository.findByUserIdAndSerieId(idUser, idSerie);
+		if (!listOfSerieUsers.isEmpty()) {
+			return listOfSerieUsers.get(0).getId();
+		} else
+			return 0;
 	}
-	else 
-		return 0;
-	}
-	
+
+	/**
+	 * 
+	 * @return 0L=kein User angemeldet ansonsten UserId
+	 */
 	public long getCurrentLoggedInUserId() {
-		
+
 		String userName;
-		
-		
+
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (principal instanceof UserDetails) {
-		  userName = ((UserDetails)principal).getUsername();
+			userName = ((UserDetails) principal).getUsername();
 		} else {
-		  userName = principal.toString();
+			userName = principal.toString();
 		}
 		if ("anonymousUser".equals(userName))
 			return 0L;
@@ -70,54 +73,53 @@ public class UserService {
 			if (optionalUser.isPresent()) {
 				return optionalUser.get().getId();
 			} else {
-				return 0L;
+				return -1L;
 			}
-			
 		}
 
 	}
 
-
 	public List<Serie> removeMySeries(List<Serie> series, long userId) {
-		
-		
+
 		ListIterator<Serie> listIterator = series.listIterator();
-		
+
 		while (listIterator.hasNext()) {
 			Serie serie = listIterator.next();
-			
+
 			ListIterator<SerieUser> listIteratorSerieUser = serie.getSerieUsers().listIterator();
 			while (listIteratorSerieUser.hasNext()) {
 				SerieUser serieUser = listIteratorSerieUser.next();
-				if (serieUser.getUser().getId()== userId) {
-					listIterator.remove();  
+				if (serieUser.getUser().getId() == userId) {
+					listIterator.remove();
 					break;
 				}
 			}
-			
+
 		}
-		
+
 		return series;
 	}
-	
+
 	public List<Serie> removeNotMySeries(List<Serie> series, long userId) {
 
 		ListIterator<Serie> listIterator = series.listIterator();
-		
+
 		while (listIterator.hasNext()) {
 			Serie serie = listIterator.next();
-			
+
 			boolean delete = true;
 			ListIterator<SerieUser> listIteratorSerieUser = serie.getSerieUsers().listIterator();
 			while (listIteratorSerieUser.hasNext()) {
 				SerieUser serieUser = listIteratorSerieUser.next();
-				if (serieUser.getUser().getId()== userId) delete = false;  
+				if (serieUser.getUser().getId() == userId)
+					delete = false;
 			}
-			
-			if (delete) listIterator.remove();
-		
+
+			if (delete)
+				listIterator.remove();
+
 		}
-		
+
 		return series;
 	}
 

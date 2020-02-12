@@ -2,7 +2,6 @@ package com.wcs.serialseries.controller;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -17,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.wcs.serialseries.model.Serie;
 import com.wcs.serialseries.model.User;
 import com.wcs.serialseries.repository.SerieRepository;
-import com.wcs.serialseries.repository.SerieUserEpisodeRepository;
-import com.wcs.serialseries.repository.SerieUserRepository;
 import com.wcs.serialseries.repository.UserRepository;
 import com.wcs.serialseries.service.UserService;
 
@@ -49,26 +46,7 @@ public class UserController {
 		model.addAttribute("UserId", 0L);
 		return "start.html";
 	}
-	
-//	@GetMapping("/")
-//	public String startSerialSeriesFromRoot(Model model) {
-//		model.addAttribute("Users", userRepository.findAll());
-//		model.addAttribute("Title", service.getEmptyTitle());
-//		model.addAttribute("Type", "Start");
-//		model.addAttribute("UserId", 0L);
-//		return "start.html";
-//	}
 
-	
-//	@PostMapping("/startSerialSeries")
-//	public String postStartSerialSeries(@RequestParam Long idUser) {
-//		return "redirect:/listSeries/" + idUser;
-//	}
-	 
-	 
-	 
-	 
-	 
 	 
 	 // Playground
 	 
@@ -102,17 +80,7 @@ public class UserController {
 		return "redirect:/listAllSeries";
 	}
 	
-	/*
-    @GetMapping("/")
-    public String getUsers(Model out) {
-
-        out.addAttribute("users", userRepository.findAll());
-
-        return "users";
-    }
-    
-    */
-
+	
     @GetMapping("/addseries2user")
     public String getRegister(Model out,
                               @RequestParam Long idUser) {
