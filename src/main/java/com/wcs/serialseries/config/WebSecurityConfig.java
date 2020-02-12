@@ -36,7 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 		.authorizeRequests().antMatchers("/listMySeries", "/listSerieSeasonsEpisodes/**")
 				.hasAnyRole("ADMIN", "JUNKY")
-				.antMatchers("/", "/startSerialSeries", "/listAllSeries", "/listSearch", "/editUser","/upsetUser", "/listSearch/*", "/FAQ", "/pictures/*", "/media/*", "/FAQ.css",
+				.antMatchers("/", "/startSerialSeries", "/listAllSeries", "/listSearch", "/editUser","/upsetUser", "/listSearch/*",
+						"/FAQ", "/pictures/*", "/media/*", "/FAQ.css", "/register-error",
 						"/global.css", "/login.css", "/header.css", "/listSeries.css", "/header.css", "/underConstruction.html",
 						"/listSerieWithSeasonsAndEpisodes.css", "/start.css", "/webjars/**")
 				.permitAll()
@@ -60,10 +61,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	}
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+//	@Bean
+//	public PasswordEncoder passwordEncoder() {
+//		return new BCryptPasswordEncoder();
+//	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {

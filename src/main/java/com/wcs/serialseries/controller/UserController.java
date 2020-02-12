@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,13 +31,16 @@ public class UserController {
 	private final UserRepository userRepository;
 	private final SerieRepository serieRepository;
 	private final UserService service;
+	private final PasswordEncoder encoder;
 	
 	
 	@Autowired
-	public UserController(SerieRepository serieRepository, 	UserRepository userRepository, UserService service) {
+	public UserController(SerieRepository serieRepository, 	UserRepository userRepository, UserService service, PasswordEncoder encoder) {
 		this.serieRepository = serieRepository;
 		this.userRepository = userRepository;
 		this.service = service;
+		this.encoder = encoder;
+
 	}
 	
 	//Startpage
@@ -50,31 +54,12 @@ public class UserController {
 		return "start.html";
 	}
 	
-//	@GetMapping("/")
-//	public String startSerialSeriesFromRoot(Model model) {
-//		model.addAttribute("Users", userRepository.findAll());
-//		model.addAttribute("Title", service.getEmptyTitle());
-//		model.addAttribute("Type", "Start");
-//		model.addAttribute("UserId", 0L);
-//		return "start.html";
-//	}
-
-	
-//	@PostMapping("/startSerialSeries")
-//	public String postStartSerialSeries(@RequestParam Long idUser) {
-//		return "redirect:/listSeries/" + idUser;
-//	}
-	 
-	 
-	 
-	 
 	 
 	 
 	 // Playground
 	 
 	 
-	 
-	 
+		 
 
 	@GetMapping("/listUsers")
 	public String listUsers(Model model) {
@@ -93,25 +78,42 @@ public class UserController {
 			
 		return "newUser.html";
 	}
-	
-	@PostMapping("/upsetUser")
-	public String upsetUser(
-			@RequestParam(value = "username", required = false) String username,
-			@RequestParam(value = "password", required = false) String password) {
-		//Noch anpassen
-		return "redirect:/listAllSeries";
+
+	@GetMapping("/register-error")
+	public String errorRegisterPage(Model model) {
+		model.addAttribute("registerError", true);
+		
+		return "/login";
 	}
 	
-	/*
-    @GetMapping("/")
-    public String getUsers(Model out) {
+	@GetMapping("/upsetUser")
+	public String Page(Model model) {
+		
+		return "/upsetUser";
+	}
+	
 
-        out.addAttribute("users", userRepository.findAll());
+	
+	@PostMapping("/upsetUser")
+	public String upsetUser(Model model,
+			@RequestParam(value = "username", required = false) String username,
+			@RequestParam(value = "password", required = false) String password) {
 
-        return "users";
-    }
-    
-    */
+		Optional<User> optionalUser = userRepository.findByUsername(username);
+		if (optionalUser.isPresent()) {
+			model.addAttribute("registerError", true);
+			return "redirect:/register-error";
+		} else {
+			User newUser = new User();
+			newUser.setUsername(username);
+			newUser.setPassword(encoder.encode(password));
+			newUser = userRepository.save(newUser);
+			return "redirect:/login";
+		}
+		
+	}
+	
+	
 
     @GetMapping("/addseries2user")
     public String getRegister(Model out,

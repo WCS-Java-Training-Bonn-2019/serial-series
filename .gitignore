@@ -29,3 +29,6 @@ hs_err_pid*
 #Ignore folder bin
 bin/
 target/
+
+# PID-Files
+.attach_pid*

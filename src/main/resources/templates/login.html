@@ -18,35 +18,37 @@
 
 <header th:insert="header.html :: header"></header>
 <body>
-
-		<form class="modal-content animate" th:action="@{/perform_login}" method="post">
-
-
-			<div class="container">
-				<label for="uname"><b>Benutzername</b></label> <input type="text"
-					placeholder="Benutzernamen eingeben" id="username" name="username"
-					required /> <label for="psw"><b>Passwort</b></label> <input
-					type="password" placeholder="Passwort eingeben" id="password"
-					name="password" required />
-					
-					<p th:if="${loginError}" class="error">Falscher Benutzername oder Passwort!</p>
-
-				<button type="submit">Anmelden</button>
-				
-				<div class="col-5">
-								<a class="btn btn-lg btn-primary btn-block" href="/editUser"
-									role="button">Register</a>
-
-							</div>
-				</div>
-
-			<div class="container">
-				<div id="cancel_container">
-					<a href="/startSerialSeries">  <button type="button" class="cancelbtn">Cancel</button></a> 
-				</div>
+	<form class="modal-content animate" th:action="@{/perform_login}"
+		method="post">
+		<div class="container">
+			<label for="uname">
+				<b>Benutzername</b>
+			</label>
+			<input type="text" placeholder="Benutzernamen eingeben" id="username"
+				name="username" required />
+			<label for="psw">
+				<b>Passwort</b>
+			</label>
+			<input type="password" placeholder="Passwort eingeben" id="password"
+				name="password" required />
+			<p th:if="${loginError}" class="error">Falscher Benutzername oder
+				Passwort!</p>
+			<p th:if="${registerError}" class="error">
+				<b>Benutzername bereits belegt!</b>
+			</p>
+			<button type="submit">Anmelden</button>
+		</div>
+		<div class="container">
+			<div id="cancel_container">
+				<a href="/startSerialSeries">
+					<button type="button" class="cancelbtn">Cancel</button>
+				</a>
+				<a href="/editUser">
+					<button type="button" class="cancelbtn">Register</button>
+				</a>
 			</div>
-		</form>
-	
+		</div>
+	</form>
 </body>
-<div th:insert="footer.html :: footer"> </div>
+<div th:insert="footer.html :: footer"></div>
 </html>
