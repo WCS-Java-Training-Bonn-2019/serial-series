@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,13 +28,16 @@ public class UserController {
 	private final UserRepository userRepository;
 	private final SerieRepository serieRepository;
 	private final UserService service;
+	private final PasswordEncoder encoder;
 	
 	
 	@Autowired
-	public UserController(SerieRepository serieRepository, 	UserRepository userRepository, UserService service) {
+	public UserController(SerieRepository serieRepository, 	UserRepository userRepository, UserService service, PasswordEncoder encoder) {
 		this.serieRepository = serieRepository;
 		this.userRepository = userRepository;
 		this.service = service;
+		this.encoder = encoder;
+
 	}
 	
 	//Startpage
@@ -46,13 +50,11 @@ public class UserController {
 		model.addAttribute("UserId", 0L);
 		return "start.html";
 	}
-
 	 
 	 // Playground
 	 
 	 
-	 
-	 
+		 
 
 	@GetMapping("/listUsers")
 	public String listUsers(Model model) {
@@ -71,13 +73,37 @@ public class UserController {
 			
 		return "newUser.html";
 	}
+
+	
+	@GetMapping("/upsetUser")
+	public String Page(Model model) {
+		
+		return "/upsetUser";
+	}
+	
+
 	
 	@PostMapping("/upsetUser")
-	public String upsetUser(
+	public String upsetUser(Model model,
 			@RequestParam(value = "username", required = false) String username,
 			@RequestParam(value = "password", required = false) String password) {
-		//Noch anpassen
-		return "redirect:/listAllSeries";
+
+		Optional<User> optionalUser = userRepository.findByUsername(username);
+		if (optionalUser.isPresent()) {
+			model.addAttribute("registerError", true);
+			return "/login";
+		} else {
+			if("admin".equalsIgnoreCase(username)) {
+				model.addAttribute("adminError", true);
+				return "/login";
+			}
+			User newUser = new User();
+			newUser.setUsername(username);
+			newUser.setPassword(encoder.encode(password));
+			newUser = userRepository.save(newUser);
+			return "redirect:/login";
+		}
+		
 	}
 	
 	
