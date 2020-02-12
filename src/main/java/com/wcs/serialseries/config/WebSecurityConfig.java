@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 		.authorizeRequests().antMatchers("/listMySeries", "/listSerieSeasonsEpisodes/**")
 				.hasAnyRole("ADMIN", "JUNKY")
-				.antMatchers("/", "/startSerialSeries", "/listAllSeries", "/listSearch", "/editUser","/upsetUser", "/listSearch/*",
+        .antMatchers("/", "/startSerialSeries", "/listAllSeries", "/listSearch", "/editUser","/upsetUser", "/listSearch/*",
 						"/FAQ", "/pictures/*", "/media/*", "/FAQ.css", "/register-error",
 						"/global.css", "/login.css", "/header.css", "/listSeries.css", "/header.css", "/underConstruction.html",
 						"/listSerieWithSeasonsAndEpisodes.css", "/start.css", "/webjars/**")
