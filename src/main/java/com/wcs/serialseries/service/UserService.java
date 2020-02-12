@@ -1,6 +1,7 @@
 package com.wcs.serialseries.service;
 
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,37 +80,44 @@ public class UserService {
 
 	public List<Serie> removeMySeries(List<Serie> series, long userId) {
 		
-		int i = 0;
-		while (i < series.size()) {
-			List<SerieUser> serieUser = series.get(i).getSerieUsers();
-			int y = 0;
-			while (y < serieUser.size()) {
-				if (serieUser.get(y).getUser().getId() == userId) {
-					series.remove(i);
-					i--;
-
+		
+		ListIterator<Serie> listIterator = series.listIterator();
+		
+		while (listIterator.hasNext()) {
+			Serie serie = listIterator.next();
+			
+			ListIterator<SerieUser> listIteratorSerieUser = serie.getSerieUsers().listIterator();
+			while (listIteratorSerieUser.hasNext()) {
+				SerieUser serieUser = listIteratorSerieUser.next();
+				if (serieUser.getUser().getId()== userId) {
+					listIterator.remove();  
+					break;
 				}
-				y++;
 			}
-			i++;
+			
 		}
+		
 		return series;
 	}
 	
 	public List<Serie> removeNotMySeries(List<Serie> series, long userId) {
 
-		int i = 0;
-		while (i < series.size()) {
-			List<SerieUser> serieUser = series.get(i).getSerieUsers();
-			int y = 0;
+		ListIterator<Serie> listIterator = series.listIterator();
+		
+		while (listIterator.hasNext()) {
+			Serie serie = listIterator.next();
+			
 			boolean delete = true;
-			while (y < serieUser.size()) {
-				if (serieUser.get(y).getUser().getId() == userId) delete = false;
-				y++;
+			ListIterator<SerieUser> listIteratorSerieUser = serie.getSerieUsers().listIterator();
+			while (listIteratorSerieUser.hasNext()) {
+				SerieUser serieUser = listIteratorSerieUser.next();
+				if (serieUser.getUser().getId()== userId) delete = false;  
 			}
-			if (delete) series.remove(i);
-			else i++;
+			
+			if (delete) listIterator.remove();
+		
 		}
+		
 		return series;
 	}
 
