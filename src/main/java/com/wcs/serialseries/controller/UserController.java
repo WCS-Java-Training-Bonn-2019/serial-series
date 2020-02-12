@@ -79,12 +79,12 @@ public class UserController {
 		return "newUser.html";
 	}
 
-	@GetMapping("/register-error")
-	public String errorRegisterPage(Model model) {
-		model.addAttribute("registerError", true);
-		
-		return "/login";
-	}
+//	@GetMapping("/register-error")
+//	public String errorRegisterPage(Model model) {
+//		model.addAttribute("registerError", true);
+//		
+//		return "/login";
+//	}
 	
 	@GetMapping("/upsetUser")
 	public String Page(Model model) {
@@ -102,8 +102,12 @@ public class UserController {
 		Optional<User> optionalUser = userRepository.findByUsername(username);
 		if (optionalUser.isPresent()) {
 			model.addAttribute("registerError", true);
-			return "redirect:/register-error";
+			return "/login";
 		} else {
+			if("admin".equalsIgnoreCase(username)) {
+				model.addAttribute("adminError", true);
+				return "/login";
+			}
 			User newUser = new User();
 			newUser.setUsername(username);
 			newUser.setPassword(encoder.encode(password));

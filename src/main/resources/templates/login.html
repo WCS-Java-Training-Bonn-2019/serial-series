@@ -36,6 +36,9 @@
 			<p th:if="${registerError}" class="error">
 				<b>Benutzername bereits belegt!</b>
 			</p>
+			<p th:if="${adminError}" class="error">
+				<b><strong>Admin</strong> als Benutzername nicht erlaubt!</b>
+			</p>
 			<button type="submit">Anmelden</button>
 		</div>
 		<div class="container">
