@@ -3,9 +3,9 @@ package com.wcs.serialseries.form;
 import java.util.List;
 
 public class FormSeason {
-		long id;
-		int season_Nr;
-		List <FormEpisode> episodes;
+		private long id;
+		private int season_Nr;
+		private List <FormEpisode> episodes;
 		
 			
 		

@@ -4,12 +4,12 @@ import java.util.List;
 
 
 public class FormSerie {
-	Long id;
-	String name;
-	String picture_url;
-	String description;
+	private Long id;
+	private String name;
+	private String picture_url;
+	private String description;
 	
-	List <FormSeason> seasons;
+	private List <FormSeason> seasons;
 
 
 

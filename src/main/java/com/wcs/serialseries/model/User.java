@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import static java.util.Collections.singletonList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,62 +16,50 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
-
 @Entity
 public class User implements UserDetails {
-	
 
 	private static final long serialVersionUID = -1987953842734862009L;
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String username;
 	private String password;
-	
-	
-	@OneToMany(mappedBy = "user")
-	private List<SerieUser> serieUsers = new ArrayList<>();
-	 
-	
-// kein Constuctor!!!
 
+	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+	private List<SerieUser> serieUsers = new ArrayList<>();
+
+// kein Constuctor!!!
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public void setUsername(String name) {
 		this.username = name;
 	}
 
-
 	public String getPassword() {
 		return password;
 	}
-
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-
 	public List<SerieUser> getSerieUsers() {
 		return serieUsers;
 	}
 
-
 	public void setSerieUsers(List<SerieUser> serieUsers) {
 		this.serieUsers = serieUsers;
 	}
-	
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_JUNKY");
@@ -81,12 +70,12 @@ public class User implements UserDetails {
 	public String getUsername() {
 		return username;
 	}
-		
+
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
-	}	
-	
+	}
+
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
@@ -101,5 +90,5 @@ public class User implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-	
+
 }
