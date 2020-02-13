@@ -1,12 +1,12 @@
 package com.wcs.serialseries.form;
 
 public class FormEpisode {
-	long id;
-	int episode_Nr;
-	String name;
-	boolean watched;
-	boolean wanna_c;
-	int ranking;
+	private long id;
+	private int episode_Nr;
+	private String name;
+	private boolean watched;
+	private boolean wanna_c;
+	private int ranking;
 	
 		
 	/* Getter & Setter */
