@@ -12,10 +12,9 @@
 <meta charset=UTF-8>
 </head>
 
+<header th:insert="header.html :: header"></header>
 <body>
-
-  <header th:insert="header.html :: header"></header>
-
+  <div class="admin_body">
   <section>
     <h1>FAQ</h1>
     <table border="1">
@@ -36,8 +35,7 @@
   <section>
     <br> <a th:href="@{'/faqNew'}">Neue FAQ</a><br> <a th:href="@{/}">Zurück</a>
   </section>
-
-
-  <div th:insert="footer.html :: footer"></div>
+  </div>
 </body>
+<div th:insert="footer.html :: footer"></div>
 </html>

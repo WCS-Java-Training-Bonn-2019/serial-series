@@ -15,9 +15,10 @@
 <meta charset=UTF-8>
 </head>
 
-<body>
+<header th:insert="header.html :: header"></header>
 
-  <header th:insert="header.html :: header"></header>
+<body>
+<div class="admin_body">
   <h1>Benutzer</h1>
   <br>
   <form action="#" th:action="@{/userUpsert}" th:object="${user}" method="post">
@@ -28,6 +29,7 @@
     <input type="submit" value="Speichern"> 
     <input type="reset" value="Zurücksetzen" />
   </form>
-  <div th:insert="footer.html :: footer"></div>
+</div>
 </body>
+<div th:insert="footer.html :: footer"></div>
 </html>

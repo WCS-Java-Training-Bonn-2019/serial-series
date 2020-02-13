@@ -14,6 +14,7 @@
 </head>
 <header th:insert="header.html :: header"></header>
 <body>
+<div class="admin_body">
   <h1>Serien Details</h1>
   <form action="#" th:action="@{/serieUpsert}" th:object="${serie}"
     method="post">
@@ -38,6 +39,8 @@
     <input type="submit" value="Speichern">
     <input type="reset" value="Zurücksetzen" />
   </form>
+  </div>
 </body>
+<div th:insert="footer.html :: footer"></div>
 </html>
 

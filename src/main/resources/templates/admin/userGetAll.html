@@ -11,11 +11,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta charset=UTF-8>
 </head>
-
+<header th:insert="header.html :: header"></header>
 <body>
-
-  <header th:insert="header.html :: header"></header>
-
+<div class="admin_body">
   <section>
     <h1>Benutzer</h1>
     <table border="1">
@@ -37,8 +35,7 @@
   <section>
     <br> <a th:href="@{'/userNew'}">Neuer Benutzer</a><br> <a th:href="@{/}">Zurück</a>
   </section>
-
-
-  <div th:insert="footer.html :: footer"></div>
+  </div>
 </body>
+<div th:insert="footer.html :: footer"></div>
 </html>
