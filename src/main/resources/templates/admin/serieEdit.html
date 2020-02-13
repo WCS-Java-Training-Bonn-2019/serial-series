@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+<title th:text="|${Title}|">Serial-Series, Admin: Serien</title>
+<link rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
+<link rel="stylesheet" href="/global.css">
+<link rel="stylesheet" href="/admin.css">
+<meta name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset=UTF-8>
+</head>
+<header th:insert="header.html :: header"></header>
+<body>
+  <h1>Serien Details</h1>
+  <form action="#" th:action="@{/serieUpsert}" th:object="${serie}"
+    method="post">
+    <input th:field="*{id}" type="hidden">
+    <label for="name">Name:</label>
+    <input th:field="*{name}" required type="text">
+    <br>
+    <br>
+    <label for="hashtag">Hash Tags:</label>
+    <input th:field="*{hashtag}" required type="text">
+    <br>
+    <br>
+    <label for="picture_url">Bild-Speicherort:</label>
+    <input th:field="*{picture_url}" required type="text">
+    <br>
+    <br>
+    <label for="description">Beschreibung:</label>
+    <textarea rows="4" cols="50" th:field="*{description}">
+        </textarea>
+    <br>
+    <br>
+    <input type="submit" value="Speichern">
+    <input type="reset" value="Zurücksetzen" />
+  </form>
+</body>
+</html>
+
