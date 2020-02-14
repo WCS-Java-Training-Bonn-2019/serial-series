@@ -16,20 +16,20 @@
 <body>
   <div class="admin_body">
   <section>
-    <h1>Episoden</h1>
+    <h1>Staffeln</h1>
     <table border="1">
       <tr>
-        <th>Episoden-Nr</th>
-        <th>Episoden-Titel</th>
+        <th>Serien-Nr</th>
+        <th>Staffel-Nr</th>
              </tr>
-      <tr th:each="episode : ${episodes}">
-<!--         <td th:text="${episode.season.season_Nr}">Serienname</td> -->
-        <td th:text="${episode.episode_Nr}">FolgeNr</td>
-        <td th:text="${episode.name}">FolgeTitel</td>
+      <tr th:each="season : ${seasons}">
+
+        <td th:text="${season.id}">Serien-Nr</td>
+        <td th:text="${season.season_Nr}">Staffel-Nr</td>
        
         <td>
-          <a th:href="@{'/episodeEdit/' + ${episode.id}}">Bearbeiten</a> 
-          <a th:href="@{'/episodeDelete/' + ${episode.id}}">Löschen</a>
+          <a th:href="@{'/seasonEdit/' + ${season.id}}">Bearbeiten</a> 
+          <a th:href="@{'/seasonDelete/' + ${season.id}}">Löschen</a>
         </td>
       </tr>
     </table>
@@ -37,7 +37,7 @@
 
   <section>
     <br> 
-<!--     <a th:href="@{'/episodeNew'}">Neue Episode</a> -->
+    <a th:href="@{'/seasonNew'}">Neue Staffel</a>
     <br> <a th:href="@{/}">Zurück</a>
   </section>
   </div>

@@ -63,7 +63,7 @@ public class EpisodeController {
 	@GetMapping("/episodeDelete/{episodeId}")
 	public String delete(@PathVariable("episodeId") long episodeId) {
 		episodeRepository.deleteById(episodeId);
-		return "redirect:/faqs";
+		return "redirect:/episodes";
 	}
 }
 
