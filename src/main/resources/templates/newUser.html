@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de" xmlns:th="https://www.thymeleaf.org/">
+<head>
+<title th:text="|${Title}|">Serial-Series</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
+<link rel="stylesheet" href="/global.css">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset=UTF-8>
+</head>
+<header th:insert="header.html :: header"></header>
+<body>
+	<!-- 	<h1>Registrieren</h1> -->
+	<form class="modal-content animate" method="post"
+		th:action="@{/upsetUser}" th:object="${User}">
+		<div class="container">
+			<label for="uname">
+				<b>Benutzername</b>
+			</label>
+			<input type="text" placeholder="Benutzernamen eingeben" id="username"
+				name="username" required autofocus th:value=${username} />
+			<label for="psw">
+				<b>Passwort</b>
+			</label>
+			<input type="password" placeholder="Passwort eingeben" id="password"
+				name="password" required th:value=${password} />
+			<p th:if="${registerError}" class="error">
+				<b>Benutzername bereits belegt!</b>
+			</p>
+			<button type="submit"><b>Registrieren</b></button>
+			</div>
+			<div class="container">
+				<div id="cancel_container">
+					<a href="/startSerialSeries">
+						<button type="button" class="cancelbtn">Cancel</button>
+					</a>
+				</div>
+				<div>&nbsp;</div>
+			</div>
+	</form>
+</body>
+<div th:insert="footer.html :: footer"></div>
+</html>

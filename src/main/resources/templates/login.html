@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+
+<head>
+<title th:text="|${Title}|">Serial-Series</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
+<link rel="stylesheet" href="/global.css">
+<link rel="stylesheet" href="/login.css">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset=UTF-8>
+
+</head>
+
+<header th:insert="header.html :: header"></header>
+<body>
+	<form class="modal-content animate" th:action="@{/perform_login}"
+		method="post">
+		<div class="container">
+			<label for="uname">
+				<b>Benutzername</b>
+			</label>
+			<input type="text" placeholder="Benutzernamen eingeben" id="username"
+				name="username" required autofocus />
+			<label for="psw">
+				<b>Passwort</b>
+			</label>
+			<input type="password" placeholder="Passwort eingeben" id="password"
+				name="password" required />
+			<p th:if="${loginError}" class="error">Falscher Benutzername oder
+				Passwort!</p>
+			<p th:if="${registerError}" class="error">
+				<b>Benutzername bereits belegt!</b>
+			</p>
+			<p th:if="${adminError}" class="error">
+				<b><strong>Admin</strong> als Benutzername nicht erlaubt!</b>
+			</p>
+			<button type="submit">Anmelden</button>
+		</div>
+		<div class="container">
+			<div id="cancel_container">
+				<a href="/startSerialSeries">
+					<button type="button" class="cancelbtn">Cancel</button>
+				</a>
+				<a href="/editUser">
+					<button type="button" class="cancelbtn">Register</button>
+				</a>
+			</div>
+		</div>
+	</form>
+</body>
+<div th:insert="footer.html :: footer"></div>
+</html>

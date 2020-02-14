@@ -4,6 +4,8 @@ body {
 	margin: 0;
 	font-family: 'Reem Kufi', sans-serif;
 	margin-top: 70px; /* Add a top margin to avoid content overlay */
+	margin-bottom: 70px;
+	height: 100%;
 }
 
 a {
@@ -42,38 +44,6 @@ p {
 	line-height: 1.6;
 }
 
-/* Header */
-
-nav {
-	background-image: url(/pictures/StripesHell.jpeg);
-    background-size: cover;
-    background-position: 20% 20%;     
-	
-	font-size: 1em;
-	
-}
-
-.navbar-toggler-icon {
-	float:left;
-}
-
-
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-  position: fixed;
-  top: 0;
-  lest:0;
-  width: 100%;
-  z-index:1000000;
-
-}
-
-.navbar-light .navbar-nav .nav-link {
-    color: #e5007d;
-}
-
-
 
 /* Footer */
 
@@ -84,8 +54,12 @@ footer {
     background-position: 20% 20%;
 
     font-size: 1em;
-      
+	position: fixed;
+    bottom: 0; 
+    right: 0;
+    left: 0;
 }
+
 
 .copyright {
     color: #000000;
@@ -99,5 +73,9 @@ footer div {
     background-color: rgba(255,255,255,0.5);
     padding: 10px;
 }
+
+
+
+
 
 

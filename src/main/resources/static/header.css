@@ -1,0 +1,56 @@
+
+nav {
+	background-image: url(/pictures/StripesHell.jpeg);
+    background-size: cover;
+    background-position: 20% 20%;     
+	
+	font-size: 1em;
+	
+}
+
+.navbar-toggler-icon {
+	float:left;
+}
+
+
+.navbar {
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  lest:0;
+  width: 100%;
+  z-index:1000000;
+
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #e5007d;
+}
+
+.header-form{
+	margin: 0px;
+}
+
+
+/* Suchen */
+.py-2 {
+	margin:8px 0px 0px 8px;
+
+}
+
+.btn-outline-secondary{
+	margin:8px 8px 0px 0px;
+	
+}
+
+
+/* Admin */
+.dropdown-menu{
+	background-color: #e5007d;
+}
+
+.dropdown-item {
+    color: white;
+    
+}
+

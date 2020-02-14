@@ -10,25 +10,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class Serie {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long id;
-	String name;
-	String picture_url;
-	@Column(columnDefinition="LONGTEXT")
-	String description;
-	
-	 // UserVerknüpfung
-	 @OneToMany(mappedBy = "serie")
-	 private List<SerieUser> serieUsers = new ArrayList<>();
-	 
-	 //Eine Serie hat mehrere Staffeln
-	 @OneToMany(mappedBy = "serie")
-	 private List<Season> seasons;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String name;
+	private String picture_url;
+	@Column(columnDefinition = "LONGTEXT")
+	private String description;
+	private String hashtag; // z.B. #Arzt#Anwalt#Action
+
+	// UserVerknüpfung
+	@OneToMany(mappedBy = "serie")
+	private List<SerieUser> serieUsers = new ArrayList<>();
+
+	// Eine Serie hat mehrere Staffeln
+	@OneToMany(mappedBy = "serie")
+	private List<Season> seasons;
 
 	// Getters & Setters
 
@@ -64,7 +63,14 @@ public class Serie {
 		this.description = text;
 	}
 
-	
+	public String getHashtag() {
+		return hashtag;
+	}
+
+	public void setHashtag(String hashtag) {
+		this.hashtag = hashtag;
+	}
+
 	public List<SerieUser> getSerieUsers() {
 		return serieUsers;
 	}
