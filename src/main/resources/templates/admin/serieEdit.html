@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="de">
 <head>
-<title th:text="|${Title}|">Serial-Series, Admin: Serien</title>
+<title th:text="|${Title}|">Serial-Series</title>
 <link rel="stylesheet"
   href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -15,7 +15,7 @@
 <header th:insert="header.html :: header"></header>
 <body>
 <div class="admin_body">
-  <h1>Serien Details</h1>
+  <h1>Serien</h1>
   <form action="#" th:action="@{/serieUpsert}" th:object="${serie}"
     method="post">
     <input th:field="*{id}" type="hidden">
@@ -24,11 +24,11 @@
     <br>
     <br>
     <label for="hashtag">Hash Tags:</label>
-    <input th:field="*{hashtag}" required type="text">
+    <input th:field="*{hashtag}"  type="text">
     <br>
     <br>
     <label for="picture_url">Bild-Speicherort:</label>
-    <input th:field="*{picture_url}" required type="text">
+    <input th:field="*{picture_url}"  type="text">
     <br>
     <br>
     <label for="description">Beschreibung:</label>
