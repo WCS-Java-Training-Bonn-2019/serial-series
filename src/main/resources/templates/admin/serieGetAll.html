@@ -30,7 +30,7 @@
       <tr th:each="serie : ${Series}" th:object="${serie}">
         <td th:text="${serie.id}">Platzhalter</td>
         <td th:text="${serie.name}">Platzhalter</td>
-        <td th:text="${serie.hashtag}">Platzhalter</td>
+        <td><textarea rows="4" cols="10" th:text="${serie.hashtag}">Platzhalter</textarea></td>
         <td th:text="${serie.picture_url}">Platzhalter</td>
         <td>
           <textarea rows="4" cols="50" th:text="${serie.description}">Platzhalter</textarea>
