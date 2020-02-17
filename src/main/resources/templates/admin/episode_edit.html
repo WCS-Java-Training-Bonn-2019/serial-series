@@ -16,19 +16,22 @@
 </head>
 
 
-<header th:insert="header.html :: header"></header>
+<header th:insert="fragments/header.html :: header"></header>
 <body>
   <div class="admin_body">
 
-    <h1>FAQ</h1>
+    <h1>Staffel-Episoden</h1>
     <br>
-    <form action="#" th:action="@{/faqUpsert}" th:object="${faq}" method="post">
-      <input th:field="*{id}" type="hidden"> <label for="frage">Frage:</label> <input th:field="*{frage}"
-        required type="text"> <br> <br> <label for="antwort">Antwort</label> <input
-        th:field="*{antwort}" required type="text"> <br> <br> <br> <br> <input type="submit"
-        value="Speichern"> <input type="reset" value="Zurücksetzen" />
+    <form action="#" th:action="@{/episodeUpsert}" th:object="${episode}" method="post">
+      <input th:field="*{id}" type="hidden"> 
+      <label for="EpisodeNr">Episoden-Nummer</label> <input th:field="*{episode_Nr}" required type="text"> 
+      <br> <br> <br> <br>
+      <label for="EpisodeName">Episode-Name</label> <input th:field="*{name}" required type="text"> 
+      <br> <br> <br> <br>
+      <input type="submit"  value="Speichern"> <input type="reset" value="Zurücksetzen" />
     </form>
   </div>
 </body>
-<div th:insert="footer.html :: footer"></div>
+<div th:insert="fragments/footer.html :: footer"></div>
 </html>
+

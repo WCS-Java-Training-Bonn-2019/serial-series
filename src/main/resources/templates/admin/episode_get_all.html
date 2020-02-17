@@ -12,11 +12,11 @@
 <meta charset=UTF-8>
 </head>
 
-<header th:insert="header.html :: header"></header>
+<header th:insert="fragments/header.html :: header"></header>
 <body>
   <div class="admin_body">
   <section>
-    <h1>Staffel-Folgen</h1>
+    <h1>Staffel-Episoden</h1>
     <table border="1">
       <tr>
         <th>Episoden-Nr</th>
@@ -24,8 +24,8 @@
              </tr>
       <tr th:each="episode : ${episodes}">
 <!--         <td th:text="${episode.season.season_Nr}">Serienname</td> -->
-        <td th:text="${episode.episode_Nr}">FolgeNr</td>
-        <td th:text="${episode.name}">FolgeTitel</td>
+        <td th:text="${episode.episode_Nr}">Episoden-Nr</td>
+        <td th:text="${episode.name}">Episoden-Titel</td>
        
         <td>
           <a th:href="@{'/episodeEdit/' + ${episode.id}}">Bearbeiten</a> 
@@ -42,5 +42,5 @@
   </section>
   </div>
 </body>
-<div th:insert="footer.html :: footer"></div>
+<div th:insert="fragments/footer.html :: footer"></div>
 </html>

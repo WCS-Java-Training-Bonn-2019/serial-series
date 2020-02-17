@@ -35,7 +35,8 @@ public class EpisodeController {
 	public String getAllforAdmin(Model model) {
 		model.addAttribute("episodes", episodeRepository.findAll());
 		model.addAttribute("Title", service.getTitleFromId(-1L));
-		return "admin/episodeGetAll";
+		model.addAttribute("Type", "Admin");
+		return "admin/episode_get_all";
 	}
 
 	@PostMapping("/episodeUpsert")
@@ -57,7 +58,8 @@ public class EpisodeController {
 		}
 		model.addAttribute("episode", episode);
 		model.addAttribute("Title", service.getTitleFromId(-1L));
-		return "admin/episodeEdit";
+		model.addAttribute("Type", "Admin");
+		return "admin/episode_edit";
 	}
 
 	@GetMapping("/episodeDelete/{episodeId}")

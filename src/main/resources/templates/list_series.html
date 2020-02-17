@@ -3,19 +3,16 @@
 
 <head>
 <title th:text="|${Title}|">Serial-Series</title>
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet"
-  href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
 <link rel="stylesheet" href="/global.css">
-<link rel="stylesheet" href="/listSeries.css">
+<link rel="stylesheet" href="/list_series.css">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta charset=UTF-8>
 </head>
 
 
-
-<header th:insert="header.html :: header"></header>
+<header th:insert="fragments/header.html :: header"></header>
 
 <body>
   <!-- Alternative Anzeige, falls keine Serien vorhanden -->
@@ -49,7 +46,7 @@
             <!-- Bild bei New clickbar machen -->
             <!-- erst normales Bild anzeigen ohne weitere Funktion -->
             <pic th:if="${Type == 'All'}"> <a
-              th:href="@{/listSerieSeasonsEpisodes(idSerie=${serie.id}, idUser=${UserId})}">
+              th:href="@{/listSerieSeasonsEpisodes(idSerie=${serie.id}}">
               <img class="card-img-top" th:src="${serie.picture_url}" alt="Staffelübersicht">
             </a> </pic>
             <!-- jetzt Bild anzeigen mit Funktion -->
@@ -57,7 +54,7 @@
               <img class="card-img-top" th:src="${serie.picture_url}" alt="Hinzufügen">
             </a> </pic>
             <pic th:if="${Type == 'My'}"> <a
-              th:href="@{/listSerieSeasonsEpisodes(idSerie=${serie.id}, idUser=${UserId})}">
+              th:href="@{/listSerieSeasonsEpisodes(idSerie=${serie.id})}">
               <img class="card-img-top" th:src="${serie.picture_url}" alt="Staffelübersicht">
             </a> </pic>
             <div class="card-body">
@@ -69,7 +66,7 @@
 
                 <!-- Anzeige Alle Serien -->
                 <div th:if="${Type == 'All'}">
-                  <a th:href="@{/listSerieSeasonsEpisodes(idSerie=${serie.id}, idUser=${UserId})}" class="card-link">Staffelübersicht
+                  <a th:href="@{/listSerieSeasonsEpisodes(idSerie=${serie.id})}" class="card-link">Staffelübersicht
                   </a>
                 </div>
 
@@ -80,7 +77,7 @@
 
                 <!-- Anzeige Meine Serien -->
                 <div th:if="${Type == 'My'}">
-                  <a th:href="@{/listSerieSeasonsEpisodes(idSerie=${serie.id}, idUser=${UserId})}" class="card-link">Staffelübersicht
+                  <a th:href="@{/listSerieSeasonsEpisodes(idSerie=${serie.id})}" class="card-link">Staffelübersicht
                   </a>
                   <a th:href="@{/listSeries/loeschen(idSerie=${serie.id}, idUser=${UserId})}"
                     onclick="return confirm('Soll die Serie wirklich entfernt werden?')"> Löschen</a>
@@ -99,7 +96,7 @@
 
 </body>
 
-<div th:insert="footer.html :: footer"></div>
+<div th:insert="fragments/footer.html :: footer"></div>
 
 </html>
 

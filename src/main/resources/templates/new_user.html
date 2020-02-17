@@ -1,17 +1,17 @@
 <!doctype html>
 <html lang="de" xmlns:th="https://www.thymeleaf.org/">
 <head>
-<title th:text="|${Title}|">Serial-Series</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
-<link rel="stylesheet" href="/global.css">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta charset=UTF-8>
+  <title th:text="|${Title}|">Serial-Series</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
+  <link rel="stylesheet" href="/global.css">
+  <link rel="stylesheet" href="/login.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset=UTF-8>
 </head>
-<header th:insert="header.html :: header"></header>
+
+<header th:insert="fragments/header.html :: header"></header>
+
 <body>
 	<!-- 	<h1>Registrieren</h1> -->
 	<form class="modal-content animate" method="post"
@@ -42,5 +42,6 @@
 			</div>
 	</form>
 </body>
-<div th:insert="footer.html :: footer"></div>
+
+<div th:insert="fragments/footer.html :: footer"></div>
 </html>

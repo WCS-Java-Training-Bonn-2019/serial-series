@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.wcs.serialseries.repository.SerieRepository;
 import com.wcs.serialseries.service.UserService;
 
 @Controller
