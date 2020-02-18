@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="de">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
 <head>
 <title th:text="|${Title}|">Serial-Series</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
+	href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi">
 <link rel="stylesheet" href="/global.css">
 <link rel="stylesheet" href="/admin.css">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta charset=UTF-8>
 </head>
-<header th:insert="fragments/header.html :: header"></header>
+<header th:insert="header.html :: header"></header>
 <body>
 	<div class="admin_body">
-		<h1>Serien</h1>
-		<form action="#" th:action="@{/serieUpsert}" th:object="${serie}"
+		<h1>Staffeln</h1>
+		<br>
+		<form action="#" th:action="@{/seasonUpsert}" th:object="${season}"
 			method="post">
+			<a th:text="| Datensatz-ID: ${season.id}|">Datensatz</a>
+			<br>
 			<input th:field="*{id}" type="hidden">
-			<label for="name">Name:</label>
-			<input th:field="*{name}" required type="text">
+			<label for="SerieNr">Serien-ID</label>
+			<input th:field="*{serie}" required type="text">
 			<br>
 			<br>
-			<label for="hashtag">Hash Tags:</label>
-			<input th:field="*{hashtag}" type="text">
 			<br>
 			<br>
-			<label for="picture_url">Bild-Speicherort:</label>
-			<input th:field="*{picture_url}" type="text">
+			<label for="StaffelNr">Staffel-Nr</label>
+			<input th:field="*{season_Nr}" required type="text">
 			<br>
 			<br>
-			<label for="description">Beschreibung:</label>
-			<textarea rows="4" cols="50" th:field="*{description}">
-        </textarea>
 			<br>
 			<br>
 			<input type="submit" value="Speichern">
 			<input type="reset" value="Zurücksetzen" />
-			<a href="/series">
+			<a href="/seasons">
 				<input type="button" value="Cancel">
 			</a>
 		</form>
 	</div>
+	<div th:insert="footer.html :: footer"></div>
 </body>
-<div th:insert="fragments/footer.html :: footer"></div>
 </html>

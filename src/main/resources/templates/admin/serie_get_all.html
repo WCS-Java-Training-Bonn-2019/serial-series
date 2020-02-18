@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="de">
 <head>
-<title th:text="|${Title}|">Serial-Series, Admin: Serien</title>
+<title th:text="|${Title}|">Serial-Series</title>
 <link rel="stylesheet"
   href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -17,7 +17,7 @@
 <body>
 <div class="admin_body">
   <section>
-    <h1>Serien Liste</h1>
+    <h1>Serien</h1>
     <table border="1">
       <tr>
         <th>id</th>
@@ -30,7 +30,7 @@
       <tr th:each="serie : ${Series}" th:object="${serie}">
         <td th:text="${serie.id}">Platzhalter</td>
         <td th:text="${serie.name}">Platzhalter</td>
-        <td th:text="${serie.hashtag}">Platzhalter</td>
+        <td><textarea rows="4" cols="10" th:text="${serie.hashtag}">Platzhalter</textarea></td>
         <td th:text="${serie.picture_url}">Platzhalter</td>
         <td>
           <textarea rows="4" cols="50" th:text="${serie.description}">Platzhalter</textarea>
