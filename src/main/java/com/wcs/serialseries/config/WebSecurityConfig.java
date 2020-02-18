@@ -37,8 +37,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.authorizeRequests().antMatchers("/listMySeries", "/listSerieSeasonsEpisodes/**")
 				.hasAnyRole("ADMIN", "JUNKY")
         .antMatchers("/", "/startSerialSeries", "/listAllSeries", "/listSearch", "/editUser","/upsetUser", "/listSearch/*",
-						"/faq", "/aboutUs","/pictures/*", "/media/*", "/faq.css", "/register-error",
-						"/global.css", "/login.css", "/header.css", "/list_series.css", "/header.css", "/about_us.css",
+						"/faq", "/aboutUs","/pictures/*", "/media/*", "/register-error", "/faq.css",
+						"/global.css", "/login.css", "/header.css", "/list_series.css", "/about_us.css",
 						"/list_serie_with_seasons_and_episodes.css", "/start.css", "/webjars/**")
 				.permitAll()
 				.anyRequest().authenticated()

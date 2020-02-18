@@ -44,6 +44,16 @@ p {
 	line-height: 1.6;
 }
 
+button {
+    background-color: #e5007d;
+    color: white;
+    padding: 7px 9px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
 
 /* Footer */
 
