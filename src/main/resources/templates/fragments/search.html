@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+<title>Serial-Series</title>
+<meta charset=UTF-8>
+</head>
+<body>
+
+  <div th:fragment="search">
+    <th:block th:if="${Type == 'My' OR Type == 'All'}">
+      <form th:action="@{/listSearch}" method="POST">
+        <div class="input-group">
+          <input class="form-control border-secondary py-2" name="Search" th:value="${Search}" type="text">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+
+    </th:block>
+
+    <th:block th:if="${Type == 'New'}">
+      <form th:action="@{/listSearchNew}" method="POST">
+        <div class="input-group">
+          <input class="form-control border-secondary py-2" name="Search" th:value="${Search}" type="text">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </th:block>
+  </div>
+  
+ </body>
+</html>
