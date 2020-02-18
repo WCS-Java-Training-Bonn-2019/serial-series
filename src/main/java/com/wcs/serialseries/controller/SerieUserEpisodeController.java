@@ -71,37 +71,40 @@ public class SerieUserEpisodeController {
 		List<SerieUserEpisode> serieUserEpisodes = serieUserEpisodeRepository.findBySerieUserId(service.getSerieUserFromDB(idUser, idSerie));
 		
 		for (int ittStaffel = 0; ittStaffel < serieUserEpisodes.size(); ittStaffel++) {
-			// Erstmal alle auf false setzen
-			serieUserEpisodes.get(ittStaffel).setWatched(false);
-			serieUserEpisodes.get(ittStaffel).setWanna_c(false);
-			
-			// Ankreuzen oder nicht
-			if (seen != null) {
-			// Seen durchsuchen
-				for (int ittSeen = 0; ittSeen < seen.length; ittSeen++) {
-					// Staffelnummer identisch zu seen?
-					if (serieUserEpisodes.get(ittStaffel).getEpisode().getId() == seen[ittSeen]) {
-						serieUserEpisodes.get(ittStaffel).setWatched(true);
-					}
-				}
-			}
-			
-			// Wanna_c durchsuchen
-			if (wanted != null) {
-				for (int ittWanted = 0; ittWanted < wanted.length; ittWanted++) {
-					// Staffelnummer identisch zu wanted?
-					if (serieUserEpisodes.get(ittStaffel).getEpisode().getId() == wanted[ittWanted]) {
-						serieUserEpisodes.get(ittStaffel).setWanna_c(true);
-					}
-				}
-			}
-			
-			// Abspeichern
+			fillPersistedDataWithFormData(seen, wanted, serieUserEpisodes, ittStaffel);
 			serieUserEpisodeRepository.save(serieUserEpisodes.get(ittStaffel));
 		}
 
 		return "redirect:/listMySeries/";
 
+	}
+
+	private void fillPersistedDataWithFormData(int[] seen, int[] wanted, List<SerieUserEpisode> serieUserEpisodes,
+			int ittStaffel) {
+		// Erstmal alle auf false setzen
+		serieUserEpisodes.get(ittStaffel).setWatched(false);
+		serieUserEpisodes.get(ittStaffel).setWanna_c(false);
+		
+		// Ankreuzen oder nicht
+		if (seen != null) {
+		// Seen durchsuchen
+			for (int ittSeen = 0; ittSeen < seen.length; ittSeen++) {
+				// Staffelnummer identisch zu seen?
+				if (serieUserEpisodes.get(ittStaffel).getEpisode().getId() == seen[ittSeen]) {
+					serieUserEpisodes.get(ittStaffel).setWatched(true);
+				}
+			}
+		}
+		
+		// Wanna_c durchsuchen
+		if (wanted != null) {
+			for (int ittWanted = 0; ittWanted < wanted.length; ittWanted++) {
+				// Staffelnummer identisch zu wanted?
+				if (serieUserEpisodes.get(ittStaffel).getEpisode().getId() == wanted[ittWanted]) {
+					serieUserEpisodes.get(ittStaffel).setWanna_c(true);
+				}
+			}
+		}
 	}
 	
 	public FormSerie fillFormWithDatafromDB(long idUser,long idSerie, Serie serie) {
