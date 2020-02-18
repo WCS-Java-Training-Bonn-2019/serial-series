@@ -15,7 +15,7 @@
 <meta charset=UTF-8>
 </head>
 
-<header th:insert="header.html :: header"></header>
+<header th:insert="fragments/header.html :: header"></header>
 
 <body>
 	<div class="faq_body">
@@ -28,5 +28,7 @@
 	</form>
 	</div>
 </body>
-<div th:insert="footer.html :: footer"></div>
+
+<div th:insert="fragments/footer.html :: footer"></div>
+
 </html>

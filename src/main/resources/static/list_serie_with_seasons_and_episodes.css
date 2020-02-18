@@ -57,7 +57,7 @@ input[type="checkbox"], input[type="radio"] {
 	list-style: none;
 }
 
-/* Anordnung der Folgen Abhängig von der Größe */
+/* Anordnung der Episoden Abhängig von der Größe */
 @media only screen and (min-width: 1261px ) {
 	/* Groß */
 	.flex-container {

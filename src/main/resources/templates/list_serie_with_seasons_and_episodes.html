@@ -2,29 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!--  Eigene .CSS Dateien -->
-<link rel="stylesheet" href="/global.css">
-<link rel="stylesheet" href="/listSerieWithSeasonsAndEpisodes.css">
-
-
-
-
-<title>Staffeln</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!--  Eigene .CSS Dateien -->
+  <link rel="stylesheet" href="/global.css">
+  <link rel="stylesheet" href="/list_serie_with_seasons_and_episodes.css">
+  
+  <title th:text="|${Title}|">Serial-Series</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 </head>
 
-<header th:insert="header.html :: header"></header>
-
+<header th:insert="fragments/header.html :: header"></header>
 
 <body>
 
@@ -63,7 +54,7 @@
 
 			<input type="hidden" th:field="*{seasons[__${stat.index}__].id}" />
 				
-			<!-- Itteration Folgen -->
+			<!-- Itteration Episoden -->
 			<th:block th:each="episode, stat2: ${season.episodes}">
 
 				<div class="flex-container">
@@ -95,9 +86,8 @@
 		<br> <input class="btn-speichern" type="submit" value="Speichern" />
 	</form>
 
-
 </body>
 
-<div th:insert="footer.html :: footer"> </div>
+<div th:insert="fragments/footer.html :: footer"> </div>
 
 </html>

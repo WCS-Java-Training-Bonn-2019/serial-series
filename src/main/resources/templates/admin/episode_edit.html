@@ -14,6 +14,25 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta charset=UTF-8>
 </head>
+<<<<<<< HEAD:src/main/resources/templates/admin/episode_edit.html
+
+
+<header th:insert="fragments/header.html :: header"></header>
+<body>
+  <div class="admin_body">
+
+    <h1>Staffel-Episoden</h1>
+    <br>
+    <form action="#" th:action="@{/episodeUpsert}" th:object="${episode}" method="post">
+      <input th:field="*{id}" type="hidden"> 
+      <label for="EpisodeNr">Episoden-Nummer</label> <input th:field="*{episode_Nr}" required type="text"> 
+      <br> <br> <br> <br>
+      <label for="EpisodeName">Episode-Name</label> <input th:field="*{name}" required type="text"> 
+      <br> <br> <br> <br>
+      <input type="submit"  value="Speichern"> <input type="reset" value="Zurücksetzen" />
+    </form>
+  </div>
+=======
 <header th:insert="header.html :: header"></header>
 <body>
 	<div class="admin_body">
@@ -50,6 +69,7 @@
 			</a>
 		</form>
 	</div>
+>>>>>>> dev:src/main/resources/templates/admin/episodeEdit.html
 </body>
-<div th:insert="footer.html :: footer"></div>
+<div th:insert="fragments/footer.html :: footer"></div>
 </html>
