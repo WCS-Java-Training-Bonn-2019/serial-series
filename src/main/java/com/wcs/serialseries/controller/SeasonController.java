@@ -32,7 +32,7 @@ public class SeasonController {
 
 		model.addAttribute("season", seasonRepository.findAll());
 		model.addAttribute("Type", "Season");
-		model.addAttribute("Title", service.getEmptyTitle());
+		model.addAttribute("Title", service.getTitle());
 
 		return "season.html";
 	}
@@ -46,7 +46,7 @@ public class SeasonController {
 	public String getAllforAdmin(Model model) {
 		// erst Serien-Titel ausgeben, dann die einzelnen Staffelnumern
 		model.addAttribute("seasons", seasonRepository.findAll());
-		model.addAttribute("Title", service.getTitleFromId(-1L));
+		model.addAttribute("Title", service.getTitle());
 		return "admin/seasonGetAll";
 	}
 
@@ -68,7 +68,7 @@ public class SeasonController {
 			}
 		}
 		model.addAttribute("season", season);
-		model.addAttribute("Title", service.getTitleFromId(-1L));
+		model.addAttribute("Title", service.getTitle());
 		return "admin/seasonEdit";
 	}
 

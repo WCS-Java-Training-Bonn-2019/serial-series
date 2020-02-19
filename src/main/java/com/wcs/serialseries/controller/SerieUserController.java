@@ -53,8 +53,19 @@ public class SerieUserController {
 
 		serieUser = serieUserRepository.save(serieUser);
 		
-		//SerieUserEpisode initial befüllen
-		
+		initAndSaveEpisodes(serieUser);
+
+		return "redirect:/listMySeries";
+	}
+
+	/**
+	 * 
+	 * @param serieUser
+	 * 
+	 * Zu SerieUser müssen direkt beim Zuorden zu einem User 
+	 * alle Episoden mit initial befüllten Attributen angelegt werden. 
+	 */
+	private void initAndSaveEpisodes(SerieUser serieUser) {
 		for (Season season : serieUser.getSerie().getSeasons()) {
 			//   Alle Seasons durchlaufen
 			
@@ -72,8 +83,6 @@ public class SerieUserController {
 				
 			}
 		}
-
-		return "redirect:/listMySeries";
 	}
 
 }
