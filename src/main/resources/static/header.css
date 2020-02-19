@@ -31,11 +31,11 @@ nav {
     color: black;
 /*     border-color: #e5007d; */
 /*     border-style: solid; */
-    text-decoration: underline;
+    text-decoration: underline !important
 }
 
 .active>.nav-link{
-    color: rgba(0,0,0,.9);
+    color: rgba(0,0,0,.9); 
     text-decoration: underline;
 }
 

@@ -48,17 +48,6 @@ a:hover {
 	width: 90%;
 }
 
-/* Set a style for all buttons */
-button {
-  background-color: #e5007d;
-  color: white;
-  padding: 7px 9px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
 .hinzufuegen_button{
 	margin: 24px;
 }

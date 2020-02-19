@@ -1,0 +1,30 @@
+.article-card {
+	margin: 10px;
+	width:100%;
+ 	height:auto;
+ 	background-color: transparent;
+ 	border: none;
+}
+
+.card-img-top {
+	border-radius: 0;
+	border-style: none;
+	padding: 20px;
+}
+
+.article-row>div {
+	display: flex;
+	align-items: stretch;
+}
+
+.card-text-top {
+	border-radius: 0;
+	border-style: none;
+	width: 100%;
+	padding: 20px;
+	text-align:center;
+	color: #e5007d;
+	margin-top: auto;
+	margin-bottom: auto;
+	font-size: 36px;
+}
