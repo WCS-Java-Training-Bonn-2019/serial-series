@@ -47,7 +47,7 @@ public class SeasonController {
 		// erst Serien-Titel ausgeben, dann die einzelnen Staffelnumern
 		model.addAttribute("seasons", seasonRepository.findAll());
 		model.addAttribute("Title", service.getTitleFromId(-1L));
-		return "admin/seasonGetAll";
+		return "admin/season_get_all";
 	}
 
 	@PostMapping("/seasonUpsert")
@@ -69,7 +69,7 @@ public class SeasonController {
 		}
 		model.addAttribute("season", season);
 		model.addAttribute("Title", service.getTitleFromId(-1L));
-		return "admin/seasonEdit";
+		return "admin/season_edit";
 	}
 
 	@GetMapping("/seasonDelete/{seasonId}")

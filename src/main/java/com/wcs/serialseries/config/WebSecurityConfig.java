@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/", "/startSerialSeries", "/listAllSeries", "/listSearch", "/editUser","/upsetUser", "/listSearch/*",
 						"/faq", "/aboutUs","/pictures/*", "/media/*", "/register-error", "/faq.css",
 						"/global.css", "/login.css", "/header.css", "/list_series.css", "/about_us.css",
-						"/list_serie_with_seasons_and_episodes.css", "/start.css", "/webjars/**")
+						"/list_serie_with_seasons_and_episodes.css", "/start.css", "/webjars/**", "/admin/**")
 				.permitAll()
 				.anyRequest().authenticated()
 				.and()
