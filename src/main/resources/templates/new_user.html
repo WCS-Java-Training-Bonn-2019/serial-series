@@ -25,8 +25,12 @@
 			<label for="psw">
 				<b>Passwort</b>
 			</label>
-			<input type="password" placeholder="Passwort eingeben" id="password"
-				name="password" required th:value=${password} />
+            <input th:value=${password} id="password" name="password" type="password"
+                  onchange="if(this.checkValidity()) form.password_two.pattern = this.value;" placeholder="Passwort eingeben"
+                  required="required">
+            <input th:value=${password} id="password_two" name="password_two" type="password"
+                  onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Die beiden Passworteingaben müssen identisch sein!' : '');"
+                  placeholder="Passwort wiederholen" required="required">
 			<p th:if="${registerError}" class="error">
 				<b>Benutzername bereits belegt!</b>
 			</p>
