@@ -70,6 +70,7 @@ public class SeasonController {
 		model.addAttribute("season", season);
 		model.addAttribute("Title", service.getTitle());
 		return "admin/seasonEdit";
+
 	}
 
 	@GetMapping("/seasonDelete/{seasonId}")
