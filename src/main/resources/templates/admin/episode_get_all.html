@@ -16,7 +16,7 @@
 
 <body>
 
-<header th:insert="header.html :: header"></header>
+<header th:insert="fragments/header.html :: header"></header>
 
 	<div class="admin_body">
 		<section>
@@ -45,7 +45,7 @@
 			<a th:href="@{/}">Zurück</a>
 		</section>
 	</div>
-	<div th:insert="footer.html :: footer"></div>
+	<div th:insert="fragments/footer.html :: footer"></div>
 </body>
 
 </html>
