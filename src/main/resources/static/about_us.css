@@ -9,7 +9,7 @@
 .card-img-top {
 	border-radius: 0;
 	border-style: none;
-	padding: 20px;
+	padding: 40px;
 }
 
 .article-row>div {
@@ -21,10 +21,21 @@
 	border-radius: 0;
 	border-style: none;
 	width: 100%;
-	padding: 20px;
+	padding: 40px;
 	text-align:center;
 	color: #e5007d;
 	margin-top: auto;
 	margin-bottom: auto;
 	font-size: 36px;
+}
+
+.card-text-mail{
+	width: 100%;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	text-align:center;
+	color: #e5007d;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 20px;
 }
