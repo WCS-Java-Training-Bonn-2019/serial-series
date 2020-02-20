@@ -20,7 +20,7 @@ public class LoginController {
 	@GetMapping("/login")
 	public String loginPage(Model model) {
 
-		model.addAttribute("Title", service.getEmptyTitle());
+		model.addAttribute("Title", service.getTitle());
 		model.addAttribute("Type", "Login");
 		return "/login";
 	}
@@ -28,15 +28,12 @@ public class LoginController {
 	@GetMapping("/login-error")
 	public String errorPage(Model model) {
 		model.addAttribute("loginError", true);
-		
 		return "/login";
 	}
 	
 		
 	@GetMapping("/logout")
 	public String logoutPage(Model model) {
-
-		
 		return "/logout";
 	}
 	

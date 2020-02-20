@@ -42,7 +42,7 @@ public class UserController {
 	public String startSerialSeries(Model model) {
 		long userId = service.getCurrentLoggedInUserId();
 		model.addAttribute("Users", userRepository.findAll());
-		model.addAttribute("Title", service.getTitleFromId(userId));
+		model.addAttribute("Title", service.getTitle());
 		model.addAttribute("Type", "Start");
 		model.addAttribute("UserId", userId);
 		return "start.html";
@@ -56,7 +56,7 @@ public class UserController {
 	public String editUsers(Model model) {
 
 		model.addAttribute("Type", "Login");
-		model.addAttribute("Title", service.getEmptyTitle());
+		model.addAttribute("Title", service.getTitle());
 
 		return "new_user.html";
 	}
@@ -102,7 +102,7 @@ public class UserController {
 	@GetMapping("/users")
 	public String getAll(Model model) {
 		model.addAttribute("users", userRepository.findAll());
-		model.addAttribute("Title", service.getTitleFromId(-1L));
+		model.addAttribute("Title", service.getTitle());
 		model.addAttribute("Type", "Admin");
 		return "admin/user_get_all";
 	}
@@ -129,7 +129,7 @@ public class UserController {
 			}
 		}
 		model.addAttribute("user", user);
-		model.addAttribute("Title", service.getTitleFromId(-1L));
+		model.addAttribute("Title", service.getTitle());
 		model.addAttribute("Type", "Admin");
 		return "admin/user_edit";
 	}

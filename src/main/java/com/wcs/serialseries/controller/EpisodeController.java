@@ -34,7 +34,7 @@ public class EpisodeController {
 	@GetMapping("/episodes")
 	public String getAllforAdmin(Model model) {
 		model.addAttribute("episodes", episodeRepository.findAll());
-		model.addAttribute("Title", service.getTitleFromId(-1L));
+		model.addAttribute("Title", service.getTitle());
 		model.addAttribute("Type", "Admin");
 		return "admin/episode_get_all";
 	}
@@ -57,7 +57,7 @@ public class EpisodeController {
 			}
 		}
 		model.addAttribute("episode", episode);
-		model.addAttribute("Title", service.getTitleFromId(-1L));
+		model.addAttribute("Title", service.getTitle());
 		model.addAttribute("Type", "Admin");
 		return "admin/episode_edit";
 	}

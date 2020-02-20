@@ -24,12 +24,16 @@ public class UserService {
 	@Autowired
 	private SerieUserRepository serieUserRepository;
 
-	public String getTitleFromId(long userId) {
-
-		if (userId == -1L) {
-			return ("Serial-Series - ADMIN:     ");
-		} else {
-
+	
+	/**
+	 * 
+	 * @return Aktuellen Header-Titel
+	 */
+	public String getTitle() {
+		long userId = getCurrentLoggedInUserId();
+		if (userId==0L) return "Serial-Series:     ";
+		else if (userId == -1L)	return ("Serial-Series - ADMIN:     ");
+		else { //User angemeldet
 			Optional<User> optionalUser = userRepository.findById(userId);
 			if (optionalUser.isPresent()) {
 				return ("Serial-Series - " + optionalUser.get().getUsername() + ":     ");
@@ -38,11 +42,14 @@ public class UserService {
 			}
 		}
 	}
+	
 
-	public String getEmptyTitle() {
-		return "Serial-Series:     ";
-	}
-
+	/**
+	 * 
+	 * @param idUser
+	 * @param idSerie
+	 * @return id des entsprechenden Eintrags in der Tabelle SerieUser
+	 */
 	public long getSerieUserFromDB(long idUser, long idSerie) {
 		List<SerieUser> listOfSerieUsers = serieUserRepository.findByUserIdAndSerieId(idUser, idSerie);
 		if (!listOfSerieUsers.isEmpty()) {
@@ -53,7 +60,7 @@ public class UserService {
 
 	/**
 	 * 
-	 * @return 0L=kein User angemeldet ansonsten UserId
+	 * @return 0L=kein User angemeldet / -1L Admin angemeldet / ansonsten UserId des angemeldeten Users
 	 */
 	public long getCurrentLoggedInUserId() {
 
@@ -79,6 +86,12 @@ public class UserService {
 
 	}
 
+	/**
+	 * 
+	 * @param series Liste von allen vorhandenen Serien
+	 * @param userId
+	 * @return Liste von Serien, die im Portfolio des Users enthalten sind
+	 */
 	public List<Serie> removeMySeries(List<Serie> series, long userId) {
 
 		ListIterator<Serie> listIterator = series.listIterator();
@@ -99,7 +112,13 @@ public class UserService {
 
 		return series;
 	}
-
+	
+	/**
+	 * 
+	 * @param series Liste von allen vorhandenen Serien
+	 * @param userId
+	 * @return Liste von Serien, die NICHT im Portfolio des Users enthalten sind
+	 */
 	public List<Serie> removeNotMySeries(List<Serie> series, long userId) {
 
 		ListIterator<Serie> listIterator = series.listIterator();
