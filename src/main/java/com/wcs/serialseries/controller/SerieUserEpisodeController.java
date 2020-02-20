@@ -50,7 +50,7 @@ public class SerieUserEpisodeController {
 			Serie serie = optionalSerie.get();
 
 			model.addAttribute("Serie", fillFormWithDatafromDB (idUser, idSerie , serie));
-			model.addAttribute("Title", service.getTitleFromId(idUser));
+			model.addAttribute("Title", service.getTitle());
 			model.addAttribute("Type", "Details");
 			model.addAttribute("UserId", idUser);
 			return "list_serie_with_seasons_and_episodes.html";
@@ -79,6 +79,15 @@ public class SerieUserEpisodeController {
 
 	}
 
+	
+	/**
+	 * 
+	 * @param seen : Liste mit den Episodennummern aller als gesehen markierten Episoden
+	 * @param wanted : Liste mit den Episodennummern aller als wanna_c markierten Episoden
+	 * @param serieUserEpisodes : Entity die befüllt werden soll
+	 * @param ittStaffel : Aktuelle Staffel
+	 */
+	
 	private void fillPersistedDataWithFormData(int[] seen, int[] wanted, List<SerieUserEpisode> serieUserEpisodes,
 			int ittStaffel) {
 		// Erstmal alle auf false setzen
@@ -106,6 +115,15 @@ public class SerieUserEpisodeController {
 			}
 		}
 	}
+	
+	
+	/**
+	 * 
+	 * @param idUser : User zu dem die Daten gelesen werden sollen
+	 * @param idSerie : Serie zu der die Daten gelesen werden sollen
+	 * @param serie : Entity, die aus der DB befüllt wird 
+	 * @return  Das befüllte Formular, welches angezeigt werden soll
+	 */
 	
 	public FormSerie fillFormWithDatafromDB(long idUser,long idSerie, Serie serie) {
 		

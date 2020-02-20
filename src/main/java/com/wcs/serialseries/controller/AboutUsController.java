@@ -20,13 +20,8 @@ public class AboutUsController {
 	@GetMapping("/aboutUs")
 	public String getAll(Model model) {
 		
-		long userId = service.getCurrentLoggedInUserId();
-
 		model.addAttribute("Type", "About");
-		if (userId ==0)
-			model.addAttribute("Title", service.getEmptyTitle());
-		else
-			model.addAttribute("Title", service.getTitleFromId(userId));
+		model.addAttribute("Title", service.getTitle());
 
 		return "about_us.html";
 	}
