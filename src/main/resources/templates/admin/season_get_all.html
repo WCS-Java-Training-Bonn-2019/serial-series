@@ -22,13 +22,16 @@
     <table border="1">
       <tr>
         <th>Staffel-ID</th>
-        <th>Serie-Nr</th>
+        <th>Serien-Name</th>
+        <th>Serien-Nr</th>
         <th>Staffel-Nr</th>
+        <th>Aktion</th>
              </tr>
       <tr th:each="season : ${seasons}">
 
         <td th:text="${season.id}">Staffel-ID</td>
-        <td th:text="${season.serie}">Serie-Nr</td>
+        <td th:text="|&nbsp;${season.serie.name}&nbsp;|">Serien-Name</td>
+        <td th:text="${season.serie.id}">Serien-Nr</td>
         <td th:text="${season.season_Nr}">Staffel-Nr</td>
        
         <td>
