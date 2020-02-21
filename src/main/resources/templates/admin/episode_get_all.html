@@ -28,7 +28,7 @@
 					<th>Episoden-Titel</th>
 				</tr>
 				<tr th:each="episode : ${episodes}">
-					<td th:text="${episode.season.season_Nr}">StaffelNr</td>
+					<td th:text="${episode.season.seasonNr}">StaffelNr</td>
 					<td th:text="${episode.episode_Nr}">FolgeNr</td>
 					<td th:text="${episode.name}">FolgeTitel</td>
 					<td>

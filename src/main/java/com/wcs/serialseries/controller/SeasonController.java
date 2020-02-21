@@ -48,7 +48,8 @@ public class SeasonController {
 	@GetMapping("/seasons")
 	public String getAllforAdmin(Model model) {
 		// erst Serien-Titel ausgeben, dann die einzelnen Staffelnumern
-		model.addAttribute("seasons", seasonRepository.findAllByOrderBySerieName());
+//		model.addAttribute("seasons", seasonRepository.findAllByOrderBySerieName());
+		model.addAttribute("seasons", seasonRepository.findAllByOrderBySerieNameAscSeasonNrAsc());
 		model.addAttribute("Title", service.getTitle());
 		model.addAttribute("Type", "Admin");
 

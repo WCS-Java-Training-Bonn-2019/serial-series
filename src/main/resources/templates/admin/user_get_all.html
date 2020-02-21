@@ -16,10 +16,18 @@
 <div class="admin_body">
   <section>
     <h1>Benutzer</h1>
+    
+   	<section>
+      <a th:href="@{'/userNew'}"><input class= "button_medium" type="button" value="Neuer Benutzer"></a>
+      <a th:href="@{/}"><input class= "button_medium" type="button" value="Zurück"></a>
+    </section>
+    <br>
+    
     <table border="1">
       <tr>
         <th>Benutzername</th>
         <th>Passwort</th>
+        <th>Aktion</th>
       </tr>
       <tr th:each="user : ${users}">
         <td th:text="${user.username}">Name</td>
@@ -32,11 +40,7 @@
     </table>
   </section>
 
-  <section>
-    <br> 
-    <a th:href="@{'/userNew'}"><input class= "button_medium" type="button" value="Neuer Benutzer"></a>
-    <a th:href="@{/}"><input class= "button_medium" type="button" value="Zurück"></a>
-  </section>
+
   </div>
 </body>
 <div th:insert="fragments/footer.html :: footer"></div>

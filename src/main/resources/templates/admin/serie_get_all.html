@@ -18,6 +18,13 @@
 <div class="admin_body">
   <section>
     <h1>Serien</h1>
+    
+    <section>
+      <a th:href="@{'/serieNew'}"><input class= "button_medium" type="button" value="Neue Serie"></a>
+      <a th:href="@{/}"><input class= "button_medium" type="button" value="Zurück"></a>
+    </section>
+    <br>
+      
     <table border="1">
       <tr>
         <th>id</th>
@@ -36,18 +43,13 @@
           <textarea rows="4" cols="50" th:text="${serie.description}">Platzhalter</textarea>
         </td>
         <td>
-          <a th:href="@{'/serieEdit/' + ${serie.id}}">Bearbeiten</a>
-          <a th:href="@{'/serieDelete/' + ${serie.id}}">Löschen</a>
+	      <a th:href="@{'/serieEdit/' + ${serie.id}}"><input class= "button_small" type="button" value="Bearbeiten"></a> 
+          <a th:href="@{'/serieDelete/' + ${serie.id}}"><input class= "button_small" type="button" value="Löschen"></a>
         </td>
       </tr>
     </table>
   </section>
-  <section>
-    <br>
-    <a th:href="@{'/serieNew'}">Neue Serie anlegen</a>
-    <br>
-    <a th:href="@{/series}">Zurück</a>
-  </section>
+ 
   <p></p>
   </div>
 </body>

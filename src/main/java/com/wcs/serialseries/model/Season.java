@@ -2,6 +2,7 @@ package com.wcs.serialseries.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,8 @@ public class Season {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private int season_Nr;
+	@Column(name="season_Nr")
+    private int seasonNr;
 		
 	
 	//Eine Staffel gehört zu genau iner Serie
@@ -38,12 +40,12 @@ public class Season {
 	}
 
 	
-	public int getSeason_Nr() {
-		return season_Nr;
+	public int getSeasonNr() {
+		return seasonNr;
 	}
 
-	public void setSeason_Nr(int season_Nr) {
-		this.season_Nr = season_Nr;
+	public void setSeasonNr(int seasonNr) {
+		this.seasonNr = seasonNr;
 	}
 
 	public Serie getSerie() {

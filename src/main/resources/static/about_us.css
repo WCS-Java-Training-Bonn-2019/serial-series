@@ -9,7 +9,10 @@
 .card-img-top {
 	border-radius: 0;
 	border-style: none;
-	padding: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	height: 100%;
+/* 	padding: 40px; */
 }
 
 .article-row>div {
