@@ -19,12 +19,16 @@
   <h1>Benutzer</h1>
   <br>
   <form action="#" th:action="@{/userUpsert}" th:object="${user}" method="post">
-    <input th:field="*{id}" type="hidden"> <label for="username">Benutzername:</label> <input
-      th:field="*{username}" required type="text"> <br>
-    <br> <label for="password">Passwort</label> <input th:field="*{password}" required type="password"> <br>
-    <br> <br> <br> 
-    <input type="submit" value="Speichern"> 
-    <input type="reset" value="Zurücksetzen" />
+    <input th:field="*{id}" type="hidden"> 
+    <label for="username">Benutzername:</label> 
+    <input th:field="*{username}" required type="text"> 
+    <br><br> 
+    <label for="password">Passwort</label> 
+    <input th:field="*{password}" required type="password"> 
+    <br> <br> <br> <br> 
+    <input class= "button_medium" type="submit" value="Speichern"> 
+    <input class= "button_medium" type="reset" value="Zurücksetzen" />
+    <a href="/users"> <input class= "button_medium" type="button" value="Abbrechen"> </a>
   </form>
 </div>
 </body>

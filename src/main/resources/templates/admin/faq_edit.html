@@ -23,10 +23,16 @@
     <h1>FAQ</h1>
     <br>
     <form action="#" th:action="@{/faqUpsert}" th:object="${faq}" method="post">
-      <input th:field="*{id}" type="hidden"> <label for="frage">Frage:</label> <input th:field="*{frage}"
-        required type="text"> <br> <br> <label for="antwort">Antwort</label> <input
-        th:field="*{antwort}" required type="text"> <br> <br> <br> <br> <input type="submit"
-        value="Speichern"> <input type="reset" value="Zurücksetzen" />
+      <input th:field="*{id}" type="hidden"> 
+      <label for="frage">Frage:</label> 
+      <input th:field="*{frage}" required type="text"> 
+      <br> <br> 
+      <label for="antwort">Antwort</label> 
+      <input th:field="*{antwort}" required type="text"> 
+      <br> <br> <br> <br> 
+      <input class= "button_medium" type="submit" value="Speichern"> 
+      <input class= "button_medium" type="reset" value="Zurücksetzen" />
+      <a href="/faqs"> <input class= "button_medium" type="button" value="Abbrechen"> </a>
     </form>
   </div>
 </body>
