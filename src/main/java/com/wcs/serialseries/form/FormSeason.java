@@ -4,7 +4,7 @@ import java.util.List;
 
 public class FormSeason {
 		private long id;
-		private int season_Nr;
+		private int seasonNr;
 		private List <FormEpisode> episodes;
 		
 			
@@ -19,12 +19,12 @@ public class FormSeason {
 			this.id = id;
 		}
 
-		public int getSeason_Nr() {
-			return season_Nr;
+		public int getSeasonNr() {
+			return seasonNr;
 		}
 
-		public void setSeason_Nr(int season_Nr) {
-			this.season_Nr = season_Nr;
+		public void setSeasonNr(int seasonNr) {
+			this.seasonNr = seasonNr;
 		}
 
 		public List<FormEpisode> getEpisodes() {

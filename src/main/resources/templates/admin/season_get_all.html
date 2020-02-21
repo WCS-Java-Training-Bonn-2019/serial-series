@@ -19,34 +19,34 @@
   <div class="admin_body">
   <section>
     <h1>Staffeln</h1>
+    
+    <section>
+      <a th:href="@{'/seasonNew'}"><input class= "button_medium" type="button" value="Neue Staffel"></a>
+      <a th:href="@{/}"><input class= "button_medium" type="button" value="Zurück"></a>
+    </section>
+    <br>
+    
     <table border="1">
       <tr>
-        <th>Staffel-ID</th>
         <th>Serien-Name</th>
-        <th>Serien-Nr</th>
         <th>Staffel-Nr</th>
         <th>Aktion</th>
              </tr>
       <tr th:each="season : ${seasons}">
 
-        <td th:text="${season.id}">Staffel-ID</td>
         <td th:text="|&nbsp;${season.serie.name}&nbsp;|">Serien-Name</td>
-        <td th:text="${season.serie.id}">Serien-Nr</td>
-        <td th:text="${season.season_Nr}">Staffel-Nr</td>
+        <td th:text="|&nbsp;Staffel ${season.seasonNr}&nbsp;|">Staffel-Nr</td>
+         
        
         <td>
-          <a th:href="@{'/seasonEdit/' + ${season.id}}">Bearbeiten</a> 
-          <a th:href="@{'/seasonDelete/' + ${season.id}}">Löschen</a>
+          <a th:href="@{'/seasonEdit/' + ${season.id}}"><input class= "button_small" type="button" value="Bearbeiten"></a> 
+          <a th:href="@{'/seasonDelete/' + ${season.id}}"><input class= "button_small" type="button" value="Löschen"></a>
         </td>
       </tr>
     </table>
   </section>
 
-  <section>
-    <br> 
-    <a th:href="@{'/seasonNew'}">Neue Staffel</a>
-    <br> <a th:href="@{/}">Zurück</a>
-  </section>
+ 
   </div>
 </body>
 <div th:insert="fragments/footer.html :: footer"></div>

@@ -17,11 +17,19 @@
   <div class="admin_body">
   <section>
     <h1>FAQ</h1>
+
+    <section>
+      <a th:href="@{'/faqNew'}"><input class= "button_medium" type="button" value="Neue FAQ"></a>
+      <a th:href="@{/}"><input class= "button_medium" type="button" value="Zurück"></a>
+    </section>
+    <br>
+    
     <table border="1">
       <tr>
         <th>Frage</th>
         <th>Antwort</th>
-             </tr>
+        <th>Aktion</th>
+      </tr>
       <tr th:each="faq : ${faqs}">
         <td th:text="${faq.frage}">Frage</td>
         <td th:text="${faq.antwort}">Antwort</td>
@@ -34,12 +42,7 @@
     </table>
   </section>
 
-    <section>
-    <br> 
-    <a th:href="@{'/faqNew'}"><input class= "button_medium" type="button" value="Neue FAQ"></a>
-    <a th:href="@{/}"><input class= "button_medium" type="button" value="Zurück"></a>
-  </section>
-  
+   
   </div>
 </body>
 <div th:insert="fragments/footer.html :: footer"></div>

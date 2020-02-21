@@ -50,7 +50,7 @@
 		<details open th:each="season, stat: ${Serie.seasons}">
 		 -->
 		<details th:each="season, stat: ${Serie.seasons}">
-			<summary th:text="|Staffel ${season.season_Nr}|">Staffelname </summary>
+			<summary th:text="|Staffel ${season.seasonNr}|">Staffelname </summary>
 
 			<input type="hidden" th:field="*{seasons[__${stat.index}__].id}" />
 				
@@ -77,8 +77,7 @@
 						th:checked="*{seasons[__${stat.index}__].episodes[__${stat2.index}__].wanna_c}" />möchte
 						ich sehen
 					</label>
-									
-					
+          					
 				</div>
 			</th:block>
 		</details>
