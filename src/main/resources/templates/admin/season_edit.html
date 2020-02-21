@@ -28,8 +28,13 @@
 			<a th:text="| Datensatz-ID: ${season.id}|">Datensatz</a>
 			<br>
 			<input th:field="*{id}" type="hidden">
-			<label for="SerieNr">Serien-ID</label>
-			<input th:field="*{serie}" required type="text">
+<!-- 			<label for="SerieNr">Serien-ID</label> -->
+<!-- 			<input th:field="*{serie}" required type="text"> -->
+      <label for="SerieNr">Serien-ID</label>
+      <select id="SerieNr" name="SerieNr" th:field="*{serie}">
+        <option th:each="serie : ${series}" th:text="${serie.name}" th:value="${serie.id}">
+      </select>
+
 			<br>
 			<br>
 			<br>
