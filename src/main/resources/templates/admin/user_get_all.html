@@ -26,14 +26,16 @@
         <td th:text="${user.password}">Passwort</td>
 
         <td>
-        <a th:href="@{'/userEdit/' + ${user.id}}">Bearbeiten</a> 
-        <a th:href="@{'/userDelete/' + ${user.id}}">Löschen</a></td>
+        <a th:href="@{'/userEdit/' + ${user.id}}"><input class= "button_small" type="button" value="Bearbeiten"></a> 
+        <a th:href="@{'/userDelete/' + ${user.id}}"><input class= "button_small" type="button" value="Löschen"></a></td>
       </tr>
     </table>
   </section>
 
   <section>
-    <br> <a th:href="@{'/userNew'}">Neuer Benutzer</a><br> <a th:href="@{/}">Zurück</a>
+    <br> 
+    <a th:href="@{'/userNew'}"><input class= "button_medium" type="button" value="Neuer Benutzer"></a>
+    <a th:href="@{/}"><input class= "button_medium" type="button" value="Zurück"></a>
   </section>
   </div>
 </body>

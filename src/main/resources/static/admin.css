@@ -2,3 +2,24 @@
   margin-left:30px;
   margin-right:30px; 
 }
+
+label {
+	width: 150px;
+}
+
+input {
+	width: 300px;
+}
+
+th {
+	color: #e5007d;
+	border-color: black;
+}
+
+.button_small{
+    width: 100px;
+}
+.button_medium{
+    width: 150px;
+}
+

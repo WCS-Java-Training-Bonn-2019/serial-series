@@ -26,15 +26,20 @@
         <td th:text="${faq.frage}">Frage</td>
         <td th:text="${faq.antwort}">Antwort</td>
        
-        <td><a th:href="@{'/faqEdit/' + ${faq.id}}">Bearbeiten</a> <a
-          th:href="@{'/faqDelete/' + ${faq.id}}">Löschen</a></td>
+        <td>
+        <a th:href="@{'/faqEdit/' + ${faq.id}}"><input class= "button_small" type="button" value="Bearbeiten"></a> 
+        <a th:href="@{'/faqDelete/' + ${faq.id}}"><input class= "button_small" type="button" value="Löschen"></a>
+        </td>
       </tr>
     </table>
   </section>
 
-  <section>
-    <br> <a th:href="@{'/faqNew'}">Neue FAQ</a><br> <a th:href="@{/}">Zurück</a>
+    <section>
+    <br> 
+    <a th:href="@{'/faqNew'}"><input class= "button_medium" type="button" value="Neue FAQ"></a>
+    <a th:href="@{/}"><input class= "button_medium" type="button" value="Zurück"></a>
   </section>
+  
   </div>
 </body>
 <div th:insert="fragments/footer.html :: footer"></div>
