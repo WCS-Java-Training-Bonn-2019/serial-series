@@ -11,28 +11,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.wcs.serialseries.model.Episode;
+import com.wcs.serialseries.model.SerieUserEpisode;
 import com.wcs.serialseries.repository.EpisodeRepository;
 import com.wcs.serialseries.repository.SerieRepository;
+import com.wcs.serialseries.repository.SerieUserEpisodeRepository;
 import com.wcs.serialseries.service.UserService;
 
 @Controller
 public class EpisodeController {
-	
-	
+
 	private final EpisodeRepository episodeRepository;
 	private final UserService service;
 	private final SerieRepository serieRepository;
-
+	private final SerieUserEpisodeRepository serieUserEpisodeRepository;
 
 	@Autowired
-	public EpisodeController(EpisodeRepository episodeRepository,
-			SerieRepository serieRepository, 
-			UserService service) {
+	public EpisodeController(EpisodeRepository episodeRepository, SerieRepository serieRepository,
+			SerieUserEpisodeRepository serieUserEpisodeRepository, UserService service) {
 		this.episodeRepository = episodeRepository;
 		this.serieRepository = serieRepository;
+		this.serieUserEpisodeRepository = serieUserEpisodeRepository;
 		this.service = service;
 	}
-	
+
 	/*
 	 * Admin
 	 */
@@ -40,7 +41,8 @@ public class EpisodeController {
 	@GetMapping("/episodes")
 	public String getAllforAdmin(Model model) {
 //		model.addAttribute("episodes", episodeRepository.findAll());
-		model.addAttribute("episodes", episodeRepository.findAllByOrderBySeasonSerieNameAscSeasonSeasonNrAscEpisodeNrAsc());
+		model.addAttribute("episodes",
+				episodeRepository.findAllByOrderBySeasonSerieNameAscSeasonSeasonNrAscEpisodeNrAsc());
 		model.addAttribute("Title", service.getTitle());
 		model.addAttribute("Type", "Admin");
 		return "admin/episode_get_all";
@@ -48,7 +50,13 @@ public class EpisodeController {
 
 	@PostMapping("/episodeUpsert")
 	public String insert(@ModelAttribute Episode episode) {
-		episodeRepository.save(episode);
+		episode = episodeRepository.save(episode);
+// bei Neuanlage:		
+// Aktualisierung der SUE notwendig!
+// Weg über Season, Serie, SerieUser?
+// Sofern überhaupt Einträge für diese Serie einem User zugeordnet sind...
+//		SerieUserEpisode serieUserEpisode = new SerieUserEpisode();
+		
 		return "redirect:/episodes";
 	}
 
@@ -76,5 +84,3 @@ public class EpisodeController {
 		return "redirect:/episodes";
 	}
 }
-
-

@@ -32,13 +32,14 @@
       <br>
 
       <label for="StaffelNr">Staffel-ID</label>
-      <input th:field="*{season}" required type="text">
+      <input th:field="*{season}" required type="text"> 
+        <span th:text="| nur intern!, ${episode.season.seasonNr}. Staffel in Serie |">Staffel-IDs</span>
       <br>
       <br>
       <br>
       <br>
       <label for="EpisodeNr">Episoden-Nummer</label>
-      <input th:field="*{episode_Nr}" required type="text">
+      <input th:field="*{episodeNr}" required type="text">
       <br>
       <br>
       <br>
