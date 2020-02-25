@@ -37,7 +37,7 @@
         <tr th:each="episode : ${episodes}">
           <td th:text="|&nbsp;${episode.season.serie.name}&nbsp;|">SerienName</td>
           <td th:text="|&nbsp;${episode.season.seasonNr}&nbsp;|">StaffelNr</td>
-          <td th:text="|&nbsp;${episode.episode_Nr}&nbsp;|">FolgeNr</td>
+          <td th:text="|&nbsp;${episode.episodeNr}&nbsp;|">FolgeNr</td>
           <td th:text="|&nbsp;${episode.name}&nbsp;|">FolgeTitel</td>
           <td>
             <a th:href="@{'/episodeEdit/' + ${episode.id}}">

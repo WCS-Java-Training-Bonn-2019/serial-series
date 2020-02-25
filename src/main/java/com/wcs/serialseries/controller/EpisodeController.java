@@ -39,7 +39,8 @@ public class EpisodeController {
 
 	@GetMapping("/episodes")
 	public String getAllforAdmin(Model model) {
-		model.addAttribute("episodes", episodeRepository.findAll());
+//		model.addAttribute("episodes", episodeRepository.findAll());
+		model.addAttribute("episodes", episodeRepository.findAllByOrderBySeasonSerieNameAscSeasonSeasonNrAscEpisodeNrAsc());
 		model.addAttribute("Title", service.getTitle());
 		model.addAttribute("Type", "Admin");
 		return "admin/episode_get_all";

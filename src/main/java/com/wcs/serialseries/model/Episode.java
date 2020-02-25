@@ -3,6 +3,7 @@ package com.wcs.serialseries.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,8 @@ public class Episode {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private int episode_Nr;
+	@Column(name="episode_Nr")
+	private int episodeNr;
 	private String name;
 
 	@ManyToOne
@@ -36,12 +38,12 @@ public class Episode {
 		this.id = id;
 	}
 
-	public int getEpisode_Nr() {
-		return episode_Nr;
+	public int getEpisodeNr() {
+		return episodeNr;
 	}
 
-	public void setEpisode_Nr(int episode_Nr) {
-		this.episode_Nr = episode_Nr;
+	public void setEpisodeNr(int episodeNr) {
+		this.episodeNr = episodeNr;
 	}
 
 	public String getName() {
