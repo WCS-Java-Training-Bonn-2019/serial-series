@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.wcs.serialseries.model.Episode;
 import com.wcs.serialseries.repository.EpisodeRepository;
+import com.wcs.serialseries.repository.SerieRepository;
 import com.wcs.serialseries.service.UserService;
 
 @Controller
@@ -20,10 +21,15 @@ public class EpisodeController {
 	
 	private final EpisodeRepository episodeRepository;
 	private final UserService service;
+	private final SerieRepository serieRepository;
+
 
 	@Autowired
-	public EpisodeController(EpisodeRepository episodeRepository, UserService service) {
+	public EpisodeController(EpisodeRepository episodeRepository,
+			SerieRepository serieRepository, 
+			UserService service) {
 		this.episodeRepository = episodeRepository;
+		this.serieRepository = serieRepository;
 		this.service = service;
 	}
 	
@@ -56,6 +62,7 @@ public class EpisodeController {
 				return "redirect:/";
 			}
 		}
+		model.addAttribute("series", serieRepository.findAllByOrderByName());
 		model.addAttribute("episode", episode);
 		model.addAttribute("Title", service.getTitle());
 		model.addAttribute("Type", "Admin");
