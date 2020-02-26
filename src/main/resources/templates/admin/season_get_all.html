@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+
+<head>
+<title th:text="|${Title}|">Serial-Series</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi">
+<link rel="stylesheet" href="/global.css">
+<link rel="stylesheet" href="/admin.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset=UTF-8>
+</head>
+<header th:insert="fragments/header.html :: header"></header>
+<body>
+
+
+
+  <div class="admin_body">
+  <section>
+    <h1>Staffeln</h1>
+    
+    <section>
+      <a th:href="@{'/seasonNew'}"><input class= "button_medium" type="button" value="Neue Staffel"></a>
+      <a th:href="@{/}"><input class= "button_medium" type="button" value="Zurück"></a>
+    </section>
+    <br>
+    
+    <table border="1">
+      <tr>
+        <th>Serien-Name</th>
+        <th>Staffel-Nr</th>
+        <th>Aktion</th>
+             </tr>
+      <tr th:each="season : ${seasons}">
+
+        <td th:text="|&nbsp;${season.serie.name}&nbsp;|">Serien-Name</td>
+        <td th:text="|&nbsp;Staffel ${season.seasonNr}&nbsp;|">Staffel-Nr</td>
+         
+       
+        <td>
+          <a th:href="@{'/seasonEdit/' + ${season.id}}"><input class= "button_small" type="button" value="Bearbeiten"></a> 
+          <a th:href="@{'/seasonDelete/' + ${season.id}}"><input class= "button_small" type="button" value="Löschen"></a>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+ 
+  </div>
+</body>
+<div th:insert="fragments/footer.html :: footer"></div>
+</html>

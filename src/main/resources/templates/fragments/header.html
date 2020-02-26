@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Serial-Series</title>
+<meta charset=UTF-8>
+</head>
+<body>
+
+  <header th:fragment="header">
+
+    <link rel="stylesheet" href="/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+          <a class="navbar-brand" href="" th:text="|${Title}|">Serial-Series</a>
+
+
+          <!-- Start -->
+          <th:block th:if="${Type == 'Start'}">
+            <a class="nav_color_pink nav-item nav-link  active">Home </a>
+            <th:block sec:authorize="isAuthenticated()">
+              <a sec:authorize="!hasRole('ROLE_ADMIN')" class="nav-item nav-link " th:href="${'/listMySeries'}">Meine Serien</a>
+              <a sec:authorize="!hasRole('ROLE_ADMIN')" class="nav_color_pink nav-item nav-link" href="/aboutUs">Über uns</a>
+
+              <!-- Dropdown -->
+              <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> Admin </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="/users">User</a> <a class="dropdown-item" href="/faqs">FAQ</a> <a class="dropdown-item" href="/series">Serien</a> <a class="dropdown-item"
+                    href="/seasons">Staffeln</a> <a class="dropdown-item" href="/episodes">Episoden</a>
+                </div></li>
+            </th:block>
+
+            <th:block sec:authorize="!isAuthenticated()">
+              <a class="nav-item nav-link " th:href="${'/listAllSeries'}">Alle Serien</a>
+              <a class="nav_color_pink nav-item nav-link" href="/aboutUs">Über uns</a>
+            </th:block>
+          </th:block>
+
+          <!-- Admin -->
+          <th:block th:if="${Type == 'Admin'}">
+            <a class="nav_color_pink nav-item nav-link" href="/startSerialSeries">Home </a>
+            <!-- Dropdown -->
+            <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> Admin </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/users">User</a> 
+                <a class="dropdown-item" href="/faqs">FAQ</a> 
+                <a class="dropdown-item" href="/series">Serien</a> 
+                <a class="dropdown-item" href="/seasons">Staffeln</a> 
+                <a class="dropdown-item" href="/episodes">Episoden</a>
+              </div></li>
+
+          </th:block>
+
+          <!-- All -->
+          <th:block th:if="${Type == 'All'}">
+            <a class="nav_color_pink nav-item nav-link" href="/startSerialSeries">Home </a>
+            <!-- KEIN Admin, KEIN angemeldet, da diese nicht auf "Alle Serien kommen -->
+            <a class="nav-item nav-link active">Alle Serien</a>
+            <a class="nav_color_pink nav-item nav-link" href="/aboutUs">Über uns</a>
+          </th:block>
+
+          <!-- My -->
+          <th:block th:if="${Type == 'My'}">
+            <a class="nav_color_pink nav-item nav-link" href="/startSerialSeries">Home </a>
+            <!-- KEIN Admin, KEIN angemeldet, da diese nicht auf "Alle Serien kommen -->
+            <a class="nav-item nav-link" th:href="${'/listSeries/New'}">Hinzufügen </a>
+            <a class="nav-item nav-link active">Meine Serien</a>
+            <a class="nav_color_pink nav-item nav-link" href="/aboutUs">Über uns</a>
+          </th:block>
+
+          <!-- New - Hnzufügen -->
+          <th:block th:if="${Type == 'New'}">
+            <a class="nav_color_pink nav-item nav-link" href="/startSerialSeries">Home </a>
+            <!-- KEIN Admin, KEIN angemeldet, da diese nicht auf "Alle Serien kommen -->
+            <a class="nav-item nav-link active">Hinzufügen</a>
+            <a class="nav-item nav-link" th:href="${'/listMySeries'}">Meine Serien </a>
+            <a class="nav_color_pink nav-item nav-link" href="/aboutUs">Über uns</a>
+          </th:block>
+
+          <!-- Details -->
+          <th:block th:if="${Type == 'Details'}">
+            <a class="nav_color_pink nav-item nav-link" href="/startSerialSeries">Home </a>
+            <!-- KEIN Admin, KEIN angemeldet, da diese nicht auf "Alle Serien kommen -->
+            <a class="nav-item nav-link active">Details</a>
+            <a class="nav-item nav-link" th:href="${'/listMySeries'}">Meine Serien </a>
+            <a class="nav_color_pink nav-item nav-link" href="/aboutUs">Über uns</a>
+          </th:block>
+
+          <!-- AboutUs -->
+          <th:block th:if="${Type == 'About'}">
+            <a class="nav_color_pink nav-item nav-link" href="/startSerialSeries">Home </a>
+            <!-- Angemeldet und nicht angemeldet möglich. Admin nicht möglich -->
+            <th:block sec:authorize="isAuthenticated()">
+              <a class="nav-item nav-link " th:href="${'/listMySeries'}">Meine Serien</a>
+            </th:block>
+            <th:block sec:authorize="!isAuthenticated()">
+              <a class="nav-item nav-link " th:href="${'/listAllSeries'}">Alle Serien</a>
+            </th:block>
+            <a class="nav_color_pink nav-item nav-link active">Über uns</a>
+          </th:block>
+
+          <!-- faq -->
+          <th:block th:if="${Type == 'Faq'}">
+            <a class="nav_color_pink nav-item nav-link" href="/startSerialSeries">Home </a>
+            <!-- Dropdown -->
+            <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="navbardrop" data-toggle="dropdown"> Admin </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/users">User</a> <a class="dropdown-item" href="/faqs">FAQ</a> <a class="dropdown-item" href="/series">Serien</a> <a class="dropdown-item"
+                  href="/seasons">Staffeln</a> <a class="dropdown-item" href="/episodes">Episoden</a>
+              </div></li>
+
+            <th:block sec:authorize="!hasRole('ROLE_ADMIN')">
+              <th:block sec:authorize="isAuthenticated()">
+                <a class="nav-item nav-link " th:href="${'/listMySeries'}">Meine Serien</a>
+              </th:block>
+              <th:block sec:authorize="!isAuthenticated()">
+                <a class="nav-item nav-link " th:href="${'/listAllSeries'}">Alle Serien</a>
+              </th:block>
+              <a class="nav_color_pink nav-item nav-link" href="/aboutUs">Über uns</a>
+            </th:block>
+
+          </th:block>
+
+
+        </div>
+        <div class="navbar-nav ml-auto">
+
+          <div th:insert="fragments/search.html :: search"></div>
+
+          <!-- Login -->
+          <a th:href="@{/login}">
+            <button sec:authorize="!isAuthenticated()" type="button">Anmelden</button>
+          </a>
+
+          <!-- Logout -->
+          <form class="header-form" th:action="@{/logout}" method="POST" title="Logout">
+            <button sec:authorize="isAuthenticated()" type="submit">Abmelden</button>
+          </form>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  </header>
+
+</body>
+</html>

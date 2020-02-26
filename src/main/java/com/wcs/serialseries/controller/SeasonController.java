@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.wcs.serialseries.model.Season;
 import com.wcs.serialseries.repository.SeasonRepository;
+import com.wcs.serialseries.repository.SerieRepository;
 import com.wcs.serialseries.service.UserService;
 
 
@@ -20,10 +21,12 @@ public class SeasonController {
 
 	private final SeasonRepository seasonRepository;
 	private final UserService service;
+	private final SerieRepository serieRepository;
 
 	@Autowired
-	public SeasonController(SeasonRepository seasonRepository, UserService service) {
+	public SeasonController(SeasonRepository seasonRepository, SerieRepository serieRepository, UserService service) {
 		this.seasonRepository = seasonRepository;
+		this.serieRepository = serieRepository;
 		this.service = service;
 	}
 
@@ -32,7 +35,7 @@ public class SeasonController {
 
 		model.addAttribute("season", seasonRepository.findAll());
 		model.addAttribute("Type", "Season");
-		model.addAttribute("Title", service.getEmptyTitle());
+		model.addAttribute("Title", service.getTitle());
 
 		return "season.html";
 	}
@@ -45,9 +48,12 @@ public class SeasonController {
 	@GetMapping("/seasons")
 	public String getAllforAdmin(Model model) {
 		// erst Serien-Titel ausgeben, dann die einzelnen Staffelnumern
-		model.addAttribute("seasons", seasonRepository.findAll());
-		model.addAttribute("Title", service.getTitleFromId(-1L));
-		return "admin/seasonGetAll";
+//		model.addAttribute("seasons", seasonRepository.findAllByOrderBySerieName());
+		model.addAttribute("seasons", seasonRepository.findAllByOrderBySerieNameAscSeasonNrAsc());
+		model.addAttribute("Title", service.getTitle());
+		model.addAttribute("Type", "Admin");
+
+		return "admin/season_get_all";
 	}
 
 	@PostMapping("/seasonUpsert")
@@ -67,9 +73,13 @@ public class SeasonController {
 				return "redirect:/";
 			}
 		}
+		model.addAttribute("series", serieRepository.findAllByOrderByName());
 		model.addAttribute("season", season);
-		model.addAttribute("Title", service.getTitleFromId(-1L));
-		return "admin/seasonEdit";
+		model.addAttribute("Title", service.getTitle());
+		model.addAttribute("Type", "Admin");
+
+		return "admin/season_edit";
+
 	}
 
 	@GetMapping("/seasonDelete/{seasonId}")

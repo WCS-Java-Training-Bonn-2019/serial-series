@@ -1,5 +1,6 @@
 package com.wcs.serialseries.form;
 
+
 public class FormEpisode {
 	private long id;
 	private int episode_Nr;

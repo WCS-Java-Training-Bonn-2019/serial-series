@@ -39,18 +39,18 @@ public class SeriesController {
 		if (userId == 0) {
 			model.addAttribute("Series", serieRepository.findAllByOrderByName());
 			model.addAttribute("Type", "All");
-			model.addAttribute("Title", service.getEmptyTitle());
+			model.addAttribute("Title", service.getTitle());
 
-			return "listSeries.html";
+			return "list_series.html";
 		} else {
 			List<Serie> series = serieRepository.findBySerieUsersUserIdOrderByName(userId);
 
 			model.addAttribute("Series", series);
-			model.addAttribute("Title", service.getTitleFromId(userId));
+			model.addAttribute("Title", service.getTitle());
 			model.addAttribute("Type", "My");
 			model.addAttribute("UserId", userId);
 
-			return "listSeries.html";
+			return "list_series.html";
 		}
 	}
 
@@ -66,18 +66,18 @@ public class SeriesController {
 
 			model.addAttribute("Series", series);
 			model.addAttribute("Type", "All");
-			model.addAttribute("Title", service.getEmptyTitle());
+			model.addAttribute("Title", service.getTitle());
 
-			return "listSeries.html";
+			return "list_series.html";
 		} else {
 			series = service.removeMySeries(series, userId);
 
 			model.addAttribute("Series", series);
-			model.addAttribute("Title", service.getTitleFromId(userId));
+			model.addAttribute("Title", service.getTitle());
 			model.addAttribute("Type", "New");
 			model.addAttribute("UserId", userId);
 
-			return "listSeries.html";
+			return "list_series.html";
 		}
 	}
 
@@ -90,7 +90,7 @@ public class SeriesController {
 			if (search == null || search.isEmpty()) {
 				model.addAttribute("Series", serieRepository.findAllByOrderByName());
 				model.addAttribute("Type", "All");
-				model.addAttribute("Title", service.getEmptyTitle());
+				model.addAttribute("Title", service.getTitle());
 				model.addAttribute("Search", search);
 
 				return "redirect:/listAllSeries";
@@ -99,15 +99,15 @@ public class SeriesController {
 						serieRepository.findAllByNameContainingOrDescriptionContainingOrHashtagContainingOrderByName(
 								search, search, search));
 				model.addAttribute("Type", "All");
-				model.addAttribute("Title", service.getEmptyTitle());
+				model.addAttribute("Title", service.getTitle());
 				model.addAttribute("Search", search);
 
-				return "listSeries.html";
+				return "list_series.html";
 			}
 		} else {
 			if (search == null || search.isEmpty()) {
 				model.addAttribute("Series", serieRepository.findBySerieUsersUserIdOrderByName(userId));
-				model.addAttribute("Title", service.getTitleFromId(userId));
+				model.addAttribute("Title", service.getTitle());
 				model.addAttribute("Type", "My");
 				model.addAttribute("UserId", userId);
 
@@ -118,11 +118,11 @@ public class SeriesController {
 								search);
 				series = service.removeNotMySeries(series, userId);
 				model.addAttribute("Series", series);
-				model.addAttribute("Title", service.getTitleFromId(userId));
+				model.addAttribute("Title", service.getTitle());
 				model.addAttribute("Type", "My");
 				model.addAttribute("UserId", userId);
 
-				return "listSeries.html";
+				return "list_series.html";
 			}
 		}
 	}
@@ -135,7 +135,7 @@ public class SeriesController {
 		if (userId != 0) {
 			if (search == null || search.isEmpty()) {
 				model.addAttribute("Series", serieRepository.findBySerieUsersUserIdOrderByName(userId));
-				model.addAttribute("Title", service.getTitleFromId(userId));
+				model.addAttribute("Title", service.getTitle());
 				model.addAttribute("Type", "New");
 				model.addAttribute("UserId", userId);
 				return "redirect:/listMySeries";
@@ -147,51 +147,52 @@ public class SeriesController {
 								search);
 				series = service.removeMySeries(series, userId);
 				model.addAttribute("Series", series);
-				model.addAttribute("Title", service.getTitleFromId(userId));
+				model.addAttribute("Title", service.getTitle());
 				model.addAttribute("Type", "New");
 				model.addAttribute("UserId", userId);
-				return "listSeries.html";
+				return "list_series.html";
 			}
-		}
-		else  return "redirect:/listAllSeries";
+		} else
+			return "redirect:/listAllSeries";
 	}
-
-
 
 //Admin Seiten
 
 	@GetMapping("/series")
 	public String getAll(Model model) {
 		model.addAttribute("Series", serieRepository.findAllByOrderByName());
-		model.addAttribute("Title", service.getTitleFromId(-1L));
-		return "admin/serieGetAll";
+		model.addAttribute("Title", service.getTitle());
+		model.addAttribute("Type", "Admin");
+		return "admin/serie_get_all";
 	}
-	
+
 	@PostMapping("/serieUpsert")
 	public String insert(Model model, @Valid Serie serie, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			return "admin/serieEdit";
+			return "admin/serie_edit";
 		}
 		serie = serieRepository.save(serie);
 		return "redirect:/series";
 	}
 
-	
 	@GetMapping({ "/serieNew", "/serieEdit/{id}" })
 	public String edit(Model model, @PathVariable(required = false) Long id) {
 		if (id == null) {
 			model.addAttribute("serie", new Serie());
-			model.addAttribute("Title", service.getTitleFromId(-1L));
-			return "admin/serieEdit";
-		}
-		Optional<Serie> optionalSerie = serieRepository.findById(id);
-		if (optionalSerie.isPresent()) {
-			model.addAttribute("serie", optionalSerie.get());
-			model.addAttribute("Title", service.getTitleFromId(-1L));
+			model.addAttribute("Title", service.getTitle());
+			model.addAttribute("Type", "Admin");
+			return "admin/serie_edit";
 		} else {
-			return "redirect:/series";
+			Optional<Serie> optionalSerie = serieRepository.findById(id);
+			if (optionalSerie.isPresent()) {
+				model.addAttribute("serie", optionalSerie.get());
+				model.addAttribute("Title", service.getTitle());
+				model.addAttribute("Type", "Admin");
+			} else {
+				return "redirect:/series";
+			}
+			return "admin/serie_edit";
 		}
-		return "admin/serieEdit";
 	}
 
 	@GetMapping("/serieDelete/{id}")
@@ -200,12 +201,4 @@ public class SeriesController {
 		return "redirect:/series";
 	}
 
-	
 }
-
-
-
-
-
-
-

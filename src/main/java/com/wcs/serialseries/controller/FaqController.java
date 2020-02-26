@@ -28,10 +28,10 @@ public class FaqController {
 
 	@GetMapping("/faq")
 	public String getAll(Model model) {
-
+		
 		model.addAttribute("faq", faqRepository.findAll());
 		model.addAttribute("Type", "Faq");
-		model.addAttribute("Title", service.getEmptyTitle());
+		model.addAttribute("Title", service.getTitle());
 
 		return "faq.html";
 	}
@@ -44,8 +44,9 @@ public class FaqController {
 	@GetMapping("/faqs")
 	public String getAllforAdmin(Model model) {
 		model.addAttribute("faqs", faqRepository.findAll());
-		model.addAttribute("Title", service.getTitleFromId(-1L));
-		return "admin/faqGetAll";
+		model.addAttribute("Title", service.getTitle());
+		model.addAttribute("Type", "Admin");
+		return "admin/faq_get_all";
 	}
 
 	@PostMapping("/faqUpsert")
@@ -66,8 +67,9 @@ public class FaqController {
 			}
 		}
 		model.addAttribute("faq", faq);
-		model.addAttribute("Title", service.getTitleFromId(-1L));
-		return "admin/faqEdit";
+		model.addAttribute("Title", service.getTitle());
+		model.addAttribute("Type", "Admin");
+		return "admin/faq_edit";
 	}
 
 	@GetMapping("/faqDelete/{faqId}")

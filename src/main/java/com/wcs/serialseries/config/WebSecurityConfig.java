@@ -1,18 +1,9 @@
 package com.wcs.serialseries.config;
 
-import java.security.Principal;
-
-
-import org.springframework.security.core.Authentication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.wcs.serialseries.service.UserDetailsServiceImpl;
@@ -37,27 +28,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.authorizeRequests().antMatchers("/listMySeries", "/listSerieSeasonsEpisodes/**")
 				.hasAnyRole("ADMIN", "JUNKY")
         .antMatchers("/", "/startSerialSeries", "/listAllSeries", "/listSearch", "/editUser","/upsetUser", "/listSearch/*",
-						"/faq", "/pictures/*", "/media/*", "/faq.css", "/register-error",
-						"/global.css", "/login.css", "/header.css", "/listSeries.css", "/header.css", "/underConstruction.html",
-						"/listSerieWithSeasonsAndEpisodes.css", "/start.css", "/webjars/**")
+						"/faq", "/aboutUs","/pictures/*", "/media/*", "/register-error", "/faq.css",
+						"/global.css", "/login.css", "/header.css", "/list_series.css", "/about_us.css",
+						"/list_serie_with_seasons_and_episodes.css", "/start.css", "/webjars/**")
 				.permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
 				.loginPage("/login")
 				.loginProcessingUrl("/perform_login")
-				.defaultSuccessUrl("/listMySeries", true)
+				.defaultSuccessUrl("/startSerialSeries", true)
 				.failureUrl("/login-error")
 				.permitAll()
 				.and()
 			.logout()
-//				.logoutUrl("/perform_logout")
 				.logoutSuccessUrl("/startSerialSeries")
 				.deleteCookies("JSESSIONID")
 				.permitAll()
 				.and()
 			.httpBasic();
-
 	}
 
 

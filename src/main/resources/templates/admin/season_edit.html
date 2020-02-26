@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
+<title th:text="|${Title}|">Serial-Series</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi">
+<link rel="stylesheet" href="/global.css">
+<link rel="stylesheet" href="/admin.css">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset=UTF-8>
+</head>
+
+<header th:insert="fragments/header.html :: header"></header>
+
+<body>
+
+
+	<div class="admin_body">
+		<h1>Staffeln</h1>
+		<br>
+		<form action="#" th:action="@{/seasonUpsert}" th:object="${season}"
+			method="post">
+			<a th:text="| Datensatz-ID: ${season.id}|">Datensatz</a>
+			<br>
+			<input th:field="*{id}" type="hidden">
+<!-- 			<label for="SerieNr">Serien-ID</label> -->
+<!-- 			<input th:field="*{serie}" required type="text"> -->
+      <label for="SerieNr">Serien-ID</label>
+      <select id="SerieNr" name="SerieNr" th:field="*{serie}">
+        <option th:each="serie : ${series}" th:text="${serie.name}" th:value="${serie.id}">
+      </select>
+
+			<br>
+			<br>
+			<br>
+			<br>
+			<label for="StaffelNr">Staffel-Nr</label>
+			<input th:field="*{seasonNr}" required type="text">
+			<br>
+			<br>
+			<br>
+			<br>
+			<input type="submit" value="Speichern">
+			<input type="reset" value="Zurücksetzen" />
+			<a href="/seasons">
+				<input type="button" value="Cancel">
+			</a>
+		</form>
+	</div>
+	<div th:insert="fragments/footer.html :: footer"></div>
+</body>
+</html>

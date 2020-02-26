@@ -3,7 +3,8 @@ body {
 	background-color: #fbe0f3;
 	margin: 0;
 	font-family: 'Reem Kufi', sans-serif;
-	margin-top: 70px; /* Add a top margin to avoid content overlay */
+	/*margin-top: 70px; */ /* Add a top margin to avoid content overlay */
+	padding-top: 70px;
 	margin-bottom: 70px;
 	height: 100%;
 }
@@ -42,6 +43,16 @@ p {
 	color: rgba(0, 0, 0, 0.5);
 	margin: 20px 0;
 	line-height: 1.6;
+}
+
+button {
+    background-color: #e5007d;
+    color: white;
+    padding: 7px 9px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
 }
 
 

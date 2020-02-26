@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+
+<head>
+  <title th:text="|${Title}|">Serial-Series</title>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil%7CJosefin+Sans%7CReem+Kufi">
+  <link rel="stylesheet" href="/global.css">
+  <link rel="stylesheet" href="/about_us.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset=UTF-8>
+</head>
+
+<header th:insert="fragments/header.html :: header"></header>
+
+<body>
+  <div class="aboutUs_body">
+    <section class="container-fluid">
+      <div class="row no-gutters article-row">
+
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="card article-card">
+            <img class="card-img-top" src="pictures/Logo.png" alt="Logo">
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="card article-card">
+            <span class="card-text-top" >GEMEINSAM DURCHSTARTEN</span>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="card article-card">
+            <img class="card-img-top" src="pictures/Skill2.jpeg" alt="Logo">
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="card article-card">
+            <span class="card-text-top" >TRAU DICH! NEUGIERIG ZU SEIN.</span>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="card article-card">
+            <img class="card-img-top" src="pictures/Team.png" alt="Logo">
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="card article-card">
+            <span class="card-text-top" >SOFTWARE ENGENEERING 2.0</span> 
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="card article-card">
+            <img class="card-img-top" src="pictures/Skill5.jpg" alt="Logo">
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="card article-card">
+
+            <form action="https://formspree.io/xrgglgqo" method="POST" class="card-img-top">
+ 
+<!--               <span class="card-text-mail form-control">Kontaktiere METJE & RALF</span> -->
+              <label class="card-text-mail">KONTAKTIERE METJE & RALF</label>
+
+              <input name="name" type="text" class="form-control mb-4" placeholder="Name"> <input name="_replyto" type="email" class="form-control mb-4"
+                placeholder="E-mail">
+              <div class="form-group">
+                <textarea name="message" class="form-control rounded-0" rows="3" placeholder="Nachricht"></textarea>
+              </div>
+              <button type="submit" value="Send">Send</button>
+            </form>
+
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="card article-card">
+            <img class="card-img-top" src="pictures/Skill1.jpg" alt="Logo">
+          </div>
+        </div>
+    </section></body>
+
+<div th:insert="fragments/footer.html :: footer"></div>
+</html>

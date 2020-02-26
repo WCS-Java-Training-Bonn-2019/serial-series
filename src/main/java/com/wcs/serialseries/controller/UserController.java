@@ -1,12 +1,11 @@
 package com.wcs.serialseries.controller;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.wcs.serialseries.model.Serie;
 import com.wcs.serialseries.model.User;
 import com.wcs.serialseries.repository.SerieRepository;
 import com.wcs.serialseries.repository.UserRepository;
@@ -26,14 +24,12 @@ import com.wcs.serialseries.service.UserService;
 public class UserController {
 
 	private final UserRepository userRepository;
-	private final SerieRepository serieRepository;
 	private final UserService service;
 	private final PasswordEncoder encoder;
 
 	@Autowired
 	public UserController(SerieRepository serieRepository, UserRepository userRepository, UserService service,
 			PasswordEncoder encoder) {
-		this.serieRepository = serieRepository;
 		this.userRepository = userRepository;
 		this.service = service;
 		this.encoder = encoder;
@@ -46,7 +42,7 @@ public class UserController {
 	public String startSerialSeries(Model model) {
 		long userId = service.getCurrentLoggedInUserId();
 		model.addAttribute("Users", userRepository.findAll());
-		model.addAttribute("Title", service.getTitleFromId(userId));
+		model.addAttribute("Title", service.getTitle());
 		model.addAttribute("Type", "Start");
 		model.addAttribute("UserId", userId);
 		return "start.html";
@@ -60,9 +56,9 @@ public class UserController {
 	public String editUsers(Model model) {
 
 		model.addAttribute("Type", "Login");
-		model.addAttribute("Title", service.getEmptyTitle());
+		model.addAttribute("Title", service.getTitle());
 
-		return "newUser.html";
+		return "new_user.html";
 	}
 
 	@GetMapping("/upsetUser")
@@ -88,7 +84,13 @@ public class UserController {
 			newUser.setUsername(username);
 			newUser.setPassword(encoder.encode(password));
 			newUser = userRepository.save(newUser);
-			return "redirect:/login";
+			
+			// Automatisches Anmelden des neuen Users
+			Authentication auth = new UsernamePasswordAuthenticationToken(newUser, null, newUser.getAuthorities());
+		    SecurityContextHolder.getContext().setAuthentication(auth);
+			
+			return "redirect:/startSerialSeries";
+
 		}
 
 	}
@@ -100,8 +102,9 @@ public class UserController {
 	@GetMapping("/users")
 	public String getAll(Model model) {
 		model.addAttribute("users", userRepository.findAll());
-		model.addAttribute("Title", service.getTitleFromId(-1L));
-		return "admin/userGetAll";
+		model.addAttribute("Title", service.getTitle());
+		model.addAttribute("Type", "Admin");
+		return "admin/user_get_all";
 	}
 
 	@PostMapping("/userUpsert")
@@ -126,8 +129,9 @@ public class UserController {
 			}
 		}
 		model.addAttribute("user", user);
-		model.addAttribute("Title", service.getTitleFromId(-1L));
-		return "admin/userEdit";
+		model.addAttribute("Title", service.getTitle());
+		model.addAttribute("Type", "Admin");
+		return "admin/user_edit";
 	}
 
 	@GetMapping("/userDelete/{userId}")
