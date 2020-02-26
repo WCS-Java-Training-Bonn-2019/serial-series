@@ -18,7 +18,8 @@
     <h1>Staffel-Episoden</h1>
     <br>
     <form action="#" th:action="@{/episodeUpsert}" th:object="${episode}" method="post">
-      <a th:text="| Datensatz-ID: ${episode.id}|">Datensatz</a>
+      <label>Datensatz-ID</label>
+      <a th:text="${episode.id}"></a>
       <br>
       <input th:field="*{id}" type="hidden">
       <label for="SerieNr">Serien-ID</label>
@@ -33,6 +34,7 @@
 
       <label for="StaffelNr">Staffel-ID</label>
       <input th:field="*{season}" required type="text"> 
+      <br><label></label>
         <span th:text="| nur intern!, ${episode.season.seasonNr}. Staffel in Serie |">Staffel-IDs</span>
       <br>
       <br>
