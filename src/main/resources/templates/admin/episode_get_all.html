@@ -33,6 +33,7 @@
           <th>Staffel-Nr</th>
           <th>Episoden-Nr</th>
           <th>Episoden-Titel</th>
+          <th>Aktion</th>
         </tr>
         <tr th:each="episode : ${episodes}">
           <td th:text="|&nbsp;${episode.season.serie.name}&nbsp;|">SerienName</td>
