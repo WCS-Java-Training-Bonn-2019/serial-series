@@ -18,15 +18,30 @@
     <h1>Staffel-Episoden</h1>
     <br>
     <form action="#" th:action="@{/episodeUpsert}" th:object="${episode}" method="post">
+      <label>Datensatz-ID</label>
+      <a th:text="${episode.id}"></a>
+      <br>
       <input th:field="*{id}" type="hidden">
+      <label for="SerieNr">Serien-ID</label>
+      <select id="SerieNr" name="SerieNr" th:field="${episode.season.serie}">
+        <option th:each="serie : ${series}" th:text="${serie.name}" th:value="${serie.id}">
+      </select>
+
+      <br>
+      <br>
+      <br>
+      <br>
+
       <label for="StaffelNr">Staffel-ID</label>
-      <input th:field="*{season}" required type="text">
+      <input th:field="*{season}" required type="text"> 
+      <br><label></label>
+        <span th:text="| nur intern!, ${episode.season.seasonNr}. Staffel in Serie |">Staffel-IDs</span>
       <br>
       <br>
       <br>
       <br>
       <label for="EpisodeNr">Episoden-Nummer</label>
-      <input th:field="*{episode_Nr}" required type="text">
+      <input th:field="*{episodeNr}" required type="text">
       <br>
       <br>
       <br>
@@ -39,7 +54,7 @@
       <br>
       <input type="submit" value="Speichern">
       <input type="reset" value="Zurücksetzen" />
-            <a href="/episodes">
+      <a href="/episodes">
         <input type="button" value="Cancel">
       </a>
     </form>

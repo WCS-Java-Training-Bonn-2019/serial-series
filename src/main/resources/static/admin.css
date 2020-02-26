@@ -7,9 +7,10 @@ label {
 	width: 150px;
 }
 
-input {
+input, select{
 	width: 300px;
 }
+
 
 th {
 	color: #e5007d;

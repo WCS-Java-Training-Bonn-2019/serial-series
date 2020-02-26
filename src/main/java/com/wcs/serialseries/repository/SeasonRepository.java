@@ -14,23 +14,8 @@ public interface SeasonRepository extends JpaRepository<Season, Long> {
 
 	List<Season> findAllByOrderBySerieName();
 
-
-
-
-
-
-
 	List<Season> findAllByOrderBySeasonNr();
 
-
-
-
-
-
-
 	List<Season> findAllByOrderBySerieNameAscSeasonNrAsc();
-
-
-
 		
 }
